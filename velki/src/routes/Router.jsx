@@ -1,5 +1,6 @@
 import MainLayout from "@/layout/MainLayout";
 import SportsLeaguesLayout from "@/layout/SportsLeaguesLayout";
+import BalanceOverview from "@/pages/balance-overview/BalanceOverview";
 import Casino from "@/pages/home/Casino/Casino";
 import Home from "@/pages/home/Home/Home";
 import Kyc from "@/pages/home/Kyc/Kyc";
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "/balance-overview",
+        element: <BalanceOverview />,
       },
     ],
   },

@@ -1,5 +1,6 @@
 import PrimaryButton from "./PrimaryButton";
 import { FiPlusCircle } from "react-icons/fi";
+import { TfiReload } from "react-icons/tfi";
 import { IoMdLogIn } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -34,6 +35,19 @@ const Navbar = () => {
                 alt=""
               />
             </Link>
+          </div>
+
+          <div className="flex flex-row items-center gap-2">
+            <div className="flex flex-col items-start">
+              <p>@Rofikulislam</p>
+              <div className="flex flex-row items-center gap-1">
+                <p>USD 10.00</p>
+                <p className="text-red-500">
+                  <span className="font-semibold text-black">Exp</span> (0.00)
+                </p>
+              </div>
+            </div>
+            <TfiReload className="text-lg" />
           </div>
 
           <div className="flex items-center justify-center gap-3">
