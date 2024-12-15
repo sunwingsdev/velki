@@ -72,7 +72,11 @@ const BannerSlider = () => {
         {bannerImages.map((image, index) => (
           <CarouselItem key={image.id}>
             <div className="">
-              <img className="w-full" src={image.image} alt={`Slide ${index + 1}`} />
+              <img
+                className="w-full"
+                src={image.image}
+                alt={`Slide ${index + 1}`}
+              />
             </div>
           </CarouselItem>
         ))}
@@ -99,15 +103,9 @@ const BannerSlider = () => {
           <HiOutlineMicrophone className="text-xl md:text-2xl" />
           <Marquee className="text-xs md:text-sm">
             <ul className="flex items-center justify-between gap-20 font-bold">
-              <li>লটারী! লটারী!! লটারী!!! জয়েন করুন www.velki.club</li>
-              <li>অফিসিয়াল এজেন্ট লিষ্ট https://allagentlist.com/ma.php</li>
-              <li>
-                Once player account found with fraudulent ticket, the respective
-                market will be voided and the player account will be locked.
-              </li>
-              <li>
-                WELCOME TO VELKI ! ENJOY BETTING IN MATCH ODDS, FANCY & LIVE
-                CASINO
+              <li className="ms-8">
+                Velki360.com আমাদের নতুন প্লাটর্ফম সাগতম খুব দ্রুত আমার প্লাটফম
+                সরাসরি খেলা লাইভ হবে। ধন্যবাদ{" "}
               </li>
             </ul>
           </Marquee>
