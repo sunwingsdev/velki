@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import SportsCategory from "../SportsCategory/SportsCategory";
 import GamesCategory from "../GamesCategory/GamesCategory";
+import { MdSportsCricket } from "react-icons/md";
+import { RiLiveLine } from "react-icons/ri";
+import { GiCardQueenHearts, GiFishing } from "react-icons/gi";
+import { IoGameController } from "react-icons/io5";
+import { TbGoGame } from "react-icons/tb";
 
 export function SelectCategory() {
   const categories = [
@@ -8,31 +13,37 @@ export function SelectCategory() {
       title: "Sports",
       value: "sports",
       description: "Manage your sports preferences here.",
+      icon: <MdSportsCricket />,
     },
     {
       title: "Live",
       value: "live",
       description: "Live streaming and events can be managed here.",
+      icon: <RiLiveLine />,
     },
     {
       title: "Table",
       value: "table",
       description: "Manage table games and settings here.",
+      icon: <GiCardQueenHearts />,
     },
     {
       title: "Slot",
       value: "slot",
       description: "Slots games management and preferences.",
+      icon: <TbGoGame />,
     },
     {
       title: "Fishing",
       value: "fishing",
       description: "Manage fishing game settings.",
+      icon: <GiFishing />,
     },
     {
       title: "Egame",
       value: "egame",
       description: "Egames management and preferences.",
+      icon: <IoGameController />,
     },
   ];
 
@@ -275,6 +286,7 @@ export function SelectCategory() {
               onClick={() => setSelectedCategory(category)}
             >
               <p className="font-medium"> {category.title}</p>
+              <div className="ml-2 text-4xl">{category.icon}</div>
             </button>
           ))}
         </div>

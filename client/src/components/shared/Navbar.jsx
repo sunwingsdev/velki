@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 z-20 w-full md:w-[60%] lg:w-[40%] xl:w-[30%]">
+    <div className="fixed top-0 z-20 w-full md:w-[60%] lg:w-[40%] xl:w-[35%]">
       <div className="relative">
         {isSidebarOpen && (
           <Sidebar

@@ -9,40 +9,40 @@ const CurrentBets = () => {
       <PageHeader title="Current Bets" />
       <div>
         <Tabs>
-          <TabList className="flex flex-row items-center justify-center gap-4 py-1 font-bold">
+          <TabList className="flex flex-row items-center justify-center  py-2 gap-3 font-bold">
             <Tab
               selectedClassName="border-b-4 border-black text-black px-2 py-2"
-              className="px-2 py-2"
+              className=" py-2"
             >
               All
             </Tab>
             <Tab
               selectedClassName="border-b-4 border-black text-black px-2 py-2"
-              className="px-2 py-2"
+              className="py-2"
             >
               Exchange
             </Tab>
             <Tab
               selectedClassName="border-b-4 border-black text-black px-2 py-2"
-              className="px-2 py-2"
+              className=" py-2"
             >
               Casino
             </Tab>
             <Tab
               selectedClassName="border-b-4 border-black text-black px-2 py-2"
-              className="px-2 py-2"
+              className=" py-2"
             >
               Fancybet
             </Tab>
             <Tab
               selectedClassName="border-b-4 border-black text-black px-2 py-2"
-              className="px-2 py-2"
+              className=" py-2"
             >
               Bookmaker
             </Tab>
             <Tab
               selectedClassName="border-b-4 border-black text-black px-2 py-2"
-              className="px-2 py-2"
+              className=" py-2"
             >
               SportsBook
             </Tab>

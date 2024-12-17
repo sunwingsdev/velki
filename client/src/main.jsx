@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(
           alt=""
         />
       </div>
-      <div className="w-full md:w-[60%] lg:w-[40%] xl:w-[30%] bg-[#eef6fb] overflow-y-auto">
+      <div className="w-full md:w-[60%] lg:w-[40%] xl:w-[35%] bg-[#eef6fb] overflow-y-auto">
         <Provider store={store}>
           <ToastProvider>
             <RouterProvider router={router} />

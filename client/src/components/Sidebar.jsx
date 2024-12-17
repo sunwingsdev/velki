@@ -69,6 +69,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
           <li className=" bg-white flex items-center gap-2 p-3 rounded-2xl">
             <Link
               to="/setting"
+              onClick={toggleSidebar}
               className="flex items-center justify-between text-gray-800 w-full"
             >
               <div className="flex items-center gap-2">
