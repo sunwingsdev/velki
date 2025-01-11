@@ -11,7 +11,9 @@ import ResponsibleGaming from "@/pages/home/ResponsibleGaming/ResponsibleGaming"
 import RulesRegulation from "@/pages/home/RulesRegulation/RulesRegulation";
 import Sports from "@/pages/home/Sports/Sports";
 import TermsAndCondition from "@/pages/home/TermsAndCondition/TermsAndCondition";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, } from "react-router-dom";
+import Banner from "@/pages/Banner";
+import AdminD from "@/pages/AdminD";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,9 @@ const router = createBrowserRouter([
   { path: "/rules-regulation", element: <RulesRegulation /> },
   { path: "/kyc", element: <Kyc /> },
   { path: "/responsible-gaming", element: <ResponsibleGaming /> },
+  { path: "/banner", element: <Banner /> },
+  { path: "/admind", element: <AdminD /> },
+  
 ]);
 
 export default router;
