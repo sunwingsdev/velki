@@ -11,11 +11,17 @@ const Footer = () => {
           alt=""
         />
       </Link>
-      <p className="text-[#6F8898]">v1.11 - 2022/3/8 - 2.6MB</p>
+      <p className="text-[#6F8898]">v2.1.0 - 2024/3/8 - 2.6MB</p>
       <div className="flex items-center justify-center gap-4 py-2">
-        <FaTelegram className="text-4xl" />
-        <FaWhatsappSquare className="text-4xl" />
-        <FaFacebook className="text-4xl" />
+        <Link>
+          <FaTelegram className="text-4xl" />
+        </Link>
+        <Link>
+          <FaWhatsappSquare className="text-4xl" />
+        </Link>
+        <Link>
+          <FaFacebook className="text-4xl" />
+        </Link>
       </div>
       <div className="flex flex-wrap items-center justify-center gap-2">
         <Link to="/privacy-policy" className="border-r border-slate-400 px-3">
@@ -34,6 +40,9 @@ const Footer = () => {
           Responsible Gaming
         </Link>
       </div>
+      <p className="text-[#6F8898] text-sm text-center">
+        © 2024 Oracle Technology LLC কপিরাইট। সমস্ত অধিকার সংরক্ষিত
+      </p>
     </div>
   );
 };
