@@ -62,6 +62,13 @@ const router = createBrowserRouter([
         path: "/setting",
         element: <Settings />,
       },
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Register /> },
+      { path: "/terms-conditions", element: <TermsAndCondition /> },
+      { path: "/privacy-policy", element: <PrivacyPolicy /> },
+      { path: "/rules-regulation", element: <RulesRegulation /> },
+      { path: "/kyc", element: <Kyc /> },
+      { path: "/responsible-gaming", element: <ResponsibleGaming /> },
     ],
   },
   {
@@ -94,13 +101,8 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: "/login", element: <Login /> },
-  { path: "/signup", element: <Register /> },
-  { path: "/terms-conditions", element: <TermsAndCondition /> },
-  { path: "/privacy-policy", element: <PrivacyPolicy /> },
-  { path: "/rules-regulation", element: <RulesRegulation /> },
-  { path: "/kyc", element: <Kyc /> },
-  { path: "/responsible-gaming", element: <ResponsibleGaming /> },
+  // toriqul vai ekhan theke shuru korben evabe
+  // {path: "",element: <Home />},
 ]);
 
 export default router;

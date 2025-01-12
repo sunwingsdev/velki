@@ -9,6 +9,9 @@ import { ToastProvider } from "react-toast-notifications";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+<<<<<<< HEAD:velki/src/main.jsx
+    <RouterProvider router={router} />
+=======
     <div
       style={{
         backgroundImage:
@@ -32,5 +35,6 @@ createRoot(document.getElementById("root")).render(
       </div>
       <div className="hidden lg:block md:w-[20%] w-[30%]"></div>
     </div>
+>>>>>>> 68998d501141fca00ef5e278ba00cfd76a401cda:client/src/main.jsx
   </StrictMode>
 );
