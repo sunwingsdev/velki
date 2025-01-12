@@ -2,7 +2,9 @@ import MainLayout from "@/layout/MainLayout";
 import SportsLeaguesLayout from "@/layout/SportsLeaguesLayout";
 import AccountStatement from "@/pages/account-statement/AccountStatement";
 import ActivityLog from "@/pages/activity-log/ActivityLog";
+import AdminD from "@/pages/AdminD";
 import BalanceOverview from "@/pages/balance-overview/BalanceOverview";
+import Banner from "@/pages/Banner";
 import BetsHistory from "@/pages/bets-history/BetsHistory";
 import CurrentBets from "@/pages/current-bets/CurrentBets";
 import Casino from "@/pages/home/Casino/Casino";
@@ -103,6 +105,8 @@ const router = createBrowserRouter([
   },
   // toriqul vai ekhan theke shuru korben evabe
   // {path: "",element: <Home />},
+  { path: "/banner", element: <Banner /> },
+  { path: "/admind", element: <AdminD /> },
 ]);
 
 export default router;
