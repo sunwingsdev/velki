@@ -64,14 +64,17 @@ const Register = () => {
     if (data.validationCode === verificationCode) {
       try {
         setLoading(true);
-        const result = await addUser(userInfo);
-        if (result.data.insertedId) {
+        const { data, error } = await addUser(userInfo);
+        if (data.insertedId) {
           addToast("Registration successful", {
             appearance: "success",
             autoDismiss: true,
           });
           setLoading(false);
           navigate("/");
+        }
+        if (error) {
+          console.log(error);
         }
       } catch (error) {
         console.log(error.message);
@@ -254,7 +257,7 @@ const Register = () => {
               type="email"
               placeholder="Email"
               className="pl-12 pr-10 border border-black h-10 sm:h-12 rounded-lg focus:outline-none bg-transparent w-full placeholder:text-lg"
-              {...register("username", {
+              {...register("email", {
                 required: "Email is required.",
                 pattern: {
                   value: /^[\w-.]+@[\w-]+\.[a-z]{2,}$/i,

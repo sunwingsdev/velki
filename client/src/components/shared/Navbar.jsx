@@ -45,7 +45,7 @@ const Navbar = () => {
           {token && user && (
             <div className="flex flex-row items-center gap-2">
               <div className="flex flex-col items-start">
-                <p>@{user?.user.username}</p>
+                <p>@{user?.user?.username}</p>
                 <div className="flex flex-row items-center gap-1 text-sm">
                   <p>USD 0.00</p>
                   <p className="text-red-500">
