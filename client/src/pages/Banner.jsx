@@ -15,7 +15,7 @@ const Banner = () => {
                     backgroundPosition: "center",
                 }}
             >
-                <div className="flex overflow-y-auto flex-col border border-white  md:flex-row lg:flex-row bg-white shadow-xl ml-10 md:ml-60 lg:ml-96 rounded-lg overflow-hidden w-2/3 md:1/3 lg:w-2/5 h-[500px]  lg:h-[450px]    lg:max-w-4xl mx-4">
+                <div className="flex overflow-y-auto flex-col border border-white  md:flex-row lg:flex-row bg-white shadow-xl ml-10 md:ml-60 lg:ml-96 rounded-lg overflow-hidden w-3/4 md:1/3 lg:w-2/5 h-[500px]  lg:h-[450px]    lg:max-w-4xl mx-4">
                     <figure className="lg:w-1/2 w-full h-1/3 md:h-auto lg:h-auto ">
                         <img
                             src={llogo}
@@ -48,7 +48,7 @@ const Banner = () => {
                                 />
                             </div>
                             <div className="relative flex items-center justify-center mb-4">
-                                <span className="absolute -right-3 md:right-2 lg:right-5 text-black text-sm font-bold pt-1 top-0 ">2249</span>
+                                <span className="absolute -right-1 md:right-2 lg:right-5 text-black text-sm font-bold pt-1 top-0 ">2249</span>
                                 <input
                                     type="password"
                                     id="validation"
