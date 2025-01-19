@@ -1,8 +1,20 @@
+import ActiveGame from "@/components/ActiveGame/ActiveGame";
+import AdminSetting from "@/components/Admin Setting/AdminSetting";
+import AdminD from "@/components/AdminD/AdminD";
+import Banking from "@/components/Banking/Banking";
+import BetList from "@/components/BetList/BetList";
+import BetListLive from "@/components/BetListLive/BetListLive";
+import DeactiveGame from "@/components/DeactiveGame/DeactiveGame";
+import Game from "@/components/GameApi/Game";
+import HeadingNavbar from "@/components/HeadingNavbar/HeadingNavbar";
+import HomeControl from "@/components/HomeControl/HomeControl";
+import LiveGame from "@/components/LiveGame/LiveGame";
+import MyAccount from "@/components/MyAccount/MyAccount";
+import Setting from "@/components/Setting/Setting";
 import MainLayout from "@/layout/MainLayout";
 import SportsLeaguesLayout from "@/layout/SportsLeaguesLayout";
 import AccountStatement from "@/pages/account-statement/AccountStatement";
 import ActivityLog from "@/pages/activity-log/ActivityLog";
-import AdminD from "@/pages/AdminD";
 import BalanceOverview from "@/pages/balance-overview/BalanceOverview";
 import Banner from "@/pages/Banner";
 import BetsHistory from "@/pages/bets-history/BetsHistory";
@@ -22,6 +34,7 @@ import MyProfile from "@/pages/my-profile/MyProfile";
 import ProfitAndLoss from "@/pages/profit-and-loss/ProfitAndLoss";
 import Settings from "@/pages/setting/Settings";
 import { createBrowserRouter } from "react-router-dom";
+
 
 const router = createBrowserRouter([
   {
@@ -105,8 +118,20 @@ const router = createBrowserRouter([
   },
   // toriqul vai ekhan theke shuru korben evabe
   // {path: "",element: <Home />},
-  { path: "/banner", element: <Banner /> },
-  { path: "/admind", element: <AdminD /> },
+  { path: "/adminLogin", element: <Banner /> },
+  { path: "/adminDashboard", element: <AdminD /> },
+  { path: "/setting1234", element: <Setting /> },
+  { path: "/myAccount", element: <MyAccount /> },
+  { path: "/betLive", element: <BetListLive /> },
+  { path: "/betList", element: <BetList /> },
+  { path: "/banking", element: <Banking /> },
+  { path: "/headingNavbar", element: <HeadingNavbar /> },
+  { path: "/adminSetting", element: <AdminSetting /> },
+  { path: "/gameApi", element: <Game /> },
+  { path: "/activeGame", element: <ActiveGame /> },
+  { path: "/deactiveGame", element: <DeactiveGame /> },
+  { path: "/liveGame", element: <LiveGame /> },
+  { path: "/homeControl", element: <HomeControl /> },
 ]);
 
 export default router;
