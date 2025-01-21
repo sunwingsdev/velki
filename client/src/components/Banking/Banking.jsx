@@ -21,7 +21,7 @@ const data = [
 const Banking = () => {
     return (
         <div>
-           <div>
+            <div>
                 <div className='flex flex-row md:justify-between  lg:justify-between  bg-gray-800'>
                     <div className="pt-4 pb-4">
                         <img src={velkiLogo} alt="" className="w-8 lg:w-full lg:max-w-full h-6 lg:h-12" />
@@ -59,13 +59,13 @@ const Banking = () => {
                     </div>
                 </div>
                 <div className=" bg-gray-800  ">
-                   
-                   
-                   <HeadingNavbar></HeadingNavbar>
+
+
+                    <HeadingNavbar></HeadingNavbar>
 
                 </div>
                 <div className='bg-slate-800 pt-0  '>
-                   
+
                     <div className="pl-0 lg:pl-4 flex items-center space-x-4">
 
                         <svg
@@ -95,43 +95,26 @@ const Banking = () => {
             <div className="bg-adminBackground min-h-screen">
                 <div >
                     <h3 className="font-sans font-semibold mx-2">Banking</h3>
-                    <div className=" mx-2 flex overflow-x-auto  lg:flex-wrap md:space-y-3 space-x-5 justify-start  w-auto">
-                        <div className="p-4 mt-3 w-auto border-r border-black border-opacity-10 bg-blue-500 text-center">
-                            <p className=''>Total Balance</p>
-                            <h3 ><span className='text-red-500'>(1,776.57)</span></h3>
+                    <div className="p-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                            {[
+                                { label: "Total Balance", value: "(1,776.57)" },
+                                { label: "Remaining Balance", value: "USD(1,500.00)" },
+                                { label: "Total Agent Balance", value: "USD(1,200.00)" },
+                                { label: "Total Exposure", value: "USD(900.50)" },
+                                { label: "Total Admin", value: "USD(800.00)" },
+                            ].map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="space-y-1 p-4 border border-black border-opacity-10 text-white bg-black text-center rounded-md"
+                                >
+                                    <p className="font-bold">{item.label}</p>
+                                    <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
+                                        {item.value}
+                                    </h3>
+                                </div>
+                            ))}
                         </div>
-                        <div className="p-4 w-auto border-r border-black border-opacity-10 bg-blue-500 text-center">
-                            <p>Remaining Balance </p>
-                            <h3>USD(1,776.57)</h3>
-                        </div>
-                        <div className="p-4 w-auto border-r border-black border-opacity-10 bg-blue-500 text-center">
-                            <p>Total Agent Balance</p>
-                            <h3>USD(1,776.57)</h3>
-                        </div>
-                        <div className="p-4 w-auto border-r border-black border-opacity-10 bg-blue-500 text-center">
-                            <p>Total Client Balance
-                            </p>
-                            <h3>USD(1,776.57)</h3>
-                        </div>
-                        <div className="p-4 w-auto border-r border-black border-opacity-10 bg-blue-500 text-center">
-                            <p>Total Exposure</p>
-                            <h3>USD(1,776.57)</h3>
-                        </div>
-                        <div className="p-4 w-auto border-r border-black border-opacity-10 bg-blue-500 text-center">
-                            <p>Total Admin </p>
-                            <h3>USD(1,776.57)</h3>
-                        </div>
-                        <div className="p-4 w-auto border-r border-black border-opacity-10 bg-blue-500 text-center">
-                            <p>Total Exposure</p>
-                            <h3>USD(1,776.57)</h3>
-                        </div>
-                        <div className="p-4 w-auto border-r border-black border-opacity-10 bg-blue-500 text-center">
-                            <p>Total Exposure</p>
-                            <h3>USD(1,776.57)</h3>
-                        </div>
-                       
-                       
-
                     </div>
                     <input className=" border border-black p-2 rounded-sm mx-2 my-2 w-40 h-6 placeholder:text-xs" type="search" name="" id="" placeholder="Enter User" />
                 </div>

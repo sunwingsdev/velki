@@ -56,8 +56,8 @@ const AdminD = () => {
   ];
 
   return (
-    <div>
-      <div className="bg-adminBackground space-y-6">
+    <div className="">
+      <div className="bg-adminBackground space-y-6 ">
         <div>
           <div className=" flex flex-row md:justify-between  lg:justify-between  bg-gray-800">
             <div className="pt-4 pb-4">
@@ -146,7 +146,7 @@ const AdminD = () => {
         <div className="pl-4 flex  lg:flex-row">
           <h3 className="font-semibold text-gray-700 pt-4">Admin List</h3>
         </div>
-        <div className="pt-2 pb-4 pl-4 flex flex-col lg:flex-row  justify-between gap-2">
+        <div className="pt-2 pb-4 pl-4 flex flex-col lg:flex-row lg:space-x-[47rem] gap-2">
           <div className="form-control flex flex-row border border-black bg-white border-opacity-40 shadow-xl p-2 rounded w-64   ">
             <input
               type="text"
@@ -275,11 +275,11 @@ const AdminD = () => {
 
                         <div className="flex items-center relative group">
                           <label className="w-32 font-medium text-gray-700">
-                            Layout
+                            Role
                           </label>
                           <input
-                            type="search"
-                            placeholder="Select Domain"
+                            type="select"
+                            placeholder="Select Role"
                             className="w-full h-10 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
                           />
                           <span className="absolute right-4 top-1/2 transform -translate-y-1/2">
@@ -328,7 +328,7 @@ const AdminD = () => {
                         </div>
                         <div className="flex items-center">
                           <label className="w-32 font-medium text-gray-700">
-                            First Name
+                            Last Name
                           </label>
                           <input
                             type="password"
@@ -336,38 +336,9 @@ const AdminD = () => {
                             className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
                           />
                         </div>
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            First Name
-                          </label>
-                          <input
-                            type="password"
-                            placeholder="Password"
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            First Name
-                          </label>
-                          <input
-                            type="password"
-                            placeholder="Password"
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            First Name
-                          </label>
-                          <input
-                            type="password"
-                            placeholder="Password"
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
+                      
                         <div className="text-center">
-                          <button className="bg-yellow-400 px-14 py-1 text-center">
+                          <button className="bg-yellow-400 px-14 py-1 font-bold rounded-2xl mt-2 text-center">
                             Create
                           </button>
                         </div>
@@ -384,9 +355,7 @@ const AdminD = () => {
                         >
                           Close
                         </button>
-                        <button className="ml-2 bg-gray-900 text-white px-4 py-2 rounded hover:text-yellow-200">
-                          Save
-                        </button>
+                       
                       </div>
                     </div>
                   </div>
@@ -414,56 +383,34 @@ const AdminD = () => {
         </div>
         <div></div>
 
-        <div>
-          <div className="ml-3 mr-2 flex overflow-x-auto lg:flex-wrap md:space-y-3 space-x-5 justify-start w-auto">
-            <div className="space-y-1 p-4 w-auto border-r border-black border-opacity-10 text-white bg-black text-center rounded-md">
-              <p className="font-bold">Total Balance</p>
-              <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
-                (1,776.57)
-              </h3>
-            </div>
-            <div className="space-y-1 p-4 w-auto border-r border-black border-opacity-10 text-white bg-black text-center rounded-md">
-              <p className="font-bold">Remaining Balance </p>
-              <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
-                USD(1,776.57)
-              </h3>
-            </div>
-            <div className="space-y-1 p-4 w-auto border-r border-black border-opacity-10 text-white bg-black text-center rounded-md">
-              <p className="font-bold">Total Agent Balance</p>
-              <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
-                USD(1,776.57)
-              </h3>
-            </div>
-            <div className="space-y-1 p-4 w-auto border-r border-black border-opacity-10 text-white bg-black text-center rounded-md">
-              <p className="font-bold">Total Exposure</p>
-              <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
-                USD(1,776.57)
-              </h3>
-            </div>
-            <div className="space-y-1 p-4 w-auto border-r border-black border-opacity-10 text-white bg-black text-center rounded-md">
-              <p className="font-bold">Total Admin</p>
-              <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
-                USD(1,776.57)
-              </h3>
-            </div>
-            <div className="space-y-1 p-4 w-auto border-r border-black border-opacity-10 text-white bg-black text-center rounded-md">
-              <p className="font-bold">Total Exposure</p>
-              <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
-                USD(1,776.57)
-              </h3>
-            </div>
-            <div className="space-y-1 p-4 w-auto border-r border-black border-opacity-10 text-white bg-black text-center rounded-md">
-              <p className="font-bold">Total Exposure</p>
-              <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
-                USD(1,776.57)
-              </h3>
-            </div>
+        <div className="p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {[
+              { label: "Total Balance", value: "(1,776.57)" },
+              { label: "Remaining Balance", value: "USD(1,500.00)" },
+              { label: "Total Agent Balance", value: "USD(1,200.00)" },
+              { label: "Total Exposure", value: "USD(900.50)" },
+              { label: "Total Admin", value: "USD(800.00)" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="space-y-1 p-4 border border-black border-opacity-10 text-white bg-black text-center rounded-md"
+              >
+                <p className="font-bold">{item.label}</p>
+                <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
+                  {item.value}
+                </h3>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="pt-4">
+
+
+
+        <div className="pt-4 ">
           <div className="overflow-x-auto">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto ">
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-headerGray text-headingTextColor">
                   <tr>
