@@ -9,7 +9,7 @@ const fieldNames = [
     "Monthly sub admin Bonus:",
     "Monthly senior Supper Bonus:",
     "Change Mother Admin Password:",
-    " Chane Mother Admin User ID:",
+    " Change Mother Admin User ID:",
     "Currency Set:",
     "Whats App Number:",
     "Monthly sub Master Bonus:",
@@ -95,26 +95,26 @@ const AdminSetting = () => {
                     </div>
                 </div>
             </div>
-            <div className="min-h-screen" >
-               
-                <h1 className="text-center text-xl font-bold bg-yellow-500 h-10">Admin Setting</h1>
-                
+            <div className="min-h-screen bg-adminBackground mt-2" >
+
+                <h1 className="text-center text-2xl pt-1 font-bold bg-yellow-500 h-10">Admin Setting</h1>
+
                 <div>
 
 
 
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 mx-10 lg:mx-60 mt-10  ">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-2 mx-10 lg:mx-60 mt-10  ">
                         {fieldNames.map((fieldName, index) => (
                             <div
-                            key={index}
-                            className={`pl-0 lg:pl-0 mb-2 sm:mb-0 w-full sm:w-auto 
+                                key={index}
+                                className={`pl-0 lg:pl-0 mb-2 sm:mb-0 w-full sm:w-auto 
                                 ${index === 7 || index === 10 ? "mr-16" : ""}`}
-                        >
+                            >
                                 {/* Label */}
                                 <label
                                     htmlFor={`input-${index}`}
-                                    className="block text-sm font-medium text-gray-700 mb-1"
+                                    className="block text-sm font-bold text-black mb-1"
                                 >
                                     {fieldName}
                                 </label>
@@ -122,11 +122,24 @@ const AdminSetting = () => {
                                     {/* Input */}
                                     <input
                                         id={`input-${index}`}
-                                        className={`w-40 lg:w-[600px]   rounded-lg h-6 border border-black placeholder:text-xs sm:placeholder:text-sm p-2 outline-none pr-8 
+                                        className={`w-40 lg:w-[600px]   rounded-lg h-6 border border-black placeholder:text-xs lg:placeholder:text-sm p-2 outline-none pr-8 
             ${[2, 5].includes(index) ? "placeholder:font-bold placeholder:text-black" : ""}
             ${[8, 11, 14].includes(index) ? "placeholder:font-semibold placeholder:text-black" : ""}
           `}
-                                        type="search"
+          type={
+            index === 2
+                ? "text"
+                : index === 5
+                ? "password"
+                : index === 8
+                ? "tel"
+                : index === 11 || index === 14
+                ? "url"
+                :index===7 || index===10
+                ?'select'
+                : "text"
+
+          }
                                         placeholder={
                                             index === 2
                                                 ? "Admin"
@@ -138,46 +151,67 @@ const AdminSetting = () => {
                                                             ? "@velki123"
                                                             : index === 14
                                                                 ? "facebook.com/velki123"
+                                                                :index===7 || index===10
+                                                                ?''
                                                                 : "0"
                                         }
                                     />
                                     {/* Dropdown */}
                                     {(index === 7 || index === 10) && (
-                                       <div className="absolute left-16 top-0 flex items-center">
-                                       <p className="text-purple-600 font-semibold lg:pl-8 pr-0 lg:pr-8 relative z-0">
-                                           {index === 7 ? "USD" : index === 10 ? "Active" : ""}
-                                       </p>
-                                   
-                                       {/* SVG icon for arrow */}
-                                       <div className="absolute left-16 lg:left-32 font-bold top-1/2 transform -translate-y-1/2">
-                                           <svg width="28" height="28" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                               <path d="M6 9L3 6H9L6 9Z" fill="black" />
-                                           </svg>
-                                       </div>
-                                   </div>
-                                   
-                                    
+                                        <div className="absolute left-16 top-0 flex items-center ">
+                                            <select
+                                                className={`w-full  text-purple-700 font-bold outline-none     ${index === 7 ? "pr-20" : index === 10 ? "pr-16" : ""
+                                                    }`}
+
+                                               
+
+                                            >
+
+                                                {index === 7 ? (
+                                                    <>
+                                                        <option className="text-black text-center  font-semibold bg-yellow-500     " value='USDT'>USDT</option>
+                                                        <option className="text-black text-center font-semibold bg-yellow-500 hover:bg-black !important transition duration-300 " value='BDT'>BDT</option>
+                                                        <option className="text-black text-center font-semibold bg-yellow-500 hover:bg-black !important transition duration-300 " value='PVU'>PVU</option>
+
+                                                    </>
+                                                ) : index === 10 ? (
+                                                    <>
+                                                        <option className="text-black text-center font-semibold bg-yellow-500" value='active'>Active</option>
+                                                        <option className="text-black text-center font-semibold bg-yellow-500" value='inactive'>Inactive</option>
+                                                    </>
+                                                ) : null}
+
+                                            </select>
+
+                                           
+
+
+
+
+                                        </div>
+
+
                                     )}
                                     {/* Button */}
-                                    {!(index === 7 || index === 10 ) && (
-                    <button
-                        type="button"
-                        className="ml-2 px-3 py-1 border border-black bg-yellow-500 text-black text-sm font-semibold rounded-lg"
-                    >
-                        Add+
-                    </button>
-                )}
+                                    {!(index === 7 || index === 10) && (
+                                        <button
+                                            type="button"
+                                            className="ml-2 px-2 pb-1 border border-black bg-yellow-500 text-black  font-semibold rounded-2xl"
+                                        >
+                                            Add+
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         ))}
                     </div>;
 
-                  <div className="text-center">
-                    <button className="bg-gray-800 text-white rounded-xl mb-1 py-1 px-12">Save Change</button>
-                  </div>
+                    <div className="text-center">
+                        <button className="bg-gray-800 text-white rounded-xl mb-1 py-1 px-12">Save Change</button>
+                    </div>
                 </div>
             </div>
-        </div> 
+        </div>
     );
 };
 

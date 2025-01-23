@@ -164,8 +164,8 @@ const Banking = () => {
 
                                                         </div>
                                                         <input
-                                                            className="w-40 h-6 placeholder:text-right border border-black  placeholder:text-xs sm:placeholder:text-sm p-2 outline-none pr-8"
-                                                            type="search"
+                                                            className="w-40 appearance-none h-6 placeholder:text-right border border-black  placeholder:text-xs sm:placeholder:text-sm p-2 outline-none pr-8"
+                                                            type="number"
                                                             placeholder="0"
                                                         />
                                                         <button className="w-8 h-6 px-1  border border-black text-black bg-yellow-400">Full</button>
