@@ -1,5 +1,6 @@
-import velkiLogo from "../../assets/velki.webp";
 import HeadingNavbar from "../HeadingNavbar/HeadingNavbar";
+import TopBar from "../velkiAdminDashboard/TopBar";
+import AdminBalanceCard from "./AdminBalanceCard";
 
 const AdminD = () => {
   const data = [
@@ -106,27 +107,42 @@ const AdminD = () => {
           <div className="bg-gray-800  ">
             <HeadingNavbar></HeadingNavbar>
           </div>
+    <div>
+      <TopBar />
+      <HeadingNavbar />
 
-          <div className="bg-slate-800  pt-0">
-            <div className="pl-0 lg:pl-4 flex items-center space-x-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-6 text-white"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M12 14a3 3 0 003-3V5a3 3 0 00-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 0014 0h-2zm-4 6v3h-2v-3h-2a4 4 0 008 0h-2z" />
-              </svg>
+      <div className="bg-slate-800 relative">
+        {/* হেডার সেকশন */}
+        <div className="flex items-center space-x-3 z-50 p-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-white"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M12 14a3 3 0 003-3V5a3 3 0 00-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 0014 0h-2zm-4 6v3h-2v-3h-2a4 4 0 008 0h-2z" />
+          </svg>
+          <div className="w-16 h-6 border-r border-gray-400 pr-2 rounded-full flex items-center justify-center">
+            <p className="text-white text-xs font-semibold">News</p>
+          </div>
+        </div>
 
-              <div className="w-6 h-6 b border-r  pr-5 rounded-full   flex items-center justify-center ">
-                <p className="transform text-white  text-xs">News</p>
-              </div>
-            </div>
-
-            <div></div>
+        {/* Marquee */}
+        <div className="absolute top-0 overflow-hidden whitespace-nowrap w-full text-white">
+          <div className="animate-marquee inline-block">
+            <p className="text-sm font-medium mx-4 inline-block">
+              🚀 Welcome to the React & Tailwind Responsive Marquee!
+            </p>
+            <p className="text-sm font-medium mx-4 inline-block">
+              🌟 Learn to build amazing UIs with Tailwind CSS!
+            </p>
+            <p className="text-sm font-medium mx-4 inline-block">
+              💻 Stay tuned for more updates and news!
+            </p>
           </div>
         </div>
       </div>
+
       <div>
         <div className="navbar bg-base-100">
           <div className="pt-4 pl-4 flex flex-row gap-2">
@@ -372,7 +388,6 @@ const AdminD = () => {
           </div>
         </div>
         <div></div>
-
         <div className="p-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {[
@@ -393,6 +408,25 @@ const AdminD = () => {
               </div>
             ))}
           </div>
+        {/* balance card */}
+        <div className="flex gap-2 lg:gap-3 px-2 overflow-x-auto">
+          <AdminBalanceCard text={"Total Exposure"} amount={"USD(1,776.51)"} />
+          <AdminBalanceCard
+            text={"Total Avail. bal."}
+            amount={"USD(3,37,128,73)"}
+          />
+          <AdminBalanceCard
+            text={"Balance in Downline"}
+            amount={"USD(14,58,598.40)"}
+          />
+          <AdminBalanceCard
+            text={"Credit Reference"}
+            amount={"USD(21,87,221.35)"}
+          />
+          <AdminBalanceCard
+            text={"Reference PL"}
+            amount={"USD(10,26,259.48)"}
+          />
         </div>
 
 
