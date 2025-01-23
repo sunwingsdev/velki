@@ -5,7 +5,7 @@ import HeadingNavbar from '../HeadingNavbar/HeadingNavbar';
 
 
 const items = [
-    "Asino", "Premium", "Horseracing", "Greyhoundracing", "Xjames",
+    "Casino", "Premium", "Horseracing", "Greyhoundracing", "Xjames",
     "kabaddi", "Election", "Basketball", "Bollyball", "Snoker",
     "Motorsport", "Icehockey", "Golf", "Esports", "Drafts",
     "Cycling", "Boxing", "Americanfootball", "Gaelocgames",
@@ -100,14 +100,22 @@ const BetList = () => {
                     <h3 className="font-serif mb-6 font-semibold ml-1">Bet List  </h3>
 
                 </div>
-                <div className="mx-3 bg-navbarBackground">
+                <div className="mx-3  bg-navbarBackground">
 
-                    <div className=' '>
+                    <div className=' pb-2'>
                         <ul className="flex flex-row overflow-x-auto mx-1  md:flex-row lg:flex-row sm:text-left font-bold text-xs items-start">
                             {items.map((item, index) => (
                                 <li key={index} className="flex flex-row md:w-1/2 lg:w-auto items-center gap-1 mb-2">
-                                    <span className="break-words">{item}</span>
-                                    <input className=' w-3 h-3 mr-1 text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"' type="radio" name="" id="" />
+                                    <label htmlFor={`radio-${item}`} className="flex items-center cursor-pointer">
+                                        <input
+                                            className="w-3 h-3 mr-1 text-white rounded-full border border-black hover:bg-blue-600 transition duration-300"
+                                            type="radio"
+                                            name="example"
+                                            id={`radio-${item}`}
+                                        />
+                                        <span className="break-words">{item}</span>
+                                    </label>
+
                                 </li>
                             ))}
                         </ul>
@@ -142,19 +150,19 @@ const BetList = () => {
                         </div>
                         <div className="mx-1">
                             <div className="mt-4 gap-2 ">
-                                <div className="w-full sm:w-9/12 lg:w-auto lg:space-x-4 ml-1 md:ml-1 lg:ml-0 mb-4 space-y-2 md:space-y-2 lg:space-y-0 flex flex-col md:flex-wrap lg:flex-row md:justify-center lg:justify-start items-start lg:items-center">
+                                <div className="w-full sm:w-9/12 lg:w-auto lg:space-x-4 ml-1 md:ml-1 lg:ml-0 mb-4 space-y-2 md:space-y-2 lg:space-y-2 flex flex-col md:flex-wrap lg:flex-row md:justify-center lg:justify-start items-start lg:items-center">
                                     <div className="mb-2 sm:mb-0">
 
-                                        <input className="text-xs sm:text-sm w-full sm:w-24 h-10 p-2 rounded-sm outline-none placeholder:text-xs" type="search" placeholder="search here" />
+                                        <input className="text-xs sm:text-sm w-full lg:w-28 h-10 mt-2 p-2 rounded-sm outline-none placeholder:text-xs" type="search" placeholder="search here" />
                                     </div>
 
-                                    <div className="flex flex-row items-center w-full sm:w-auto ">
+                                    <div className="flex flex-row items-center   w-full sm:w-auto ">
                                         <h3 className="pr-1 font-bold">stack &gt;=</h3>
                                         <input className=" outline-none  p-2 w-28 h-10 text-xs" type="search" name="" id="" placeholder="0" />
                                     </div>
                                     {[...Array(4)].map((_, index) => (
                                         <div key={index} className="pl-0 lg:pl-0 mb-2 sm:mb-0 w-full sm:w-auto">
-                                            <div className="flex flex-row space-x-1 relative">
+                                            <div className="flex flex-row space-x-0 relative">
                                                 <input
                                                     className="w-full sm:w-40 h-10 placeholder:text-xs sm:placeholder:text-sm p-2 outline-none pr-8"
                                                     type="search"
@@ -187,13 +195,13 @@ const BetList = () => {
                     <ul className="flex flex-row font-semibold bg-gray-300  overflow-x-auto whitespace-nowrap">
                         <li className="pr-2 flex items-center">
                             <input type="checkbox" className="" />
-                           
+
                         </li>
                         <li className="pr-16">PL ID</li>
                         <li className="pr-5">BET ID</li>
                         <li className="pr-5">BET placed</li>
                         <li className="pr-5">IP Address</li>
-                        <li className="pr-96">Market</li>
+                        <li className="pr-14">Market</li>
                         <li className="pr-5">Selection</li>
                         <li className="pr-5">Type</li>
                         <li className="pr-44">Odds req</li>
