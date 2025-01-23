@@ -57,6 +57,56 @@ const AdminD = () => {
   ];
 
   return (
+    <div className="">
+      <div className="bg-adminBackground space-y-6 ">
+        <div>
+          <div className=" flex flex-row md:justify-between  lg:justify-between  bg-gray-800">
+            <div className="pt-4 pb-4">
+              <img
+                src={velkiLogo}
+                alt=""
+                className="w-8 lg:w-full lg:max-w-full h-6 lg:h-12"
+              />
+            </div>
+            <div className="md:pl-4 lg:pl-0 ml-1 md:ml-0 lg:ml-0 pt-0 lg:pt-6 flex flex-wrap lg:flex-row  justify-center items-center pr-2 space-x-2">
+              <p>
+                <span className="text-white text-xs lg:text-xl  ">Admin</span>{" "}
+                <span className="text-yellow-500 text-xs lg:text-xl">
+                  - Main Balence:
+                </span>{" "}
+                <span className="text-gray-100  text-xs">USD 3,37,173.73</span>{" "}
+              </p>
+              <button className="   pl-1 mt-2 w-6 h-6  bg-gray-900  hover:bg-gray-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-3 w-4 text-gray-100"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path
+                    d="M21 12a9 9 0 11-6.219-8.56m.219-2.44V5m4-4H16"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <button className=" pl-1 mt-2 w-6 h-6 bg-gray-900 rounded-sm hover:bg-gray-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-3 w-4 text-gray-100"
+                  viewBox="0 0 512 512"
+                  fill="currentColor"
+                >
+                  <path d="M160 448c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V64c0-17.7 14.3-32 32-32h96c17.7 0 32 14.3 32 32v384zm32-200h235.5l-73.6-72.5c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3l-128 128c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l73.6-72.5H192c-17.7 0-32-14.3-32-32s14.3-32 32-32z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div className="bg-gray-800  ">
+            <HeadingNavbar></HeadingNavbar>
+          </div>
     <div>
       <TopBar />
       <HeadingNavbar />
@@ -112,7 +162,7 @@ const AdminD = () => {
         <div className="pl-4 flex  lg:flex-row">
           <h3 className="font-semibold text-gray-700 pt-4">Admin List</h3>
         </div>
-        <div className="pt-2 pb-4 pl-4 flex flex-col lg:flex-row  justify-between gap-2">
+        <div className="pt-2 pb-4 pl-4 flex flex-col lg:flex-row lg:space-x-[47rem] gap-2">
           <div className="form-control flex flex-row border border-black bg-white border-opacity-40 shadow-xl p-2 rounded w-64   ">
             <input
               type="text"
@@ -173,7 +223,7 @@ const AdminD = () => {
                       <path d="M96 128a96 96 0 1 1 192 0 96 96 0 1 1-192 0zM352 128a64 64 0 1 1 128 0 64 64 0 1 1-128 0zM16 448c0-88.4 71.6-160 160-160h64c88.4 0 160 71.6 160 160 0 17.7-14.3 32-32 32H48c-17.7 0-32-14.3-32-32zm384 0c0-38.3-9.1-74.4-25.4-106.5 15.1-5.2 31.4-8.3 48.4-8.3h64c88.4 0 160 71.6 160 160 0 17.7-14.3 32-32 32H400c-17.7 0-32-14.3-32-32zm96-176a16 16 0 0 1-16-16V224h-32c-8.8 0-16-7.2-16-16s7.2-16 16-16h32v-32c0-8.8 7.2-16 16-16s16 7.2 16 16v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32v32a16 16 0 0 1-16 16z" />
                     </svg>
                   </span>
-                  <span className="ml-8">Add Admins</span>
+                  <span className="ml-8 font-bold">Add Admins</span>
                 </button>
 
                 {/* Modal */}
@@ -190,9 +240,36 @@ const AdminD = () => {
                   }}
                 >
                   <div className="bg-headerGray  text-headingTextColor rounded-lg shadow-lg w-72 md:w-96 lg:w-96">
-                    <h3 className="text-lg w-full h-16 text-black  font-bold px-2">
-                      Add Admin
-                    </h3>
+                    <div className="flex flex-row items-center justify-center">
+                      <h3 className="text-lg w-full h-16 text-black  font-bold p-4">
+                        Add Admin
+                      </h3>
+                      <button
+                        onClick={() =>
+                          document
+                            .getElementById("admin-modal")
+                            .classList.add("hidden")
+                        }
+                        className=" text-black p-4     flex items-center space-x-2"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+
+                      </button>
+
+                    </div>
                     <div className="   pb- mx-2 bg-white">
                       <div className=" space-y-1 p-4 bg-gray-100 rounded shadow-md w-full max-w-md mx-auto">
                         <div className="flex items-center">
@@ -200,8 +277,8 @@ const AdminD = () => {
                             Email
                           </label>
                           <input
-                            type="text"
-                            placeholder="Enter Admin Name"
+                            type="email"
+                            placeholder=""
                             className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
                           />
                         </div>
@@ -211,8 +288,8 @@ const AdminD = () => {
                             Username
                           </label>
                           <input
-                            type="password"
-                            placeholder="Password"
+                            type="text"
+                            placeholder=""
                             className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
                           />
                         </div>
@@ -241,45 +318,20 @@ const AdminD = () => {
 
                         <div className="flex items-center relative group">
                           <label className="w-32 font-medium text-gray-700">
-                            Layout
+                            Role
                           </label>
-                          <input
-                            type="search"
-                            placeholder="Select Domain"
-                            className="w-full h-10 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                          <span className="absolute right-4 top-1/2 transform -translate-y-1/2">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-6 w-6 text-gray-400"
-                              viewBox="0 0 24 24"
-                              fill="currentColor"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                            >
-                              <path d="M6 9l6 6 6-6" />
-                            </svg>
-                          </span>
-                          <ul className="hidden group-hover:block bg-gray-200 mt-2 rounded shadow-lg border border-black absolute w-32 top-5 left-full">
-                            <li className="px-4 py-2 border-b border-black hover:bg-gray-100">
-                              User
-                            </li>
-                            <li className="px-4 py-2 border-b border-black hover:bg-gray-100">
-                              Agent
-                            </li>
-                            <li className="px-4 py-2 border-b border-black hover:bg-gray-100">
-                              Sub-agent
-                            </li>
-                            <li className="px-4 py-2 border-b border-black hover:bg-gray-100">
-                              Admin
-                            </li>
-                            <li className="px-4 py-2 border-b border-black hover:bg-gray-100">
-                              Sub-Admin
-                            </li>
-                            <li className="px-4 py-2 hover:bg-gray-100">
-                              Master
-                            </li>
-                          </ul>
+                          
+                          <select className="w-full text-gray-500 font-bold h-10 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
+                          >
+                            <option className="text-gray-500 font-semibold" value="">User</option>
+                            <option className="text-gray-500 font-semibold" value="">Agent</option>
+                            <option className="text-gray-500 font-semibold" value="">Sub agent</option>
+                            <option className="text-gray-500 font-semibold" value="">Admin</option>
+                            <option className="text-gray-500 font-semibold" value="">Sub admin</option>
+                            <option className="text-gray-500 font-semibold" value="">Master</option>
+                          </select>
+                          
+                        
                         </div>
 
                         <div className="flex items-center">
@@ -287,73 +339,30 @@ const AdminD = () => {
                             First Name
                           </label>
                           <input
-                            type="password"
-                            placeholder="Password"
+                            type="text"
+                            placeholder=""
                             className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
                           />
                         </div>
                         <div className="flex items-center">
                           <label className="w-32 font-medium text-gray-700">
-                            First Name
+                            Last Name
                           </label>
                           <input
-                            type="password"
-                            placeholder="Password"
+                            type="text"
+                            placeholder=""
                             className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
                           />
                         </div>
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            First Name
-                          </label>
-                          <input
-                            type="password"
-                            placeholder="Password"
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            First Name
-                          </label>
-                          <input
-                            type="password"
-                            placeholder="Password"
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            First Name
-                          </label>
-                          <input
-                            type="password"
-                            placeholder="Password"
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
+
                         <div className="text-center">
-                          <button className="bg-yellow-400 px-14 py-1 text-center">
+                          <button className="bg-yellow-400 px-14 py-1 font-bold rounded-2xl mt-2 text-center">
                             Create
                           </button>
                         </div>
                       </div>
 
-                      <div className="flex justify-end px-6 py-3 border-t">
-                        <button
-                          onClick={() =>
-                            document
-                              .getElementById("admin-modal")
-                              .classList.add("hidden")
-                          }
-                          className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-                        >
-                          Close
-                        </button>
-                        <button className="ml-2 bg-gray-900 text-white px-4 py-2 rounded hover:text-yellow-200">
-                          Save
-                        </button>
-                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -379,7 +388,26 @@ const AdminD = () => {
           </div>
         </div>
         <div></div>
-
+        <div className="p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {[
+              { label: "Total Balance", value: "(1,776.57)" },
+              { label: "Remaining Balance", value: "USD(1,500.00)" },
+              { label: "Total Agent Balance", value: "USD(1,200.00)" },
+              { label: "Total Exposure", value: "USD(900.50)" },
+              { label: "Total Admin", value: "USD(800.00)" },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="space-y-1 p-4 border border-black border-opacity-10 text-white bg-black text-center rounded-md"
+              >
+                <p className="font-bold">{item.label}</p>
+                <h3 className="bg-yellow-500 text-black text-sm font-bold rounded-lg">
+                  {item.value}
+                </h3>
+              </div>
+            ))}
+          </div>
         {/* balance card */}
         <div className="flex gap-2 lg:gap-3 px-2 overflow-x-auto">
           <AdminBalanceCard text={"Total Exposure"} amount={"USD(1,776.51)"} />
@@ -401,9 +429,12 @@ const AdminD = () => {
           />
         </div>
 
-        <div className="pt-4">
+
+
+
+        <div className="pt-4 ">
           <div className="overflow-x-auto">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto ">
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-headerGray text-headingTextColor">
                   <tr>

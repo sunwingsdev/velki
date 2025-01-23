@@ -1,6 +1,6 @@
 import ActiveGame from "@/components/ActiveGame/ActiveGame";
 import AdminSetting from "@/components/Admin Setting/AdminSetting";
-import AdminD from "@/components/AdminD/AdminD";
+import AdminDashboard from "@/components/AdminDashboard/AdminDashboard";
 import Banking from "@/components/Banking/Banking";
 import BetList from "@/components/BetList/BetList";
 import BetListLive from "@/components/BetListLive/BetListLive";
@@ -119,7 +119,7 @@ const router = createBrowserRouter([
   // toriqul vai ekhan theke shuru korben evabe
   // {path: "",element: <Home />},
   { path: "/adminLogin", element: <Banner /> },
-  { path: "/adminDashboard", element: <AdminD /> },
+  { path: "/adminDashboard", element: <AdminDashboard /> },
   { path: "/setting1234", element: <Setting /> },
   { path: "/myAccount", element: <MyAccount /> },
   { path: "/betLive", element: <BetListLive /> },
