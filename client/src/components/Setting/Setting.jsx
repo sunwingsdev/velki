@@ -1,5 +1,25 @@
 import velkiLogo from "../../assets/velki.webp";
 import HeadingNavbar from "../HeadingNavbar/HeadingNavbar";
+const items = [
+  "Default span",
+  "Sport wise",
+  "Competition wise",
+  "Event wise",
+  "Market wise",
+];
+const itemsTwo = [
+  "Default span",
+  "Admin wise",
+  "Subadmin wise",
+  "Supermaster wise",
+  "Master wise",
+  "Agent wise",
+  "Client wise",
+];
+
+
+
+
 
 const Setting = () => {
   return (
@@ -72,72 +92,54 @@ const Setting = () => {
         </div>
       </div>
       <div className="space-y-4 bg-adminBackground min-h-screen  font-semibold">
-        <h2 className="pl-2">General settings</h2>
-        <div className="space-y-10 lg:space-y-3">
-          <ul className=" pl-2 flex flex-row  overflow-x-auto lg:flex-row sm:text-left  items-center gap-6">
-            <span className="flex flex-row items-center gap-1 ">
-              <li>Default span</li>
-              <button className="w-4 h-4   text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-
-            <span className="flex flex-row items-center space-x-1">
-              <li>Sport Wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-
-            <span className="flex flex-row items-center space-x-1">
-              <li>Compettition wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-
-            <span className="flex flex-row items-center space-x-1">
-              <li>Event Wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-
-            <span className="flex flex-row items-center space-x-1">
-              <li>Market wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
+        <h2 className="pl-2 ">General settings</h2>
+        <div className="space-y-10 bg-navbarBackground lg:space-y-3">
+          <ul className="pl-2 flex flex-row  overflow-x-auto lg:flex-row sm:text-left font-semibold  items-center gap-6">
+            {items.map((item, index) => (
+              <li
+                key={index}
+                className="flex flex-row md:w-1/2 lg:w-auto items-center gap-1 mb-2"
+              >
+                <label
+                  htmlFor={`radio-${item}`}
+                  className="flex items-center cursor-pointer"
+                >
+                  <input
+                    className="w-3 h-3 mr-1 text-white rounded-full border border-black "
+                    type="radio"
+                    name="example"
+                    id={`radio-${item}`}
+                  />
+                  <span className="break-words">{item}</span>
+                </label>
+              </li>
+            ))}
           </ul>
-          <ul className="pl-2 flex flex-row overflow-x-auto  lg:flex-row  gap-6">
-            <span className="flex flex-row items-center space-x-1">
-              <li>Default span</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-
-            <span className="flex flex-row items-center space-x-1">
-              <li>Sport Wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-
-            <span className="flex flex-row items-center space-x-1">
-              <li>Compettition wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-
-            <span className="flex flex-row items-center space-x-1">
-              <li>Event Wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-
-            <span className="flex flex-row items-center space-x-1">
-              <li>Market wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-            <span className="flex flex-row items-center space-x-1">
-              <li>Market wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
-            <span className="flex flex-row items-center space-x-1">
-              <li>Market wise</li>
-              <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
-            </span>
+          <ul className="pl-2 flex flex-row  overflow-x-auto lg:flex-row sm:text-left font-semibold  items-center gap-6">
+            {itemsTwo.map((itemTwo, index) => (
+              <li
+                key={index}
+                className="flex flex-row md:w-1/2 lg:w-auto items-center gap-1 mb-2"
+              >
+                <label
+                  htmlFor={`radio-${itemTwo}`}
+                  className="flex items-center cursor-pointer"
+                >
+                  <input
+                    className="w-3 h-3 mr-1 text-white rounded-full border border-black "
+                    type="radio"
+                    name="example"
+                    id={`radio-${itemTwo}`}
+                  />
+                  <span className="break-words">{itemTwo}</span>
+                </label>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="m-0 md:m-4 lg:m-20">
-          <div className="flex flex-col items-center justify-center   md:flex-row lg:flex-row space-y-4 md:space-y-0 lg:space-y-0 md:space-x-5 lg:space-x-5">
-            <div className="w-9/12 lg:w-1/3 md:h-80  lg:h-64 border  border-black border-opacity-15">
+          <div className="flex flex-col items-center justify-center   md:flex-row lg:flex-row space-y-4 md:space-y-0 lg:space-y-0 md:space-x-5 lg:space-x-2">
+            <div className="w-9/12 lg:w-full md:h-80  lg:h-64 border  border-black border-opacity-15">
               <div>
                 <h3 className="text-center">Limit Setting</h3>
                 <div className=" flex flex-col lg:flex-row justify-center space-x-3">
@@ -145,26 +147,26 @@ const Setting = () => {
                     <h3>Exposure limit</h3>
                     <div className="flex flex-row  space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs "
-                        type="search"
+                        className="w-40 h-8  pl-1 placeholder:text-xs "
+                        type="text"
                         name=""
                         id=""
                         placeholder="10000"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                   <div>
-                    <h3>Bookmaking Commission</h3>
+                    <h3 className="">Bookmaking Commission</h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8  pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="0"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                 </div>
@@ -175,26 +177,26 @@ const Setting = () => {
                     <h3>Exchange Commission </h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8  pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="2"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                   <div>
                     <h3>Bet Delay</h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 text-xs"
-                        type="search"
+                        className="w-40 h-8  pl-1 text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="5"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                 </div>
@@ -206,17 +208,17 @@ const Setting = () => {
                 </h3>
                 <div className="flex flex-row  space-x-1">
                   <input
-                    className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                    type="search"
+                    className="w-40 h-8  pl-1 placeholder:text-xs"
+                    type="text"
                     name=""
                     id=""
                     placeholder="0"
                   />
-                  <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                  <input type="checkbox" className="" />
                 </div>
               </div>
             </div>
-            <div className="w-9/12 lg:w-1/3 h-80 lg:h-64 border   border-black border-opacity-15">
+            <div className="w-9/12 lg:w-full h-80 lg:h-64 border   border-black border-opacity-15">
               <div>
                 <h3 className="text-center">Market Setting</h3>
                 <div className=" flex flex-col lg:flex-row justify-center space-x-3">
@@ -224,26 +226,26 @@ const Setting = () => {
                     <h3>Bet min rate</h3>
                     <div className="flex flex-row  space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8  pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="20"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                   <div>
                     <h3>Bet max rate</h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8 pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="20"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                 </div>
@@ -254,26 +256,26 @@ const Setting = () => {
                     <h3>Volume Multiplier </h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8 pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="20"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                   <div>
                     <h3>Min stake</h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8 pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="10000"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                 </div>
@@ -284,26 +286,26 @@ const Setting = () => {
                   <h3>Max Stake </h3>
                   <div className="flex flex-row space-x-1">
                     <input
-                      className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                      type="search"
+                      className="w-40 h-8 pl-1 placeholder:text-xs"
+                      type="text"
                       name=""
                       id=""
                       placeholder="20000"
                     />
-                    <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                    <input type="checkbox" className="" />
                   </div>
                 </div>
                 <div>
                   <h3>Max Profit</h3>
                   <div className="flex flex-row space-x-1">
                     <input
-                      className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                      type="search"
+                      className="w-40 h-8 pl-1 placeholder:text-xs"
+                      type="text"
                       name=""
                       id=""
                       placeholder="30000"
                     />
-                    <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                    <input type="checkbox" className="" />
                   </div>
                 </div>
               </div>
@@ -313,18 +315,18 @@ const Setting = () => {
                   <h3 className="">Max loss</h3>
                   <div className="flex flex-row  space-x-1">
                     <input
-                      className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                      type="search"
+                      className="w-40 h-8 pl-1 placeholder:text-xs"
+                      type="text"
                       name=""
                       id=""
                       placeholder="100000"
                     />
-                    <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                    <input type="checkbox" className="" />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="w-9/12 lg:w-1/3 h-80 lg:h-64 border  border-black border-opacity-15">
+            <div className="w-9/12 lg:w-full h-80 lg:h-64 border  border-black border-opacity-15">
               <div>
                 <h3 className="text-center">Session Setting</h3>
                 <div className=" flex flex-col lg:flex-row justify-center space-x-3">
@@ -332,26 +334,26 @@ const Setting = () => {
                     <h3>Min stake</h3>
                     <div className="flex flex-row  space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8 pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="1"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                   <div>
                     <h3> max stake</h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8 pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="500000"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                 </div>
@@ -362,26 +364,26 @@ const Setting = () => {
                     <h3>Max loss </h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8 pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="200000"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                   <div>
                     <h3>Max profit</h3>
                     <div className="flex flex-row space-x-1">
                       <input
-                        className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                        type="search"
+                        className="w-40 h-8 pl-1 placeholder:text-xs"
+                        type="text"
                         name=""
                         id=""
                         placeholder="30000"
                       />
-                      <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                      <input type="checkbox" className="" />
                     </div>
                   </div>
                 </div>
@@ -392,26 +394,26 @@ const Setting = () => {
                   <h3>per rate max stake </h3>
                   <div className="flex flex-row space-x-1">
                     <input
-                      className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                      type="search"
+                      className="w-40 h-8 pl-1 placeholder:text-xs"
+                      type="text"
                       name=""
                       id=""
                       placeholder="2"
                     />
-                    <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                    <input type="checkbox" className="" />
                   </div>
                 </div>
                 <div>
                   <h3>Commission %</h3>
                   <div className="flex flex-row space-x-1">
                     <input
-                      className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                      type="search"
+                      className="w-40 h-8 pl-1 placeholder:text-xs"
+                      type="text"
                       name=""
                       id=""
                       placeholder="5"
                     />
-                    <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                    <input type="checkbox" className="" />
                   </div>
                 </div>
               </div>
@@ -421,18 +423,20 @@ const Setting = () => {
                   <h3 className="">Bet Delay</h3>
                   <div className="flex flex-row  space-x-1">
                     <input
-                      className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                      type="search"
+                      className="w-40 h-8 pl-1 placeholder:text-xs"
+                      type="text"
                       name=""
                       id=""
                       placeholder=""
                     />
-                    <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                    <input type="checkbox" className="" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          
+          
 
           <div className="mt-4 mx-10 pr-6 md:pr-0 lg:pr-0 md:mx-0 lg:mx-0 mb-4  md:mb-4     border border-black border-opacity-15">
             <div className="text-center md:text-start md:pl-10 lg:text-center  ">
@@ -443,82 +447,87 @@ const Setting = () => {
                 <h3>Bet Delay</h3>
                 <div className="flex flex-row  space-x-1">
                   <input
-                    className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                    type="search"
+                    className="w-40 h-8 pl-1 placeholder:text-xs"
+                    type="text"
                     name=""
                     id=""
                     placeholder="20000"
                   />
-                  <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                  <input type="checkbox" className="" />
                 </div>
               </div>
               <div className="pl-0 lg:pl-0">
                 <h3>Max stake</h3>
                 <div className="flex flex-row  space-x-1">
                   <input
-                    className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                    type="search"
+                    className="w-40 h-8 pl-1 placeholder:text-xs"
+                    type="text"
                     name=""
                     id=""
                     placeholder="10000"
                   />
-                  <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                  <input type="checkbox" className="" />
                 </div>
               </div>
               <div className="pl-0 lg:pl-0">
                 <h3>Min stake</h3>
                 <div className="flex flex-row  space-x-1">
                   <input
-                    className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                    type="search"
+                    className="w-40 h-8 pl-1 placeholder:text-xs"
+                    type="text"
                     name=""
                     id=""
                     placeholder="5"
                   />
-                  <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                  <input type="checkbox" className="" />
                 </div>
               </div>
               <div className="pl-0 lg:pl-0">
                 <h3>Max profit</h3>
                 <div className="flex flex-row  space-x-1">
                   <input
-                    className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                    type="search"
+                    className="w-40 h-8 pl-1 placeholder:text-xs"
+                    type="text"
                     name=""
                     id=""
                     placeholder="3"
                   />
-                  <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                  <input type="checkbox" className="" />
                 </div>
               </div>
               <div className="pl-0 lg:pl-0">
                 <h3>Max loss</h3>
                 <div className="flex flex-row  space-x-1">
                   <input
-                    className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                    type="search"
+                    className="w-40 h-8 pl-1 placeholder:text-xs"
+                    type="text"
                     name=""
                     id=""
                     placeholder="2"
                   />
-                  <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                  <input type="checkbox" className="" />
                 </div>
               </div>
               <div className="pl-0 lg:pl-0">
                 <h3>Max stake per rate</h3>
                 <div className="flex flex-row  space-x-1">
                   <input
-                    className="w-40 h-4 border border-black pl-1 placeholder:text-xs"
-                    type="search"
+                    className="w-40 h-8 pl-1 placeholder:text-xs"
+                    type="text"
                     name=""
                     id=""
                     placeholder=""
                   />
-                  <button className="w-4 h-4  text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"></button>
+                  <input type="checkbox" className="" />
                 </div>
               </div>
             </div>
+           
           </div>
+          <div className="flex flex-row items-center gap-2 justify-center">
+              <button className="bg-gray-950 text-yellow-400 px-2">Save</button>
+              <button className="bg-gray-300 px-2">Cancel</button>
+            </div>
         </div>
       </div>
     </div>

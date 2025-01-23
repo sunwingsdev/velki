@@ -56,7 +56,7 @@ function HeadingNavbar() {
                             </svg>
                         </button>
                         <ul className="text-sm ">
-                            <li className="border-b border-black">
+                            <li className="border-b font-medium border-black">
                                 <Link
                                     to="/adminDashboard"
                                     className="block px-4 py-2 text-black hover:bg-yellow-300"
@@ -64,7 +64,7 @@ function HeadingNavbar() {
                                     Analysis
                                 </Link>
                             </li>
-                            <li className="text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group">
+                            <li className="text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group">
                                 <a href="#home" className="flex items-center">
                                     user
                                     <span className="ml-2">
@@ -167,7 +167,7 @@ function HeadingNavbar() {
 
                             </li>
                             {/* Add other menu items here */}
-                            <li className="border-b border-black">
+                            <li className="border-b font-semibold border-black">
                                 <Link
                                     to="/myAccount"
                                     className="block px-4 py-2 text-black hover:bg-yellow-300"
@@ -175,7 +175,7 @@ function HeadingNavbar() {
                                     My Account
                                 </Link>
                             </li>
-                            <li className="border-b border-black">
+                            <li className="border-b font-semibold border-black">
                                 <Link
                                     to="/betList"
                                     className="block px-4 py-2 text-black hover:bg-yellow-300"
@@ -183,7 +183,7 @@ function HeadingNavbar() {
                                     BetList
                                 </Link>
                             </li>
-                            <li className="border-b border-black">
+                            <li className="border-b font-semibold border-black">
                                 <Link
                                     to="/betLive"
                                     className="block px-4 py-2 text-black hover:bg-yellow-300"
@@ -192,11 +192,11 @@ function HeadingNavbar() {
                                 </Link>
                             </li>
                             <Link to='/banking'>
-                                <li className="text-black font-medium  border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ">
+                                <li className="text-black font-medium  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ">
                                     <a href="#blog">Banking</a>
                                 </li>
                             </Link>
-                            <li className="text-black flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group">
+                            <li className="text-black flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group">
                                 <a href="#home" className="flex items-center">
                                     Casino
                                     <span className="ml-2">
@@ -263,10 +263,10 @@ function HeadingNavbar() {
                                 </ul>
 
                             </li>
-                            <li className="text-black font-medium  border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition">
+                            <li className="text-black font-medium  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition">
                             <a href="#faq">MM</a>
                         </li>
-                        <li className="text-black   flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group  ">
+                        <li className="text-black   flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group  ">
                             <a href="#home" className="flex items-center">
                                 Import
                                 <span className="ml-2">
@@ -299,7 +299,7 @@ function HeadingNavbar() {
                             </ul>
 
                         </li>
-                        <li className="text-black font-medium   lg:border-opacity-15  border-b lg:border-b-0  border-r lg:border-r border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition">
+                        <li className="text-black font-medium   lg:border-opacity-15  border-b lg:border-b-0  border-r-0 lg:border-r border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition">
                             <a href="#login">Messages</a>
                         </li>
                         <li className="text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group">
@@ -353,7 +353,7 @@ function HeadingNavbar() {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <ul className="hidden lg:flex items-center gap-x-4 text-sm">
+                    <ul className="hidden lg:flex items-center  gap-x-0 text-sm">
                         <li>
                             <Link
                                 to="/adminDashboard"
@@ -428,7 +428,7 @@ function HeadingNavbar() {
                                 </span>
                             </a>
                             {/* Dropdown Menu */}
-                            <ul className="absolute left-0 mt-6 hidden w-56 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
+                            <ul className="absolute left-0 mt-6 hidden w-auto bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
                                 <Link to='/setting1234'>
                                     <li className="border-b">
                                         <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-gray-100">
@@ -581,7 +581,7 @@ function HeadingNavbar() {
                                 </span>
                             </a>
                             {/* Dropdown Menu */}
-                            <ul className="absolute left-0 mt-6 hidden w-72 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
+                            <ul className="absolute left-0 mt-6 hidden w-52 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
                                 <li className="border-b">
                                     <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-gray-100">
                                         Game file Import
@@ -599,7 +599,7 @@ function HeadingNavbar() {
                         <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2    lg:border-opacity-15  border-b lg:border-b-0   border-black  font-sm hover:text-black transition">
                             <a href="#login">Messages</a>
                         </li>
-                        <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2 flex relative cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
+                        <li className="text-black font-medium hover:bg-yellow-300 pl-4 py-2 flex relative cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
                             <a href="#home" className="flex items-center">
                                 Game Center
                                 <span className="ml-2">
@@ -617,7 +617,7 @@ function HeadingNavbar() {
                                 </span>
                             </a>
                             {/* Dropdown Menu */}
-                            <ul className="absolute left-0 mt-6 hidden w-56 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
+                            <ul className="absolute right-0  mt-6 hidden w-36 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
                                 <Link to='/activeGame'>
                                     <li className="border-b">
                                         <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-gray-100">

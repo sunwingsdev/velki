@@ -116,7 +116,7 @@ const MyAccount = () => {
                 </div>
                 <div className="font-sans space-y-4 md:space-y-6 lg:space-y-6">
                     <h3 className="text-lg sm:text-xl">Account Summary</h3>
-                    <div className="flex flex-wrap justify-start bg-white  sm:w-2/3 md:w-2/3 lg:w-[1000px]">
+                    <div className="flex flex-wrap justify-start bg-white  sm:w-2/3 md:w-2/3 lg:w-[600px]">
                         <div className="p-4 w-56 md:w-96 lg:w-96  border-r border-black border-opacity-10 text-left">
                             <p className="text-black text-sm sm:text-xl">Your Balance</p>
                             <h3>

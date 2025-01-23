@@ -129,7 +129,7 @@ const AdminDashboard = () => {
           </div>
           <div>
             <div className="navbar bg-base-100">
-              <div className="pt-4 pl-4 flex flex-row gap-2">
+              <div className="pt-4 pl-4 flex flex-row items-center gap-2">
                 <div className="form-control border bg-white border-black border-opacity-40 shadow-xl p-2 w-44 lg:w-auto rounded   ">
                   <input
                     type="text"
@@ -146,7 +146,7 @@ const AdminDashboard = () => {
             <div className="pl-4 flex  lg:flex-row">
               <h3 className="font-semibold text-gray-700 pt-4">Admin List</h3>
             </div>
-            <div className="pt-2 pb-4 pl-4 flex flex-col lg:flex-row lg:space-x-[47rem] gap-2">
+            <div className="pt-2 pb-4 pl-4 w-11/12 flex flex-col lg:flex-row justify-between gap-2">
               <div className="form-control flex flex-row border border-black bg-white border-opacity-40 shadow-xl p-2 rounded w-64   ">
                 <input
                   type="text"

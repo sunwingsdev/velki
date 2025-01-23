@@ -92,27 +92,15 @@ const HomeControl = () => {
                             <div className="pt-4 pb-4">
                                 <img src={velkiLogo} alt="" className="w-auto lg:w-full lg:max-w-full h-6 lg:h-12" />
                             </div>
+                            
+                            <input className='absolute top-0 left-0 w-4 lg:w-5 h-4' type="checkbox" name="" id="" />
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 strokeWidth="2"
                                 stroke="currentColor"
-                                className=" absolute top-0 left-0 w-4 lg:w-5 h-4 text-white  bg-blue-500 bg- "
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="2"
-                                stroke="currentColor"
-                                className=" absolute top-0 right-0 w-4 lg:w-5 h-4 text-white  bg-red-500 bg- "
+                                className=" absolute top-0 right-0 w-5 lg:w-5 h-4 text-white  bg-red-500 bg- "
                             >
                                 <path
                                     strokeLinecap="round"
@@ -139,28 +127,16 @@ const HomeControl = () => {
                                     alt=""
                                     className="w-full h-full object-cover"
                                 />
-                                {/* SVG positioned at the top-left corner */}
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="2"
-                                    stroke="currentColor"
-                                    className="absolute top-0 left-0 w-6 h-6 text-white bg-blue-500  p-1"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M5 13l4 4L19 7"
-                                    />
-                                </svg>
+                                
+                               
+                                <input className='absolute top-0 left-0 w-6 h-5' type="checkbox" name="" id="" />
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 strokeWidth="2"
                                 stroke="currentColor"
-                                className=" absolute top-0 right-0 w-6 lg:w-5 h-6 text-white  bg-red-500 bg- "
+                                className=" absolute top-0 right-0 w-6 h-5 text-white  bg-red-500 bg- "
                             >
                                 <path
                                     strokeLinecap="round"
@@ -178,27 +154,15 @@ const HomeControl = () => {
                                     className="w-full h-full object-cover"
                                 />
                                 {/* SVG positioned at the top-left corner */}
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="2"
-                                    stroke="currentColor"
-                                    className="absolute top-0 left-0 w-6  text-white bg-blue-500  p-1"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M5 13l4 4L19 7"
-                                    />
-                                </svg>
+                                
+                                <input className='absolute top-0 left-0 w-6 h-5 ' type="checkbox" name="" id="" />
                                 <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 strokeWidth="2"
                                 stroke="currentColor"
-                                className=" absolute top-0 right-0 w-6 lg:w-5 h-6 text-white  bg-red-500 bg- "
+                                className=" absolute top-0 right-0 w-6 h-5 text-white  bg-red-500 bg- "
                             >
                                 <path
                                     strokeLinecap="round"
@@ -217,20 +181,8 @@ const HomeControl = () => {
                         </div>
                         <div className='flex flex-row px-3 items-center justify-between bg-white text-black h-12 '>
                             <div className='flex items-center space-x-2'>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="2"
-                                    stroke="currentColor"
-                                    className="w-4 lg:w-3 h-3 text-white bg-blue-500 bg- ml-2"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M5 13l4 4L19 7"
-                                    />
-                                </svg>
+                                
+                                <input className='w-4 lg:w-3 h-3' type="checkbox" name="" id="" />
                                 <p className='text-sm'>This is Demo Site Developed by Oracle Technology</p>
                             </div>
                             <button className='text-xs pl-3 pr-2 py-1 text-white bg-red-500'>Delete</button>
