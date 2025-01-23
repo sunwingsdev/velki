@@ -106,8 +106,16 @@ const BetList = () => {
                         <ul className="flex flex-row overflow-x-auto mx-1  md:flex-row lg:flex-row sm:text-left font-bold text-xs items-start">
                             {items.map((item, index) => (
                                 <li key={index} className="flex flex-row md:w-1/2 lg:w-auto items-center gap-1 mb-2">
-                                    <span className="break-words">{item}</span>
-                                    <input className=' w-3 h-3 mr-1 text-white rounded-full border border-black flex items-center justify-center hover:bg-blue-600 transition duration-300"' type="radio" name="" id="" />
+                                    <label htmlFor={`radio-${item}`} className="flex items-center cursor-pointer">
+                                        <input
+                                            className="w-3 h-3 mr-1 text-white rounded-full border border-black hover:bg-blue-600 transition duration-300"
+                                            type="radio"
+                                            name="example"
+                                            id={`radio-${item}`}
+                                        />
+                                        <span className="break-words">{item}</span>
+                                    </label>
+
                                 </li>
                             ))}
                         </ul>
@@ -187,7 +195,7 @@ const BetList = () => {
                     <ul className="flex flex-row font-semibold bg-gray-300  overflow-x-auto whitespace-nowrap">
                         <li className="pr-2 flex items-center">
                             <input type="checkbox" className="" />
-                           
+
                         </li>
                         <li className="pr-16">PL ID</li>
                         <li className="pr-5">BET ID</li>
