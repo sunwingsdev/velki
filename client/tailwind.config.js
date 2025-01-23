@@ -11,18 +11,18 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      
+
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        loginColor: '#ffa00c',
-        loginPageColor: 'rgba(255, 255, 255, 0.8)',
-        headerGray:'#e4e4e4',
-        adminBackground:'#f0ece1',
-        headingTextColor:'#243a48',
-        textBackground:'#3b5160',
-        navbarBackground:'#E0E6E6',
-        
+        loginColor: "#ffa00c",
+        loginPageColor: "rgba(255, 255, 255, 0.8)",
+        headerGray: "#e4e4e4",
+        adminBackground: "#f0ece1",
+        headingTextColor: "#243a48",
+        textBackground: "#3b5160",
+        navbarBackground: "#E0E6E6",
+
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -60,6 +60,15 @@ export default {
           3: "hsl(var(--chart-3))",
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
+        },
+      },
+      animation: {
+        marquee: "marquee 40s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(60%)" },
+          "100%": { transform: "translateX(-10%)" },
         },
       },
     },

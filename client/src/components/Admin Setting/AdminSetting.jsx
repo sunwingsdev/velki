@@ -2,13 +2,29 @@ import HeadingNavbar from "../HeadingNavbar/HeadingNavbar";
 import velkiLogo from "../../assets/velki.webp";
 
 const fieldNames = [
-  "All User Bonus add: ",
+
+    "All User Bonus add: ",
+    "Monthly sub master Bonus:",
+    "Monthly sub admin Bonus:",
+    "Monthly sub admin Bonus:",
+    "Monthly senior Supper Bonus:",
+    "Change Mother Admin Password:",
+    " Change Mother Admin User ID:",
+    "Currency Set:",
+    "Whats App Number:",
+    "Monthly sub Master Bonus:",
+    "Site Maintain Mode:",
+    "Telegram Link:",
+    "Monthly Sub Supper Bonus:",
+    "Site Title:",
+    "Facebook Link:",
+ "All User Bonus add: ",
   "Monthly sub master Bonus:",
   "Monthly sub admin Bonus:",
   "Monthly sub admin Bonus:",
   "Monthly senior Supper Bonus:",
   "Change Mother Admin Password:",
-  " Change Mother Admin User ID:",
+  " Chane Mother Admin User ID:",
   "Currency Set:",
   "Whats App Number:",
   "Monthly sub Master Bonus:",
@@ -206,7 +222,7 @@ const AdminSetting = () => {
                   {!(index === 7 || index === 10) && (
                     <button
                       type="button"
-                      className="ml-2  px-2 pb-1 border border-black bg-yellow-500 text-black  font-semibold rounded-2xl"
+                      className="ml-2 px-3 py-1 border border-black bg-yellow-500 text-black text-sm font-semibold rounded-lg"
                     >
                       Add+
                     </button>
@@ -215,9 +231,9 @@ const AdminSetting = () => {
               </div>
             ))}
           </div>
-         
+          ;
           <div className="text-center">
-            <button className="bg-gray-800 text-white rounded-xl mt-4 mb-1 py-1 px-12">
+            <button className="bg-gray-800 text-white rounded-xl mb-1 py-1 px-12">
               Save Change
             </button>
           </div>
