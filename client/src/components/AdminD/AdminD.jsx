@@ -1,6 +1,7 @@
 import HeadingNavbar from "../HeadingNavbar/HeadingNavbar";
 import TopBar from "../velkiAdminDashboard/TopBar";
 import AdminBalanceCard from "./AdminBalanceCard";
+import velkiLogo from '../../assets/velki.webp'
 
 const AdminD = () => {
   const data = [
@@ -566,6 +567,10 @@ const AdminD = () => {
           </div>
         </div>
       </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
   );
 };
