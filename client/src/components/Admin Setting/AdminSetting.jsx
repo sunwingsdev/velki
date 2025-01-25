@@ -147,7 +147,7 @@ const AdminSetting = () => {
           </div>
 
           <div className="text-center">
-            <button className="bg-gray-800 text-white rounded-xl mb-1 py-1 px-12">
+            <button className="bg-gray-800 text-white rounded-xl mt-4 mb-1 py-1 px-12">
               Save Change
             </button>
           </div>
