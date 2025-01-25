@@ -353,16 +353,16 @@ function HeadingNavbar() {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <ul className="hidden lg:flex items-center  gap-x-0 text-sm">
+                    <ul className="hidden lg:flex items-center whitespace-nowrap  gap-x-2 text-sm">
                         <li>
                             <Link
                                 to="/adminDashboard"
-                                className="text-black font-medium hover:bg-yellow-300 px-4 py-2"
+                                className="text-black font-medium hover:bg-yellow-300 px-2 py-2"
                             >
                                 Analysis
                             </Link>
                         </li>
-                        <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black transition group">
+                        <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black transition group">
                             <a href="#home" className="flex items-center">
                                 user
                                 <span className="ml-2">
@@ -410,7 +410,7 @@ function HeadingNavbar() {
                             </ul>
 
                         </li>
-                        <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
+                        <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
                             <a href="#home" className="flex items-center">
                                 Setting
                                 <span className="ml-2">
@@ -467,7 +467,7 @@ function HeadingNavbar() {
                         <li>
                             <Link
                                 to="/myAccount"
-                                className="text-black font-medium hover:bg-yellow-300 px-4 py-2"
+                                className="text-black font-medium hover:bg-yellow-300 px-2 py-2"
                             >
                                 My Account
                             </Link>
@@ -475,7 +475,7 @@ function HeadingNavbar() {
                         <li>
                             <Link
                                 to="/betList"
-                                className="text-black font-medium hover:bg-yellow-300 px-4 py-2"
+                                className="text-black font-medium hover:bg-yellow-300 px-2 py-2"
                             >
                                 BetList
                             </Link>
@@ -483,17 +483,17 @@ function HeadingNavbar() {
                         <li>
                             <Link
                                 to="/betLive"
-                                className="text-black font-medium hover:bg-yellow-300 px-4 py-2 "
+                                className="text-black font-medium hover:bg-yellow-300 px-2 py-2 "
                             >
                                 BetListLive
                             </Link>
                         </li>
                         <Link to='/banking'>
-                            <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2  ">
+                            <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2  ">
                                Banking
                             </li>
                         </Link>
-                        <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2 flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
+                        <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2 flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
                             <a href="#home" className="flex items-center">
                                 Casino
                                 <span className="ml-2">
@@ -560,10 +560,10 @@ function HeadingNavbar() {
                             </ul>
 
                         </li>
-                        <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2  border-b lg:border-b-0  border-opacity-60 lg:border-opacity-20 border-black  font-sm hover:text-black transition">
+                        <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2  border-b lg:border-b-0  border-opacity-60 lg:border-opacity-20 border-black  font-sm hover:text-black transition">
                             <a href="#faq">MM</a>
                         </li>
-                        <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2   flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group  ">
+                        <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2   flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group  ">
                             <a href="#home" className="flex items-center">
                                 Import
                                 <span className="ml-2">
@@ -596,10 +596,10 @@ function HeadingNavbar() {
                             </ul>
 
                         </li>
-                        <li className="text-black font-medium hover:bg-yellow-300 px-4 py-2    lg:border-opacity-15  border-b lg:border-b-0   border-black  font-sm hover:text-black transition">
+                        <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2    lg:border-opacity-15  border-b lg:border-b-0   border-black  font-sm hover:text-black transition">
                             <a href="#login">Messages</a>
                         </li>
-                        <li className="text-black font-medium hover:bg-yellow-300 pl-4 py-2 flex relative cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
+                        <li className="text-black font-medium hover:bg-yellow-300  py-2 flex relative cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
                             <a href="#home" className="flex items-center">
                                 Game Center
                                 <span className="ml-2">

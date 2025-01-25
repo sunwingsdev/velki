@@ -22,6 +22,7 @@ export default {
         headingTextColor: "#243a48",
         textBackground: "#3b5160",
         navbarBackground: "#E0E6E6",
+        profileHeaderColor: "#7E97A7",
 
         card: {
           DEFAULT: "hsl(var(--card))",

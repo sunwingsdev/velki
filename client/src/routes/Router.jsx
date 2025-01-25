@@ -1,15 +1,20 @@
+import AccountStatementTabs from "@/components/AccountStatementTabs/AccountStatementTabs";
+import AccountSummary from "@/components/AccountSummary/AccountSummary";
+import AccountTabs from "@/components/AccountTabs/AccountTabs";
 import ActiveGame from "@/components/ActiveGame/ActiveGame";
 import AdminSetting from "@/components/Admin Setting/AdminSetting";
 import AdminDashboard from "@/components/AdminDashboard/AdminDashboard";
 import Banking from "@/components/Banking/Banking";
 import BetList from "@/components/BetList/BetList";
 import BetListLive from "@/components/BetListLive/BetListLive";
+import CommonNavMenu from "@/components/CommonNavMenu/CommonNavMenu";
 import DeactiveGame from "@/components/DeactiveGame/DeactiveGame";
 import Game from "@/components/GameApi/Game";
 import HeadingNavbar from "@/components/HeadingNavbar/HeadingNavbar";
 import HomeControl from "@/components/HomeControl/HomeControl";
 import LiveGame from "@/components/LiveGame/LiveGame";
 import MyAccount from "@/components/MyAccount/MyAccount";
+import Profile from "@/components/Profile/Profile";
 import Setting from "@/components/Setting/Setting";
 import MainLayout from "@/layout/MainLayout";
 import SportsLeaguesLayout from "@/layout/SportsLeaguesLayout";
@@ -131,6 +136,11 @@ const router = createBrowserRouter([
   { path: "/deactiveGame", element: <DeactiveGame /> },
   { path: "/liveGame", element: <LiveGame /> },
   { path: "/homeControl", element: <HomeControl /> },
+  { path: "/commonNavMenu", element: <CommonNavMenu /> },
+  { path: "/accountSummary", element: <AccountSummary /> },
+  { path: "/accountTabs", element: <AccountTabs /> },
+  { path: "/accountStatementTabs", element: <AccountStatementTabs /> },
+  { path: "/profile", element: <Profile /> },
 ]);
 
 export default router;
