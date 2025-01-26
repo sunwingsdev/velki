@@ -61,7 +61,7 @@ const AdminDashboard = () => {
       <CommonNavMenu></CommonNavMenu>
       <div>
         <div className="navbar bg-base-100">
-          <div className="pt-4 pl-4 flex flex-row items-center gap-2">
+          <div className="pt-4 pl-4 flex flex-row items-center  gap-2">
             <div className="form-control border bg-white border-black border-opacity-40 shadow-xl p-2 w-44 lg:w-auto rounded   ">
               <input
                 type="text"
@@ -75,21 +75,21 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        <div className="pl-4 flex  lg:flex-row">
+        <div className="pl-4 flex  lg:flex-row ">
           <h3 className="font-semibold text-gray-700 pt-4">Admin List</h3>
         </div>
-        <div className="pt-2 pb-4 pl-4  flex flex-col lg:flex-row justify-between gap-2">
+        <div className="pt-2 pb-4 pl-4 max-w-7xl flex flex-col lg:flex-row justify-between gap-2">
           
 
-          <div className="flex flex-row space-x-1 relative">
-            <select className="w-full  border border-black border-opacity-40 md:w-[290px] h-10 p-2  font-bold text-gray-500 lg:w-full rounded-sm   lg:pr-40 outline-none">
+          <div className="flex flex-row space-x-1 relative ">
+            <select className="w-auto  border border-black border-opacity-40 md:w-[290px] h-10 pl-2 pr-48   font-bold text-gray-500 lg:w-full rounded-sm     outline-none">
               <option value="Option 1">Active</option>
-              <option value="Option 2">Inactive</option>
+              <option value="Option 2">Inactive</option> 
               <option value="Option 3">Pending</option>
             </select>
 
             {/* Bold Cross Icon */}
-            <span className="absolute right-6 md:right-[485px]  lg:right-5 top-1/2 transform -translate-y-1/2">
+            <span className="absolute right-10 md:right-[485px]  lg:right-5 top-1/2 transform -translate-y-1/2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-2"
