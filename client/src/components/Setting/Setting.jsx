@@ -115,8 +115,8 @@ const Setting = () => {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="flex flex-col items-center md:items-baseline lg:items-baseline md:flex-row lg:flex-row gap-2 mx-auto">
+        </div >
+        <div className="flex flex-col items-center md:items-baseline lg:items-baseline md:flex-row lg:flex-row gap-2 mx-auto px-2">
           <div className="w-9/12 whitespace-nowrap  lg:w-1/3 md:h-full lg:h-full p-2 border border-black border-opacity-15 grid grid-cols-1 lg:grid-cols-2 gap-2">
             <h3 className="text-center font-bold col-span-1 lg:col-span-2">
               Limit Setting
@@ -182,8 +182,8 @@ const Setting = () => {
             ))}
           </div>
         </div>
-        <div className="p-2">
-          <div className="mt-4 mx-10  pr-6 md:pr-0 lg:pr-0 md:mx-0 lg:mx-0 mb-4 border border-black border-opacity-15 p-4">
+        <div className="p-2 ">
+          <div className="mt-4  m    pr-6 md:pr-0 lg:pr-0 mx-10 md:mx-0 lg:mx-0 mb-4 border border-black border-opacity-15 p-4">
             <div className="text-center md:text-start md:pl-10 lg:text-center">
               <h3 className="text-center col-span-1 font-bold lg:col-span-2">Bookmaking Setting</h3>
             </div>
@@ -203,6 +203,10 @@ const Setting = () => {
               ))}
             </div>
           </div>
+        </div>
+        <div className="flex flex-row items-center justify-center gap-2 py-3">
+          <button className="bg-gray-950 font-sans font-semibold shadow-inner rounded-sm px-3 text-yellow-500">Save</button>
+          <button className="bg-slate-300 text-slate-900 rounded-sm shadow-inner font-sans font-semibold px-2">Cancel</button>
         </div>
       </div>
     </div>

@@ -10,14 +10,14 @@ const AccountTabs = () => {
                                         Position
                                     </a>
                                 </li>
-                               <Link to='/accountStatementTabs'>
+                               <Link to='/accountstatementTabs'>
                                <li>
                                     <a className="block px-4 py-2 text-xs font-sans border-b border-black text-black hover:bg-gray-200">
                                         Account Statement
                                     </a>
                                 </li>
                                </Link>
-                               <Link to='/accountSummary'>
+                               <Link to='/accountsummary'>
                                <li>
                                     <a className="block px-4 py-2 text-xs font-sans border-b bg-amber-200 border-black text-black hover:bg-gray-200">
                                         Account Summary
@@ -40,7 +40,7 @@ const AccountTabs = () => {
                                 </Link>
                                 <li>
                                     <a className="block px-4 py-2 text-xs font-sans border-b border-black text-black hover:bg-gray-200">
-                                        Actively Log
+                                        Activity Log
                                     </a>
                                 </li>
                             </ul>
