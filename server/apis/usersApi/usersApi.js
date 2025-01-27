@@ -33,7 +33,7 @@ const usersApi = (usersCollection) => {
   // Register a new user
   router.post("/register", async (req, res) => {
     const userInfo = req.body;
-    if (!userInfo?.username || !userInfo?.email || !userInfo?.password) {
+    if (!userInfo?.username || !userInfo?.password) {
       return res
         .status(400)
         .json({ error: "Username, Email and password are required" });
@@ -42,7 +42,6 @@ const usersApi = (usersCollection) => {
       const existingUser = await usersCollection.findOne({
         username: userInfo?.username,
       });
-      console.log(existingUser);
       if (existingUser)
         return res.status(400).json({ error: "User already exists" });
       const hashedPassword = await bcrypt.hash(userInfo?.password, 10);
@@ -100,7 +99,7 @@ const usersApi = (usersCollection) => {
       });
       if (!user) return res.status(404).json({ error: "User not found" });
       const { password: _, ...userInfo } = user;
-      res.status(200).json({ user: userInfo });
+      res.status(200).json(userInfo);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch profile" });
     }

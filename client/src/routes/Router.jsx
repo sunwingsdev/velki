@@ -39,6 +39,7 @@ import MyProfile from "@/pages/my-profile/MyProfile";
 import ProfitAndLoss from "@/pages/profit-and-loss/ProfitAndLoss";
 import Settings from "@/pages/setting/Settings";
 import { createBrowserRouter } from "react-router-dom";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -122,8 +123,15 @@ const router = createBrowserRouter([
   },
   // toriqul vai ekhan theke shuru korben evabe
   // {path: "",element: <Home />},
-  { path: "/adminLogin", element: <Banner /> },
-  { path: "/admindashboard", element: <AdminDashboard /> },
+  { path: "/admin", element: <Banner /> },
+  {
+    path: "/admindashboard",
+    element: (
+      <AdminRoute>
+        <AdminDashboard />{" "}
+      </AdminRoute>
+    ),
+  },
   { path: "/generalsetting", element: <Setting /> },
   { path: "/myaccount", element: <MyAccount /> },
   { path: "/betlive", element: <BetListLive /> },
@@ -136,10 +144,10 @@ const router = createBrowserRouter([
   { path: "/deactivegame", element: <DeactiveGame /> },
   { path: "/livegame", element: <LiveGame /> },
   { path: "/homecontrol", element: <HomeControl /> },
-  { path: "/commonnavMenu", element: <CommonNavMenu /> },
+  { path: "/commonnavmenu", element: <CommonNavMenu /> },
   { path: "/accountsummary", element: <AccountSummary /> },
   { path: "/accounttabs", element: <AccountTabs /> },
-  { path: "/accountstatementTabs", element: <AccountStatementTabs /> },
+  { path: "/accountstatementtabs", element: <AccountStatementTabs /> },
   { path: "/profile", element: <Profile /> },
 ]);
 

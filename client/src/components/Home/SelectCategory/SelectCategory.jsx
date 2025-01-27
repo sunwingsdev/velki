@@ -1,36 +1,48 @@
 import { useState, useRef, useEffect } from "react";
 import SportsCategory from "../SportsCategory/SportsCategory";
 import GamesCategory from "../GamesCategory/GamesCategory";
+import sportsIcon from "@/assets/icons/sports.svg";
+import fishingIcon from "@/assets/icons/fishing.svg";
+import liveIcon from "@/assets/icons/live.svg";
+import slotIcon from "@/assets/icons/slot.svg";
+import tableIcon from "@/assets/icons/table.svg";
+import endgameIcon from "@/assets/icons/endgame.svg";
 
 export function SelectCategory() {
   const categories = [
     {
       title: "Sports",
+      image: sportsIcon,
       value: "sports",
       description: "Manage your sports preferences here.",
     },
     {
       title: "Live",
+      image: liveIcon,
       value: "live",
       description: "Live streaming and events can be managed here.",
     },
     {
       title: "Table",
+      image: tableIcon,
       value: "table",
       description: "Manage table games and settings here.",
     },
     {
       title: "Slot",
+      image: slotIcon,
       value: "slot",
       description: "Slots games management and preferences.",
     },
     {
       title: "Fishing",
+      image: fishingIcon,
       value: "fishing",
       description: "Manage fishing game settings.",
     },
     {
       title: "Egame",
+      image: endgameIcon,
       value: "egame",
       description: "Egames management and preferences.",
     },
@@ -267,7 +279,7 @@ export function SelectCategory() {
           {categories.map((category) => (
             <button
               key={category.value}
-              className={`min-w-20 min-h-20 p-4 text-lg text-[#828486] hover:text-[#f4c004] hover:bg-[#474a4e] rounded-lg ${
+              className={`min-w-20 categoryButton min-h-20 p-4 text-lg flex flex-col items-center justify-center gap-1 text-[#828486] hover:text-[#f4c004] hover:bg-[#474a4e] rounded-lg ${
                 selectedCategory.value === category.value
                   ? "bg-[#474a4e] text-[#f4c004]"
                   : ""
@@ -275,6 +287,15 @@ export function SelectCategory() {
               onClick={() => setSelectedCategory(category)}
             >
               <p className="font-medium"> {category.title}</p>
+              <img
+                className={`w-12 ${
+                  selectedCategory.value === category.value
+                    ? "filter-yellow"
+                    : ""
+                }`}
+                src={category.image}
+                alt=""
+              />
             </button>
           ))}
         </div>

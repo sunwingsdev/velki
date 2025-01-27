@@ -1,6 +1,4 @@
-
 import CommonNavMenu from "../CommonNavMenu/CommonNavMenu";
-
 
 const AdminDashboard = () => {
   const data = [
@@ -69,7 +67,7 @@ const AdminDashboard = () => {
                 className="border-none focus:outline-none  w-24 h-4 pl-2 md:w-auto"
               />
             </div>
-            <button className="bg-slate-700 text-yellow-400 font-semibold px-4   h-8 rounded ">
+            <button className="bg-slate-700 text-yellow-400 font-semibold px-4   h-8 rounded">
               Search
             </button>
           </div>
@@ -79,12 +77,10 @@ const AdminDashboard = () => {
           <h3 className="font-semibold text-gray-700 pt-4">Admin List</h3>
         </div>
         <div className="pt-2 pb-4 pl-4 max-w-7xl flex flex-col lg:flex-row justify-between gap-2">
-          
-
           <div className="flex flex-row space-x-1 relative ">
             <select className="w-auto  border border-black border-opacity-40 md:w-[290px] h-10 pl-2 pr-48   font-bold text-gray-500 lg:w-full rounded-sm     outline-none">
               <option value="Option 1">Active</option>
-              <option value="Option 2">Inactive</option> 
+              <option value="Option 2">Inactive</option>
               <option value="Option 3">Pending</option>
             </select>
 
@@ -159,7 +155,7 @@ const AdminDashboard = () => {
                             .getElementById("admin-modal")
                             .classList.add("hidden")
                         }
-                        className=" text-black p-4     flex items-center space-x-2"
+                        className=" text-black p-4 flex items-center space-x-2"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +173,7 @@ const AdminDashboard = () => {
                         </svg>
                       </button>
                     </div>
-                    <div className="   pb- mx-2 bg-white">
+                    <div className="pb- mx-2 bg-white">
                       <div className=" space-y-1 p-4 bg-gray-100 rounded shadow-md w-full max-w-md mx-auto">
                         <div className="flex items-center">
                           <label className="w-32 font-medium  text-gray-700">
@@ -392,7 +388,7 @@ const AdminDashboard = () => {
                       <td className="border-b px-4 py-2 whitespace-nowrap text-sm text-gray-700">
                         {row.CreditRef}
                       </td>
-                      <td className="border=b px-4 py-2 whitespace-nowrap text-sm text-red-700">
+                      <td className="border-b px-4 py-2 whitespace-nowrap text-sm text-red-700">
                         {row.balance}
                       </td>
                       <td className="border-b px-2 py-2 whitespace-nowrap text-sm text-gray-700">

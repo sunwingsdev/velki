@@ -18,7 +18,7 @@ const CommonNavMenu = () => {
             <p>
               <span className="text-white text-xs lg:text-xl  ">Admin</span>{" "}
               <span className="text-yellow-500 text-xs lg:text-xl">
-                - Main Balence:
+                - Main Balance:
               </span>{" "}
               <span className="text-gray-100  text-xs">USD 3,37,173.73</span>{" "}
             </p>

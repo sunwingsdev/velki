@@ -9,11 +9,10 @@ import { ToastProvider } from "react-toast-notifications";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-     <Provider store={store}>
-          <ToastProvider>
-            <RouterProvider router={router} />
-          </ToastProvider>
-        </Provider>
-    
+    <Provider store={store}>
+      <ToastProvider>
+        <RouterProvider router={router} />
+      </ToastProvider>
+    </Provider>
   </StrictMode>
 );

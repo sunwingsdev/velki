@@ -67,16 +67,16 @@ function HeadingNavbar() {
             </button>
             <ul className="text-sm ">
               <li
-                className={`border-b font-medium border-black ${
-                  activeTab === "/adminDashboard"
+                className={`border-b font-medium px-4 py-2 border-black ${
+                  activeTab === "/admindashboard"
                     ? "bg-yellow-300"
                     : "text-black"
                 }`}
               >
                 <Link
                   to="/adminDashboard"
-                  className="block px-4 py-2 hover:bg-yellow-300"
-                  onClick={() => handleTabClick("/adminDashboard")}
+                  className="block hover:bg-yellow-300"
+                  onClick={() => handleTabClick("/admindshboard")}
                 >
                   Dashboard
                 </Link>
@@ -107,7 +107,6 @@ function HeadingNavbar() {
                   </span>
                 </Link>
 
-               
                 <ul className="absolute left-0 mt-6 hidden w-32 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
                   <li className="border-b">
                     <Link
@@ -274,11 +273,15 @@ function HeadingNavbar() {
                   BetListLive
                 </Link>
               </li>
-              <li 
-        className={`text-black font-medium border-b lg:border-b-0 border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${location.pathname === '/banking' ? 'bg-yellow-300' : 'text-black'}`}
-      >
-        <Link to="/banking">Banking</Link>
-      </li>
+              <li
+                className={`text-black font-medium border-b lg:border-b-0 border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
+                  location.pathname === "/banking"
+                    ? "bg-yellow-300"
+                    : "text-black"
+                }`}
+              >
+                <Link to="/banking">Banking</Link>
+              </li>
               <li className="text-black flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group">
                 <Link to="#casino" className="flex items-center">
                   Casino
@@ -346,15 +349,20 @@ function HeadingNavbar() {
                 </ul>
               </li>
 
-              <li className={`text-black font-medium  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
-                location.pathname ==='#MM' ? 'bg-yellow-300':'text-black'
-              }`}
+              <li
+                className={`text-black font-medium  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
+                  location.pathname === "#MM" ? "bg-yellow-300" : "text-black"
+                }`}
               >
                 <Link to="#MM">MM</Link>
               </li>
-              <li className={`text-black   flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
-                location.pathname === '#import' ? 'bg-yellow-300' : 'text-black'
-              }`}>
+              <li
+                className={`text-black   flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
+                  location.pathname === "#import"
+                    ? "bg-yellow-300"
+                    : "text-black"
+                }`}
+              >
                 <Link to="#import" className="flex items-center">
                   Import
                   <span className="ml-2">
@@ -372,32 +380,51 @@ function HeadingNavbar() {
                   </span>
                 </Link>
                 <ul className="absolute left-0 mt-6 hidden w-72 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                  <li className={`border-b${
-                    location.pathname === 'gamefileimport'? 'bg-yellow-300' :'text-black'
-                  }`}>
-                        <Link to="gamefileimport" className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                        Game file Import
-                        </Link>
+                  <li
+                    className={`border-b${
+                      location.pathname === "gamefileimport"
+                        ? "bg-yellow-300"
+                        : "text-black"
+                    }`}
+                  >
+                    <Link
+                      to="gamefileimport"
+                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
+                    >
+                      Game file Import
+                    </Link>
                   </li>
-                  <li className={`border-b ${
-                    location.pathname==='apifileformat'?'bg-yellow-300':'text-black'
-                  }`}>
-                        <Link to="apifileformat" className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                        Api file import
-                        </Link>
+                  <li
+                    className={`border-b ${
+                      location.pathname === "apifileformat"
+                        ? "bg-yellow-300"
+                        : "text-black"
+                    }`}
+                  >
+                    <Link
+                      to="apifileformat"
+                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
+                    >
+                      Api file import
+                    </Link>
                   </li>
                 </ul>
               </li>
-              <li className={`text-black font-medium   lg:border-opacity-15  border-b lg:border-b-0  border-r-0 lg:border-r border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
-               location.pathname=== '#message'?'bg-yellow-300' : 'text-black'
-              }`}>
-                    <Link to ="#message">
-                    Message
-                    </Link>
+              <li
+                className={`text-black font-medium   lg:border-opacity-15  border-b lg:border-b-0  border-r-0 lg:border-r border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
+                  location.pathname === "#message"
+                    ? "bg-yellow-300"
+                    : "text-black"
+                }`}
+              >
+                <Link to="#message">Message</Link>
               </li>
-              <li className={`text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
-                location.pathname === '#gamecenter' ? "bg-yellow-300" : 'text-black'
-              }`}
+              <li
+                className={`text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
+                  location.pathname === "#gamecenter"
+                    ? "bg-yellow-300"
+                    : "text-black"
+                }`}
               >
                 <Link to="#gamecenter" classname="flex items-center">
                   Game Center
@@ -416,11 +443,14 @@ function HeadingNavbar() {
                   </span>
                 </Link>
 
-                <ul className="absolute left-0 mt-6 hidden w-56 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50" 
-                >
-                  <li className={`border-b ${
-                    location.pathname === '/activegame' ? 'bg-yellow-300' : 'text-black'
-                  }`}>
+                <ul className="absolute left-0 mt-6 hidden w-56 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
+                  <li
+                    className={`border-b ${
+                      location.pathname === "/activegame"
+                        ? "bg-yellow-300"
+                        : "text-black"
+                    }`}
+                  >
                     <Link
                       to="/activegame"
                       className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
@@ -428,9 +458,13 @@ function HeadingNavbar() {
                       Active Game
                     </Link>
                   </li>
-                  <li className={`border-b ${
-                    location.pathname === '/deactivegame' ? 'bg-yellow-300' : 'text-black'
-                  }`}>
+                  <li
+                    className={`border-b ${
+                      location.pathname === "/deactivegame"
+                        ? "bg-yellow-300"
+                        : "text-black"
+                    }`}
+                  >
                     <Link
                       t0="/deactivegame"
                       className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
@@ -438,9 +472,13 @@ function HeadingNavbar() {
                       Deactive Game
                     </Link>
                   </li>
-                  <li className={`border-b ${
-                    location.pathname === '/livegame' ? 'bg-yellow-300' : 'text-black'
-                  }`}>
+                  <li
+                    className={`border-b ${
+                      location.pathname === "/livegame"
+                        ? "bg-yellow-300"
+                        : "text-black"
+                    }`}
+                  >
                     <Link
                       to="/livegame"
                       className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
@@ -454,18 +492,19 @@ function HeadingNavbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center whitespace-nowrap  gap-x-2 text-sm">
-            <li  className={` py-2 ${
-                location.pathname === '/admindashboard' ? "bg-yellow-300" : "text-black"
-            }`}>
-              <Link
-                to="/admindashboard"
-                className="text-black font-medium hover:bg-yellow-300 px-2 py-2"
-              >
+          <ul className="hidden lg:flex items-center whitespace-nowrap text-sm">
+            <li
+              className={`text-black px-3 py-2 font-medium hover:bg-yellow-300 ${
+                location.pathname === "/admindashboard"
+                  ? "bg-yellow-300"
+                  : "text-black"
+              }`}
+            >
+              <Link to="/admindashboard" className="">
                 Dashboard
               </Link>
             </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black transition group">
+            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black transition group">
               <a href="#home" className="flex items-center">
                 user
                 <span className="ml-2">
@@ -511,8 +550,8 @@ function HeadingNavbar() {
                 </li>
               </ul>
             </li>
-            <li className='text-black font-medium hover:bg-yellow-300 px-2 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group'>
-                <Link className="flex items-center">
+            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
+              <Link className="flex items-center">
                 Setting
                 <span className="ml-2">
                   {/* Bold Dropdown Icon */}
@@ -527,18 +566,23 @@ function HeadingNavbar() {
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </span>
-                </Link>
+              </Link>
               {/* Dropdown Menu */}
-              <ul className="absolute left-0 mt-6 hidden w-auto bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50 "
-                
-              >
-                  <li className={`border-b ${
-                    location.pathname === '/generalsetting' ? 'bg-yellow-300' : "text-black"
-                  }`}>
-                      <Link to="/generalsetting" className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      General Setting
-                      </Link>
-                  </li>
+              <ul className="absolute left-0 mt-6 hidden w-auto bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50 ">
+                <li
+                  className={`border-b ${
+                    location.pathname === "/generalsetting"
+                      ? "bg-yellow-300"
+                      : "text-black"
+                  }`}
+                >
+                  <Link
+                    to="/generalsetting"
+                    className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
+                  >
+                    General Setting
+                  </Link>
+                </li>
                 <Link to="/adminsetting">
                   <li className="border-b">
                     <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
@@ -566,7 +610,7 @@ function HeadingNavbar() {
             <li>
               <Link
                 to="/myaccount"
-                className="text-black font-medium hover:bg-yellow-300 px-2 py-2"
+                className="text-black font-medium hover:bg-yellow-300 px-3 py-2"
               >
                 My Account
               </Link>
@@ -574,7 +618,7 @@ function HeadingNavbar() {
             <li>
               <Link
                 to="/betlist"
-                className="text-black font-medium hover:bg-yellow-300 px-2 py-2"
+                className="text-black font-medium hover:bg-yellow-300 px-3 py-2"
               >
                 BetList
               </Link>
@@ -582,17 +626,17 @@ function HeadingNavbar() {
             <li>
               <Link
                 to="/betlive"
-                className="text-black font-medium hover:bg-yellow-300 px-2 py-2 "
+                className="text-black font-medium hover:bg-yellow-300 px-3 py-2 "
               >
                 BetListLive
               </Link>
             </li>
             <Link to="/banking">
-              <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2  ">
+              <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2  ">
                 Banking
               </li>
             </Link>
-            <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2 flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
+            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2 flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
               <a href="#home" className="flex items-center">
                 Casino
                 <span className="ml-2">
@@ -658,10 +702,10 @@ function HeadingNavbar() {
                 </li>
               </ul>
             </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2  border-b lg:border-b-0  border-opacity-60 lg:border-opacity-20 border-black  font-sm hover:text-black transition">
+            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2  border-b lg:border-b-0  border-opacity-60 lg:border-opacity-20 border-black  font-sm hover:text-black transition">
               <a href="#faq">MM</a>
             </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2   flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group  ">
+            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2   flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group  ">
               <a href="#home" className="flex items-center">
                 Import
                 <span className="ml-2">
@@ -692,10 +736,10 @@ function HeadingNavbar() {
                 </li>
               </ul>
             </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-2 py-2    lg:border-opacity-15  border-b lg:border-b-0   border-black  font-sm hover:text-black transition">
+            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2 lg:border-opacity-15 border-b lg:border-b-0 border-black  font-sm hover:text-black transition">
               <a href="#login">Messages</a>
             </li>
-            <li className="text-black font-medium hover:bg-yellow-300  py-2 flex relative cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
+            <li className="text-black font-medium hover:bg-yellow-300 py-2 flex relative cursor-pointer border-b lg:border-b-0 border-opacity-60 lg:border-opacity-20 border-black  transition group">
               <a href="#home" className="flex items-center">
                 Game Center
                 <span className="ml-2">

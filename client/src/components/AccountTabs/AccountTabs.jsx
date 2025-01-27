@@ -10,7 +10,7 @@ const AccountTabs = () => {
                                         Position
                                     </a>
                                 </li>
-                               <Link to='/accountstatementTabs'>
+                               <Link to='/accountstatementtabs'>
                                <li>
                                     <a className="block px-4 py-2 text-xs font-sans border-b border-black text-black hover:bg-gray-200">
                                         Account Statement
