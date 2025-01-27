@@ -7,6 +7,7 @@ import liveIcon from "@/assets/icons/live.svg";
 import slotIcon from "@/assets/icons/slot.svg";
 import tableIcon from "@/assets/icons/table.svg";
 import endgameIcon from "@/assets/icons/endgame.svg";
+import aviator from "@/assets/games/aviator.png";
 
 export function SelectCategory() {
   const categories = [
@@ -49,6 +50,11 @@ export function SelectCategory() {
   ];
 
   const games = [
+    {
+      image: aviator,
+      category: "live",
+      id: 1,
+    },
     {
       image:
         "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-205.png",

@@ -40,6 +40,7 @@ import ProfitAndLoss from "@/pages/profit-and-loss/ProfitAndLoss";
 import Settings from "@/pages/setting/Settings";
 import { createBrowserRouter } from "react-router-dom";
 import AdminRoute from "./AdminRoute";
+import DemoGame from "@/pages/home/DemoGame/DemoGame";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "/games/demo/:id",
+        element: <DemoGame />,
       },
       {
         path: "/balance-overview",
