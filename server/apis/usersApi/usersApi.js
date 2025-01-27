@@ -99,7 +99,7 @@ const usersApi = (usersCollection) => {
       });
       if (!user) return res.status(404).json({ error: "User not found" });
       const { password: _, ...userInfo } = user;
-      res.status(200).json({ user: userInfo });
+      res.status(200).json(userInfo);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch profile" });
     }

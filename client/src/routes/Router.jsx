@@ -1,8 +1,25 @@
+import AccountStatementTabs from "@/components/AccountStatementTabs/AccountStatementTabs";
+import AccountSummary from "@/components/AccountSummary/AccountSummary";
+import AccountTabs from "@/components/AccountTabs/AccountTabs";
+import ActiveGame from "@/components/ActiveGame/ActiveGame";
+import AdminSetting from "@/components/Admin Setting/AdminSetting";
+import AdminDashboard from "@/components/AdminDashboard/AdminDashboard";
+import Banking from "@/components/Banking/Banking";
+import BetList from "@/components/BetList/BetList";
+import BetListLive from "@/components/BetListLive/BetListLive";
+import CommonNavMenu from "@/components/CommonNavMenu/CommonNavMenu";
+import DeactiveGame from "@/components/DeactiveGame/DeactiveGame";
+import Game from "@/components/GameApi/Game";
+import HeadingNavbar from "@/components/HeadingNavbar/HeadingNavbar";
+import HomeControl from "@/components/HomeControl/HomeControl";
+import LiveGame from "@/components/LiveGame/LiveGame";
+import MyAccount from "@/components/MyAccount/MyAccount";
+import Profile from "@/components/Profile/Profile";
+import Setting from "@/components/Setting/Setting";
 import MainLayout from "@/layout/MainLayout";
 import SportsLeaguesLayout from "@/layout/SportsLeaguesLayout";
 import AccountStatement from "@/pages/account-statement/AccountStatement";
 import ActivityLog from "@/pages/activity-log/ActivityLog";
-import AdminD from "@/pages/AdminD";
 import BalanceOverview from "@/pages/balance-overview/BalanceOverview";
 import Banner from "@/pages/Banner";
 import BetsHistory from "@/pages/bets-history/BetsHistory";
@@ -22,6 +39,7 @@ import MyProfile from "@/pages/my-profile/MyProfile";
 import ProfitAndLoss from "@/pages/profit-and-loss/ProfitAndLoss";
 import Settings from "@/pages/setting/Settings";
 import { createBrowserRouter } from "react-router-dom";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -105,8 +123,32 @@ const router = createBrowserRouter([
   },
   // toriqul vai ekhan theke shuru korben evabe
   // {path: "",element: <Home />},
-  { path: "/banner", element: <Banner /> },
-  { path: "/admind", element: <AdminD /> },
+  { path: "/admin", element: <Banner /> },
+  {
+    path: "/admindashboard",
+    element: (
+      <AdminRoute>
+        <AdminDashboard />{" "}
+      </AdminRoute>
+    ),
+  },
+  { path: "/generalsetting", element: <Setting /> },
+  { path: "/myaccount", element: <MyAccount /> },
+  { path: "/betlive", element: <BetListLive /> },
+  { path: "/betlist", element: <BetList /> },
+  { path: "/banking", element: <Banking /> },
+  { path: "/headingnavbar", element: <HeadingNavbar /> },
+  { path: "/adminsetting", element: <AdminSetting /> },
+  { path: "/gameapi", element: <Game /> },
+  { path: "/activegame", element: <ActiveGame /> },
+  { path: "/deactivegame", element: <DeactiveGame /> },
+  { path: "/livegame", element: <LiveGame /> },
+  { path: "/homecontrol", element: <HomeControl /> },
+  { path: "/commonnavmenu", element: <CommonNavMenu /> },
+  { path: "/accountsummary", element: <AccountSummary /> },
+  { path: "/accounttabs", element: <AccountTabs /> },
+  { path: "/accountstatementtabs", element: <AccountStatementTabs /> },
+  { path: "/profile", element: <Profile /> },
 ]);
 
 export default router;

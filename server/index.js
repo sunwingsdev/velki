@@ -4,7 +4,7 @@ const app = express();
 require("dotenv").config();
 const path = require("path");
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const { upload, deleteFile } = require("./utils"); 
+const { upload, deleteFile } = require("./utils");
 
 // import API modules
 const usersApi = require("./apis/usersApi/usersApi");
@@ -20,6 +20,11 @@ const corsConfig = {
     "http://velki360.com",
     "www.velki360.com",
     "velki360.com",
+    "https://velki.oracleapi.net",
+    "http://velki.oracleapi.net",
+    "http://www.velki.oracleapi.net",
+    "www.velki.oracleapi.net",
+    "velki.oracleapi.net",
     "*",
   ],
   credentials: true,
