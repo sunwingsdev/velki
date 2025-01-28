@@ -1,11 +1,26 @@
+import { useToasts } from "react-toast-notifications";
 import velkiLogo from "../../assets/velki.webp";
 import HeadingNavbar from "../HeadingNavbar/HeadingNavbar";
-
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "@/redux/slices/authSlice";
 
 const CommonNavMenu = () => {
-    return (
-        <div>
-             <div>
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { addToast } = useToasts();
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("token");
+    addToast("Logout successful", {
+      appearance: "success",
+      autoDismiss: true,
+    });
+    navigate("/");
+  };
+  return (
+    <div>
+      <div>
         <div className="flex flex-row md:justify-between  lg:justify-between  bg-gray-800">
           <div className="pt-4 pb-4">
             <img
@@ -16,16 +31,16 @@ const CommonNavMenu = () => {
           </div>
           <div className="md:pl-4 lg:pl-0 ml-1 md:ml-0 lg:ml-0 pt-0 lg:pt-6 flex flex-wrap lg:flex-row  justify-center items-center pr-2 space-x-2">
             <p>
-              <span className="text-white text-xs lg:text-xl  ">Admin</span>{" "}
+              <span className="text-white text-xs lg:text-xl">Admin</span>{" "}
               <span className="text-yellow-500 text-xs lg:text-xl">
                 - Main Balance:
               </span>{" "}
-              <span className="text-gray-100  text-xs">USD 3,37,173.73</span>{" "}
+              <span className="text-gray-100 text-xs">USD 3,37,173.73</span>{" "}
             </p>
-            <button className="   pl-1 mt-2 w-6 h-6  bg-gray-900  hover:bg-gray-300">
+            <button className="pl-1 mt-2 size-7 bg-gray-900 hover:bg-gray-300">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-3 w-4 text-gray-100"
+                className="size-4 text-gray-100"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -38,10 +53,13 @@ const CommonNavMenu = () => {
                 />
               </svg>
             </button>
-            <button className=" pl-1 mt-2 w-6 h-6 bg-gray-900 rounded-sm hover:bg-gray-300">
+            <button
+              onClick={handleLogout}
+              className="pl-1 mt-2 size-7 bg-gray-900 rounded-sm hover:bg-gray-300"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-3 w-4 text-gray-100"
+                className="size-4 text-gray-100"
                 viewBox="0 0 512 512"
                 fill="currentColor"
               >
@@ -72,8 +90,8 @@ const CommonNavMenu = () => {
           <div></div>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default CommonNavMenu;

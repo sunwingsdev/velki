@@ -87,24 +87,11 @@ function HeadingNavbar() {
                 }`}
               >
                 <Link
-                  to="#user"
+                  to="/admindashboard/user"
                   className="flex items-center"
-                  onclick={() => handleTabClick("/user")}
+                  onclick={() => handleTabClick("/admindashboard/user")}
                 >
                   user
-                  <span className="ml-2">
-                    {/* Bold Dropdown Icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-4 text-black"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </span>
                 </Link>
 
                 <ul className="absolute left-0 mt-6 hidden w-32 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
@@ -153,12 +140,12 @@ function HeadingNavbar() {
               <ul className="text-sm">
                 <li
                   className={`text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0 border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
-                    location.pathname === "/setting"
+                    location.pathname === "/admindashboard/setting"
                       ? "bg-yellow-300"
                       : "text-black"
                   }`}
                 >
-                  <Link to="/setting" className="flex items-center">
+                  <Link className="flex items-center">
                     Setting
                     <span className="ml-2">
                       {/* Bold Dropdown Icon */}
@@ -179,9 +166,9 @@ function HeadingNavbar() {
                   <ul className="absolute left-0 mt-6 hidden w-56 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
                     <li className="border-b">
                       <Link
-                        to="/generalsetting"
+                        to="/admindashboard/generalsetting"
                         className={`block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400 ${
-                          location.pathname === "/generalsetting"
+                          location.pathname === "/admindashboard/generalsetting"
                             ? "bg-yellow-300"
                             : "text-black"
                         }`}
@@ -192,9 +179,9 @@ function HeadingNavbar() {
 
                     <li className="border-b">
                       <Link
-                        to="/adminsetting"
+                        to="/admindashboard/adminsetting"
                         className={`block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400 ${
-                          location.pathname === "/adminsetting"
+                          location.pathname === "/admindashboard/adminsetting"
                             ? "bg-yellow-300"
                             : "text-black"
                         }`}
@@ -207,7 +194,7 @@ function HeadingNavbar() {
                       <Link
                         to="/gameapi"
                         className={`block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400 ${
-                          location.pathname === "/gameapi"
+                          location.pathname === "/admindashboard/gameapi"
                             ? "bg-yellow-300"
                             : "text-black"
                         }`}
@@ -220,7 +207,7 @@ function HeadingNavbar() {
                       <Link
                         to="/homecontrol"
                         className={`block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400 ${
-                          location.pathname === "/homecontrol"
+                          location.pathname === "/admindashboard/homecontrol"
                             ? "bg-yellow-300"
                             : "text-black"
                         }`}
@@ -233,13 +220,13 @@ function HeadingNavbar() {
               </ul>
               <li
                 className={`border-b font-semibold border-black ${
-                  location.pathname === "/myaccount"
+                  location.pathname === "/admindashboard/myaccount"
                     ? "bg-yellow-300"
                     : "text-black"
                 }`}
               >
                 <Link
-                  to="/myaccount"
+                  to="/admindashboard/myaccount"
                   className="block px-4 py-2 text-black hover:bg-yellow-300"
                 >
                   My Account
@@ -247,13 +234,13 @@ function HeadingNavbar() {
               </li>
               <li
                 className={`border-b font-semibold border-black ${
-                  location.pathname === "/betlist"
+                  location.pathname === "/admindashboard/betlist"
                     ? "bg-yellow-300"
                     : "text-black"
                 }`}
               >
                 <Link
-                  to="/betlist"
+                  to="/admindashboard/betlist"
                   className="block px-4 py-2 text-black hover:bg-yellow-300"
                 >
                   BetList
@@ -261,13 +248,13 @@ function HeadingNavbar() {
               </li>
               <li
                 className={`border-b font-semibold border-black ${
-                  location.pathname === "/betlive"
+                  location.pathname === "/admindashboard/betlive"
                     ? "bg-yellow-300"
                     : "text-black"
                 }`}
               >
                 <Link
-                  to="/betlive"
+                  to="/admindashboard/betlive"
                   className="block px-4 py-2 text-black hover:bg-yellow-300"
                 >
                   BetListLive
@@ -275,12 +262,12 @@ function HeadingNavbar() {
               </li>
               <li
                 className={`text-black font-medium border-b lg:border-b-0 border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
-                  location.pathname === "/banking"
+                  location.pathname === "/admindashboard/banking"
                     ? "bg-yellow-300"
                     : "text-black"
                 }`}
               >
-                <Link to="/banking">Banking</Link>
+                <Link to="/admindashboard/banking">Banking</Link>
               </li>
               <li className="text-black flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group">
                 <Link to="#casino" className="flex items-center">
@@ -382,13 +369,13 @@ function HeadingNavbar() {
                 <ul className="absolute left-0 mt-6 hidden w-72 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
                   <li
                     className={`border-b${
-                      location.pathname === "gamefileimport"
+                      location.pathname === "/admindashboard/gamefileimport"
                         ? "bg-yellow-300"
                         : "text-black"
                     }`}
                   >
                     <Link
-                      to="gamefileimport"
+                      to="/admindashboard/gamefileimport"
                       className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
                     >
                       Game file Import
@@ -396,13 +383,13 @@ function HeadingNavbar() {
                   </li>
                   <li
                     className={`border-b ${
-                      location.pathname === "apifileformat"
+                      location.pathname === "/admindashboard/apifileformat"
                         ? "bg-yellow-300"
                         : "text-black"
                     }`}
                   >
                     <Link
-                      to="apifileformat"
+                      to="/admindashboard/apifileformat"
                       className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
                     >
                       Api file import
@@ -426,7 +413,7 @@ function HeadingNavbar() {
                     : "text-black"
                 }`}
               >
-                <Link to="#gamecenter" classname="flex items-center">
+                <Link to="#gamecenter" className="flex items-center">
                   Game Center
                   <span className="ml-2">
                     {/* Bold Dropdown Icon */}
@@ -446,13 +433,13 @@ function HeadingNavbar() {
                 <ul className="absolute left-0 mt-6 hidden w-56 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
                   <li
                     className={`border-b ${
-                      location.pathname === "/activegame"
+                      location.pathname === "/admindashboard/activegame"
                         ? "bg-yellow-300"
                         : "text-black"
                     }`}
                   >
                     <Link
-                      to="/activegame"
+                      to="/admindashboard/activegame"
                       className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
                     >
                       Active Game
@@ -460,7 +447,7 @@ function HeadingNavbar() {
                   </li>
                   <li
                     className={`border-b ${
-                      location.pathname === "/deactivegame"
+                      location.pathname === "/admindashboard/deactivegame"
                         ? "bg-yellow-300"
                         : "text-black"
                     }`}
@@ -474,13 +461,13 @@ function HeadingNavbar() {
                   </li>
                   <li
                     className={`border-b ${
-                      location.pathname === "/livegame"
+                      location.pathname === "/admindashboard/livegame"
                         ? "bg-yellow-300"
                         : "text-black"
                     }`}
                   >
                     <Link
-                      to="/livegame"
+                      to="/admindashboard/livegame"
                       className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
                     >
                       Live Game
@@ -571,19 +558,19 @@ function HeadingNavbar() {
               <ul className="absolute left-0 mt-6 hidden w-auto bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50 ">
                 <li
                   className={`border-b ${
-                    location.pathname === "/generalsetting"
+                    location.pathname === "/admindashboard/generalsetting"
                       ? "bg-yellow-300"
                       : "text-black"
                   }`}
                 >
                   <Link
-                    to="/generalsetting"
+                    to="/admindashboard/generalsetting"
                     className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
                   >
                     General Setting
                   </Link>
                 </li>
-                <Link to="/adminsetting">
+                <Link to="/admindashboard/adminsetting">
                   <li className="border-b">
                     <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
                       Admin Setting
@@ -591,14 +578,14 @@ function HeadingNavbar() {
                   </li>
                 </Link>
 
-                <Link to="/gameapi">
+                <Link to="/admindashboard/gameapi">
                   <li className="border-b">
                     <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
                       game Api Key
                     </a>
                   </li>
                 </Link>
-                <Link to="/homecontrol">
+                <Link to="/admindashboard/homecontrol">
                   <li className="border-b">
                     <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
                       Home Control
@@ -609,7 +596,7 @@ function HeadingNavbar() {
             </li>
             <li>
               <Link
-                to="/myaccount"
+                to="/admindashboard/myaccount"
                 className="text-black font-medium hover:bg-yellow-300 px-3 py-2"
               >
                 My Account
@@ -617,7 +604,7 @@ function HeadingNavbar() {
             </li>
             <li>
               <Link
-                to="/betlist"
+                to="/admindashboard/betlist"
                 className="text-black font-medium hover:bg-yellow-300 px-3 py-2"
               >
                 BetList
@@ -625,13 +612,13 @@ function HeadingNavbar() {
             </li>
             <li>
               <Link
-                to="/betlive"
+                to="/admindashboard/betlive"
                 className="text-black font-medium hover:bg-yellow-300 px-3 py-2 "
               >
                 BetListLive
               </Link>
             </li>
-            <Link to="/banking">
+            <Link to="/admindashboard/banking">
               <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2  ">
                 Banking
               </li>
@@ -758,14 +745,14 @@ function HeadingNavbar() {
               </a>
               {/* Dropdown Menu */}
               <ul className="absolute right-0  mt-6 hidden w-36 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                <Link to="/activegame">
+                <Link to="/admindashboard/activegame">
                   <li className="border-b">
                     <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
                       Active Game
                     </a>
                   </li>
                 </Link>
-                <Link to="/deactivegame">
+                <Link to="/admindashboard/deactivegame">
                   <li className="border-b">
                     <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
                       Deactive Game
@@ -773,7 +760,7 @@ function HeadingNavbar() {
                   </li>
                 </Link>
 
-                <Link to="/livegame">
+                <Link to="/admindashboard/livegame">
                   <li className="border-b">
                     <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
                       Live Game

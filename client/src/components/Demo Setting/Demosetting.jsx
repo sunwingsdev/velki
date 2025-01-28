@@ -17,11 +17,6 @@ const itemsTwo = [
   "Client wise",
 ];
 
-
-
-
-
-
 const Setting = () => {
   return (
     <div>
@@ -436,8 +431,6 @@ const Setting = () => {
               </div>
             </div>
           </div>
-          
-          
 
           <div className="mt-4 mx-10 pr-6 md:pr-0 lg:pr-0 md:mx-0 lg:mx-0 mb-4  md:mb-4     border border-black border-opacity-15">
             <div className="text-center md:text-start md:pl-10 lg:text-center  ">
@@ -523,12 +516,11 @@ const Setting = () => {
                 </div>
               </div>
             </div>
-           
           </div>
           <div className="flex flex-row items-center gap-2 justify-center">
-              <button className="bg-gray-950 text-yellow-400 px-2">Save</button>
-              <button className="bg-gray-300 px-2">Cancel</button>
-            </div>
+            <button className="bg-gray-950 text-yellow-400 px-2">Save</button>
+            <button className="bg-gray-300 px-2">Cancel</button>
+          </div>
         </div>
       </div>
     </div>

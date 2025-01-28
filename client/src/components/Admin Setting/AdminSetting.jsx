@@ -1,6 +1,3 @@
-
-import CommonNavMenu from "../CommonNavMenu/CommonNavMenu";
-
 const fieldNames = [
   "All User Bonus add: ",
   "Monthly sub master Bonus:",
@@ -22,8 +19,7 @@ const fieldNames = [
 const AdminSetting = () => {
   return (
     <div>
-     <CommonNavMenu></CommonNavMenu>
-      <div className="min-h-screen bg-adminBackground mt-2">
+      <div className="min-h-screen bg-adminBackground">
         <h1 className="text-center text-2xl pt-1 font-bold bg-yellow-500 h-10">
           Admin Setting
         </h1>
@@ -136,7 +132,7 @@ const AdminSetting = () => {
                       <button
                         type="button"
                         className="ml-2 px-2 pb-1 border border-black bg-yellow-400 text-black  font-bold rounded-2xl"
-                        >
+                      >
                         Add+
                       </button>
                     </>
