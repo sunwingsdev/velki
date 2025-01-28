@@ -7,10 +7,8 @@ import AdminDashboard from "@/components/AdminDashboard/AdminDashboard";
 import Banking from "@/components/Banking/Banking";
 import BetList from "@/components/BetList/BetList";
 import BetListLive from "@/components/BetListLive/BetListLive";
-import CommonNavMenu from "@/components/CommonNavMenu/CommonNavMenu";
 import DeactiveGame from "@/components/DeactiveGame/DeactiveGame";
 import Game from "@/components/GameApi/Game";
-import HeadingNavbar from "@/components/HeadingNavbar/HeadingNavbar";
 import HomeControl from "@/components/HomeControl/HomeControl";
 import LiveGame from "@/components/LiveGame/LiveGame";
 import MyAccount from "@/components/MyAccount/MyAccount";
@@ -40,6 +38,8 @@ import ProfitAndLoss from "@/pages/profit-and-loss/ProfitAndLoss";
 import Settings from "@/pages/setting/Settings";
 import { createBrowserRouter } from "react-router-dom";
 import AdminRoute from "./AdminRoute";
+import DemoGame from "@/pages/home/DemoGame/DemoGame";
+import DashboardLayout from "@/layout/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "/games/demo/:id",
+        element: <DemoGame />,
       },
       {
         path: "/balance-overview",
@@ -121,30 +125,29 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // toriqul vai ekhan theke shuru korben evabe
-  // {path: "",element: <Home />},
-  { path: "/admin", element: <Banner /> },
   {
     path: "/admindashboard",
     element: (
       <AdminRoute>
-        <AdminDashboard />{" "}
+        <DashboardLayout />
       </AdminRoute>
     ),
+    children: [
+      { path: "", element: <AdminDashboard /> },
+      { path: "generalsetting", element: <Setting /> },
+      { path: "adminsetting", element: <AdminSetting /> },
+      { path: "gameapi", element: <Game /> },
+      { path: "homecontrol", element: <HomeControl /> },
+      { path: "myaccount", element: <MyAccount /> },
+      { path: "betlist", element: <BetList /> },
+      { path: "betlive", element: <BetListLive /> },
+      { path: "banking", element: <Banking /> },
+      { path: "activegame", element: <ActiveGame /> },
+      { path: "deactivegame", element: <DeactiveGame /> },
+      { path: "livegame", element: <LiveGame /> },
+    ],
   },
-  { path: "/generalsetting", element: <Setting /> },
-  { path: "/myaccount", element: <MyAccount /> },
-  { path: "/betlive", element: <BetListLive /> },
-  { path: "/betlist", element: <BetList /> },
-  { path: "/banking", element: <Banking /> },
-  { path: "/headingnavbar", element: <HeadingNavbar /> },
-  { path: "/adminsetting", element: <AdminSetting /> },
-  { path: "/gameapi", element: <Game /> },
-  { path: "/activegame", element: <ActiveGame /> },
-  { path: "/deactivegame", element: <DeactiveGame /> },
-  { path: "/livegame", element: <LiveGame /> },
-  { path: "/homecontrol", element: <HomeControl /> },
-  { path: "/commonnavmenu", element: <CommonNavMenu /> },
+  { path: "/admin", element: <Banner /> },
   { path: "/accountsummary", element: <AccountSummary /> },
   { path: "/accounttabs", element: <AccountTabs /> },
   { path: "/accountstatementtabs", element: <AccountStatementTabs /> },

@@ -1,62 +1,94 @@
-import CommonNavMenu from "../CommonNavMenu/CommonNavMenu";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { useAddUserMutation } from "@/redux/features/allApis/usersApi/usersApi";
+import { useToasts } from "react-toast-notifications";
 
+const data = [
+  {
+    Account: "WinbetUSD ",
+    CreditRef: "8.40,933.62",
+    balance: "1000.00",
+    exposure: "200.00",
+    availBalance: "800.00",
+    playerBalance: "500.00",
+    refPL: "+300.00",
+    status: "Active",
+  },
+  {
+    Account: "sports365AD",
+    CreditRef: "8.40,933.62",
+    balance: "1000.00",
+    exposure: "200.00",
+    availBalance: "800.00",
+    playerBalance: "500.00",
+    refPL: "+300.00",
+    status: "Active",
+  },
+  {
+    Account: "jio365",
+    CreditRef: "8.40,933.62",
+    balance: "1000.00",
+    exposure: "200.00",
+    availBalance: "800.00",
+    playerBalance: "500.00",
+    refPL: "+300.00",
+    status: "Active",
+  },
+  {
+    Account: "ariyanmax",
+    CreditRef: "8.40,933.62",
+    balance: "1000.00",
+    exposure: "200.00",
+    availBalance: "800.00",
+    playerBalance: "500.00",
+    refPL: "+300.00",
+    status: "Active",
+  },
+  {
+    Account: "WinbetUSD 1",
+    CreditRef: "8.40,933.62",
+    balance: "1000.00",
+    exposure: "200.00",
+    availBalance: "800.00",
+    playerBalance: "500.00",
+    refPL: "+300.00",
+    status: "Active",
+  },
+];
 const AdminDashboard = () => {
-  const data = [
-    {
-      Account: "WinbetUSD ",
-      CreditRef: "8.40,933.62",
-      balance: "1000.00",
-      exposure: "200.00",
-      availBalance: "800.00",
-      playerBalance: "500.00",
-      refPL: "+300.00",
-      status: "Active",
-    },
-    {
-      Account: "sports365AD",
-      CreditRef: "8.40,933.62",
-      balance: "1000.00",
-      exposure: "200.00",
-      availBalance: "800.00",
-      playerBalance: "500.00",
-      refPL: "+300.00",
-      status: "Active",
-    },
-    {
-      Account: "jio365",
-      CreditRef: "8.40,933.62",
-      balance: "1000.00",
-      exposure: "200.00",
-      availBalance: "800.00",
-      playerBalance: "500.00",
-      refPL: "+300.00",
-      status: "Active",
-    },
-    {
-      Account: "ariyanmax",
-      CreditRef: "8.40,933.62",
-      balance: "1000.00",
-      exposure: "200.00",
-      availBalance: "800.00",
-      playerBalance: "500.00",
-      refPL: "+300.00",
-      status: "Active",
-    },
-    {
-      Account: "WinbetUSD 1",
-      CreditRef: "8.40,933.62",
-      balance: "1000.00",
-      exposure: "200.00",
-      availBalance: "800.00",
-      playerBalance: "500.00",
-      refPL: "+300.00",
-      status: "Active",
-    },
-  ];
+  const [addUser, { isLoading }] = useAddUserMutation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const { addToast } = useToasts();
+
+  const onSubmit = async (data) => {
+    // eslint-disable-next-line no-unused-vars
+    const { confirmPassword, ...userInfo } = data;
+    const result = await addUser(userInfo);
+    if (result?.data?.insertedId) {
+      addToast("User created successfully", {
+        appearance: "success",
+        autoDismiss: true,
+      });
+      setIsModalOpen(false);
+      reset();
+    }
+    if (result?.error) {
+      addToast("Something went wrong", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+    }
+  };
 
   return (
     <div className="">
-      <CommonNavMenu></CommonNavMenu>
       <div>
         <div className="navbar bg-base-100">
           <div className="pt-4 pl-4 flex flex-row items-center  gap-2">
@@ -67,7 +99,7 @@ const AdminDashboard = () => {
                 className="border-none focus:outline-none  w-24 h-4 pl-2 md:w-auto"
               />
             </div>
-            <button className="bg-slate-700 text-yellow-400 font-semibold px-4   h-8 rounded">
+            <button className="bg-slate-700 text-yellow-400 font-semibold px-4 h-8 rounded">
               Search
             </button>
           </div>
@@ -109,11 +141,7 @@ const AdminDashboard = () => {
               <div className="relative">
                 {/* Button to Open Modal */}
                 <button
-                  onClick={() =>
-                    document
-                      .getElementById("admin-modal")
-                      .classList.remove("hidden")
-                  }
+                  onClick={() => setIsModalOpen(true)}
                   className="bg-white border border-black hover:bg-gray-300 px-2 py-2 flex items-center"
                 >
                   <span className="absolute left-2">
@@ -130,170 +158,6 @@ const AdminDashboard = () => {
                     Add Admins
                   </span>
                 </button>
-
-                {/* Modal */}
-                <div
-                  id="admin-modal"
-                  className="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-                  role="dialog"
-                  onClick={(e) => {
-                    if (e.target.id === "admin-modal") {
-                      document
-                        .getElementById("admin-modal")
-                        .classList.add("hidden");
-                    }
-                  }}
-                >
-                  <div className="bg-headerGray  text-headingTextColor rounded-lg shadow-lg w-72 md:w-96 lg:w-96">
-                    <div className="flex flex-row items-center justify-center">
-                      <h3 className="text-lg w-full h-16 text-black  font-bold p-4">
-                        Add Admin
-                      </h3>
-                      <button
-                        onClick={() =>
-                          document
-                            .getElementById("admin-modal")
-                            .classList.add("hidden")
-                        }
-                        className=" text-black p-4 flex items-center space-x-2"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    <div className="pb- mx-2 bg-white">
-                      <div className=" space-y-1 p-4 bg-gray-100 rounded shadow-md w-full max-w-md mx-auto">
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium  text-gray-700">
-                            Email
-                          </label>
-                          <input
-                            type="email"
-                            placeholder=""
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-
-                        <div className=" flex items-center">
-                          <label className="w-32 font-medium  text-gray-700">
-                            Username
-                          </label>
-                          <input
-                            type="text"
-                            placeholder=""
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            Password
-                          </label>
-                          <input
-                            type="password"
-                            placeholder="Password"
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium  text-gray-700">
-                            Confirm Password
-                          </label>
-                          <input
-                            type="password"
-                            placeholder="Confirm Password"
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-
-                        <div className="flex items-center relative group">
-                          <label className="w-32  font-medium text-gray-700">
-                            Role
-                          </label>
-
-                          <select className="w-full text-gray-500 font-bold h-6 px-2 border border-gray-300  rounded text-sm outline-none focus:ring focus:ring-blue-200">
-                            <option
-                              className="text-gray-500 font-semibold"
-                              value=""
-                            >
-                              User
-                            </option>
-                            <option
-                              className="text-gray-500 font-semibold"
-                              value=""
-                            >
-                              Agent
-                            </option>
-                            <option
-                              className="text-gray-500 font-semibold"
-                              value=""
-                            >
-                              Sub agent
-                            </option>
-                            <option
-                              className="text-gray-500 font-semibold"
-                              value=""
-                            >
-                              Admin
-                            </option>
-                            <option
-                              className="text-gray-500 font-semibold"
-                              value=""
-                            >
-                              Sub admin
-                            </option>
-                            <option
-                              className="text-gray-500 font-semibold"
-                              value=""
-                            >
-                              Master
-                            </option>
-                          </select>
-                        </div>
-
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            First Name
-                          </label>
-                          <input
-                            type="text"
-                            placeholder=""
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-                        <div className="flex items-center">
-                          <label className="w-32 font-medium text-gray-700">
-                            Last Name
-                          </label>
-                          <input
-                            type="text"
-                            placeholder=""
-                            className="w-full h-6 border border-gray-300 p-2 rounded placeholder:text-sm outline-none focus:ring focus:ring-blue-200"
-                          />
-                        </div>
-
-                        <div className="text-center">
-                          <button className="bg-yellow-400 px-14 py-1 font-bold rounded-2xl mt-2 text-center">
-                            Create
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <button className=" pl-0 w-6 h-10 border border-black  bg-white shadow-inherit rounded hover:bg-gray-300">
@@ -315,7 +179,6 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-        <div></div>
 
         <div className="p-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -472,6 +335,179 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
+        {/* Modal */}
+        {isModalOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+            role="dialog"
+          >
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="bg-white rounded-lg shadow-lg w-96 p-6"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-bold text-gray-700">Create user</h3>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsModalOpen(false);
+                    reset();
+                  }}
+                  className="text-gray-500 font-bold text-xl hover:text-red-500"
+                >
+                  ✕
+                </button>
+              </div>
+              <div className="flex items-center justify-center gap-2">
+                <div className="mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    {...register("firstName", {
+                      required: "First Name is required",
+                    })}
+                    className="w-full border border-gray-300 rounded px-3 py-1 text-sm outline-none focus:ring-0 focus:border-yellow-400"
+                  />
+                  {errors.firstName && (
+                    <p className="text-red-500 text-sm">
+                      {errors.firstName.message}
+                    </p>
+                  )}
+                </div>
+                <div className="mb-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    {...register("lastName", {
+                      required: "Last Name is required",
+                    })}
+                    className="w-full border border-gray-300 rounded px-3 py-1 text-sm outline-none focus:ring-0 focus:border-yellow-400"
+                  />
+                  {errors.lastName && (
+                    <p className="text-red-500 text-sm">
+                      {errors.lastName.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Email Field */}
+              <div className="mb-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  {...register("email", { required: "Email is required" })}
+                  className="w-full border border-gray-300 rounded px-3 py-1 text-sm outline-none focus:ring-0 focus:border-yellow-400"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email.message}</p>
+                )}
+              </div>
+
+              {/* Username Field */}
+              <div className="mb-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  {...register("username", {
+                    required: "Username is required",
+                  })}
+                  className="w-full border border-gray-300 rounded px-3 py-1 text-sm outline-none focus:ring-0 focus:border-yellow-400"
+                />
+                {errors.username && (
+                  <p className="text-red-500 text-sm">
+                    {errors.username.message}
+                  </p>
+                )}
+              </div>
+              {/* Role Select Field */}
+              <div className="mb-2">
+                <label className="block text-sm font-medium text-gray-700">
+                  Role
+                </label>
+                <select
+                  {...register("role", { required: "Role is required" })}
+                  className="w-full border border-gray-300 rounded px-3 py-1 text-sm outline-none focus:ring-0 focus:border-yellow-400"
+                >
+                  <option value="">Select a role</option>
+                  <option value="user">User</option>
+                  <option value="agent">Agent</option>
+                  <option value="sub-agent">Sub Agent</option>
+                  <option value="admin">Admin</option>
+                  <option value="sub-admin">Sub Admin</option>
+                  <option value="master">Master</option>
+                </select>
+                {errors.role && (
+                  <p className="text-red-500 text-sm">{errors.role.message}</p>
+                )}
+              </div>
+
+              {/* Password Field */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters",
+                    },
+                  })}
+                  className="w-full border border-gray-300 rounded px-3 py-1 text-sm outline-none focus:ring-0 focus:border-yellow-400"
+                />
+                {errors.password && (
+                  <p className="text-red-500 text-sm">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Confirm Password Field */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  {...register("confirmPassword", {
+                    required: "Confirm Password is required",
+                    validate: (value) =>
+                      value === watch("password") || "Passwords do not match",
+                  })}
+                  className="w-full border border-gray-300 rounded px-3 py-1 text-sm outline-none focus:ring-0 focus:border-yellow-400"
+                />
+                {errors.confirmPassword && (
+                  <p className="text-red-500 text-sm">
+                    {errors.confirmPassword.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="bg-slate-700 disabled:bg-slate-400 disabled:text-slate-900 disabled:cursor-not-allowed text-yellow-400 hover:bg-yellow-400 hover:text-slate-700 duration-300 transition-colors font-semibold px-4 h-8 rounded"
+                >
+                  {" "}
+                  Create
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );
