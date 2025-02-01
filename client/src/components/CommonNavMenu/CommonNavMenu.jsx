@@ -2,10 +2,11 @@ import { useToasts } from "react-toast-notifications";
 import velkiLogo from "../../assets/velki.webp";
 import HeadingNavbar from "../HeadingNavbar/HeadingNavbar";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/redux/slices/authSlice";
 
 const CommonNavMenu = () => {
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { addToast } = useToasts();
@@ -18,6 +19,7 @@ const CommonNavMenu = () => {
     });
     navigate("/");
   };
+
   return (
     <div>
       <div>
@@ -30,8 +32,9 @@ const CommonNavMenu = () => {
             />
           </div>
           <div className="md:pl-4 lg:pl-0 ml-1 md:ml-0 lg:ml-0 pt-0 lg:pt-6 flex flex-wrap lg:flex-row  justify-center items-center pr-2 space-x-2">
-            <p>
-              <span className="text-white text-xs lg:text-xl">Admin</span>{" "}
+            <p className="text-white text-xs lg:text-xl">
+              {user?.username}{" "}
+              <span className="text-xs normal-case">({user?.role})</span>{" "}
               <span className="text-yellow-500 text-xs lg:text-xl">
                 - Main Balance:
               </span>{" "}
@@ -86,8 +89,6 @@ const CommonNavMenu = () => {
               <p className="transform text-white  text-xs">News</p>
             </div>
           </div>
-
-          <div></div>
         </div>
       </div>
     </div>

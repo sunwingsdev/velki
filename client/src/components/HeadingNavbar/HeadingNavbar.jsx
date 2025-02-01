@@ -1,13 +1,154 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import MenuItem from "./MenuItem";
+import { useSelector } from "react-redux";
 
 function HeadingNavbar() {
+  const { user } = useSelector((state) => state.auth);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("");
 
+  const menuItems = [
+    {
+      label: "Dashboard",
+      path: "/admindashboard",
+    },
+    {
+      label: "User",
+      path: null, // No path for parent menu with sub-items
+      subItems: [
+        {
+          label: "User",
+          path: "usersdata/user",
+          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+        },
+        {
+          label: "Sub Agent",
+          path: "usersdata/sub-agent",
+          roles: ["agent", "master", "sub-admin", "admin"],
+        },
+        {
+          label: "Agent",
+          path: "usersdata/agent",
+          roles: ["master", "admin", "sub-admin"],
+        },
+        {
+          label: "Master",
+          path: "usersdata/master",
+          roles: ["admin", "sub-admin"],
+        },
+        {
+          label: "Sub Admin",
+          path: "usersdata/subadmin",
+          roles: ["admin"],
+        },
+        {
+          label: "Admin",
+          path: "usersdata/admin",
+          roles: ["admin"],
+        },
+      ],
+    },
+    {
+      label: "Setting",
+      path: null, // No path for parent menu with sub-items
+      subItems: [
+        {
+          label: "General Setting",
+          path: "/admindashboard/generalsetting",
+          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+        },
+        {
+          label: "Admin Setting",
+          path: "/admindashboard/adminsetting",
+          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+        },
+        {
+          label: "Game Api Key",
+          path: "/admindashboard/gameapi",
+          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+        },
+        {
+          label: "Home Control",
+          path: "/admindashboard/homecontrol",
+          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+        },
+      ],
+    },
+    {
+      label: "My Account",
+      path: "/admindashboard/myaccount",
+    },
+    {
+      label: "BetList",
+      path: "/admindashboard/betlist",
+    },
+    {
+      label: "BetListLive",
+      path: "/admindashboard/betlive",
+    },
+    {
+      label: "Banking",
+      path: "/admindashboard/banking",
+    },
+    {
+      label: "Casino",
+      path: null, // No path for parent menu with sub-items
+      subItems: [
+        { label: "Pragmatic Play", path: "#pragmatic-play",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"], },
+        { label: "Evolution", path: "#evolution",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        { label: "BGaming", path: "#bgaming",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        { label: "Amusnet", path: "#amusnet",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        { label: "PG Soft", path: "#pg-soft",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        { label: "Play and GO", path: "#play-and-go",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        { label: "Playtech", path: "#playtech" ,roles: ["sub-agent", "agent", "master", "sub-admin", "admin"]},
+        { label: "Nolimit City", path: "#nolimit-city",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        { label: "Hacksaw", path: "#hacksaw",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+      ],
+    },
+    {
+      label: "MM",
+      path: "#MM",
+    },
+    {
+      label: "Import",
+      path: null, // No path for parent menu with sub-items
+      subItems: [
+        { label: "Game file Import", path: "/admindashboard/gamefileimport",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        { label: "Api file import", path: "/admindashboard/apifileformat",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+      ],
+    },
+    {
+      label: "Message",
+      path: "#message",
+    },
+    {
+      label: "Game Center",
+      path: null, // No path for parent menu with sub-items
+      subItems: [
+        { label: "Active Game", path: "/admindashboard/activegame" },
+        { label: "Deactive Game", path: "/admindashboard/deactivegame" },
+        { label: "Live Game", path: "/admindashboard/livegame" },
+      ],
+    },
+  ];
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+
+  const allowedMenuForOthers = [
+    "Dashboard",
+    "User",
+    "Setting",
+    "My Account",
+    "BetList",
+    "BetListLive",
+    "Banking",
+  ];
+
+  const filteredMenuItems = menuItems.filter((item) => {
+    if (user?.role === "admin") return true;
+    return allowedMenuForOthers.includes(item.label);
+  });
 
   return (
     <div className="">
@@ -65,710 +206,28 @@ function HeadingNavbar() {
                 />
               </svg>
             </button>
-            <ul className="text-sm ">
-              <li
-                className={`border-b font-medium px-4 py-2 border-black ${
-                  activeTab === "/admindashboard"
-                    ? "bg-yellow-300"
-                    : "text-black"
-                }`}
-              >
-                <Link
-                  to="/adminDashboard"
-                  className="block hover:bg-yellow-300"
-                  onClick={() => handleTabClick("/admindshboard")}
-                >
-                  Dashboard
-                </Link>
-              </li>
-              <li
-                className={`text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
-                  activeTab === "#user" ? "bg-yellow-300" : "text-black"
-                }`}
-              >
-                <Link
-                  to="/admindashboard/user"
-                  className="flex items-center"
-                  onclick={() => handleTabClick("/admindashboard/user")}
-                >
-                  user
-                </Link>
-
-                <ul className="absolute left-0 mt-6 hidden w-32 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                  <li className="border-b">
-                    <Link
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                      onClick={() => handleTabClick("#agent")}
-                    >
-                      Agent
-                    </Link>
-                  </li>
-                  <li className="border-b">
-                    <Link
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                      onClick={() => handleTabClick("#sub-agent")}
-                    >
-                      Sub Agent
-                    </Link>
-                  </li>
-                  <li className="border-b">
-                    <Link
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                      onClick={() => handleTabClick("#admin")}
-                    >
-                      admin
-                    </Link>
-                  </li>
-                  <li className="border-b">
-                    <Link
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                      onClick={() => handleTabClick("#subadmin")}
-                    >
-                      Sub admin
-                    </Link>
-                  </li>
-                  <li className="border-b">
-                    <Link
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                      onClick={() => handleTabClick("#master")}
-                    >
-                      master
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <ul className="text-sm">
-                <li
-                  className={`text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0 border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
-                    location.pathname === "/admindashboard/setting"
-                      ? "bg-yellow-300"
-                      : "text-black"
-                  }`}
-                >
-                  <Link className="flex items-center">
-                    Setting
-                    <span className="ml-2">
-                      {/* Bold Dropdown Icon */}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-4 text-black"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </span>
-                  </Link>
-
-                  {/* Dropdown Menu */}
-                  <ul className="absolute left-0 mt-6 hidden w-56 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                    <li className="border-b">
-                      <Link
-                        to="/admindashboard/generalsetting"
-                        className={`block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400 ${
-                          location.pathname === "/admindashboard/generalsetting"
-                            ? "bg-yellow-300"
-                            : "text-black"
-                        }`}
-                      >
-                        General Setting
-                      </Link>
-                    </li>
-
-                    <li className="border-b">
-                      <Link
-                        to="/admindashboard/adminsetting"
-                        className={`block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400 ${
-                          location.pathname === "/admindashboard/adminsetting"
-                            ? "bg-yellow-300"
-                            : "text-black"
-                        }`}
-                      >
-                        Admin Setting
-                      </Link>
-                    </li>
-
-                    <li className="border-b">
-                      <Link
-                        to="/gameapi"
-                        className={`block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400 ${
-                          location.pathname === "/admindashboard/gameapi"
-                            ? "bg-yellow-300"
-                            : "text-black"
-                        }`}
-                      >
-                        Game Api Key
-                      </Link>
-                    </li>
-
-                    <li className="border-b">
-                      <Link
-                        to="/homecontrol"
-                        className={`block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400 ${
-                          location.pathname === "/admindashboard/homecontrol"
-                            ? "bg-yellow-300"
-                            : "text-black"
-                        }`}
-                      >
-                        Home Control
-                      </Link>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-              <li
-                className={`border-b font-semibold border-black ${
-                  location.pathname === "/admindashboard/myaccount"
-                    ? "bg-yellow-300"
-                    : "text-black"
-                }`}
-              >
-                <Link
-                  to="/admindashboard/myaccount"
-                  className="block px-4 py-2 text-black hover:bg-yellow-300"
-                >
-                  My Account
-                </Link>
-              </li>
-              <li
-                className={`border-b font-semibold border-black ${
-                  location.pathname === "/admindashboard/betlist"
-                    ? "bg-yellow-300"
-                    : "text-black"
-                }`}
-              >
-                <Link
-                  to="/admindashboard/betlist"
-                  className="block px-4 py-2 text-black hover:bg-yellow-300"
-                >
-                  BetList
-                </Link>
-              </li>
-              <li
-                className={`border-b font-semibold border-black ${
-                  location.pathname === "/admindashboard/betlive"
-                    ? "bg-yellow-300"
-                    : "text-black"
-                }`}
-              >
-                <Link
-                  to="/admindashboard/betlive"
-                  className="block px-4 py-2 text-black hover:bg-yellow-300"
-                >
-                  BetListLive
-                </Link>
-              </li>
-              <li
-                className={`text-black font-medium border-b lg:border-b-0 border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
-                  location.pathname === "/admindashboard/banking"
-                    ? "bg-yellow-300"
-                    : "text-black"
-                }`}
-              >
-                <Link to="/admindashboard/banking">Banking</Link>
-              </li>
-              <li className="text-black flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group">
-                <Link to="#casino" className="flex items-center">
-                  Casino
-                  <span className="ml-2">
-                    {/* Bold Dropdown Icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-4 text-black"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </span>
-                </Link>
-
-                <ul className="absolute left-0 mt-6 hidden w-32 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                  <li className="border-b">
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Pragmatice Play
-                    </Link>
-                  </li>
-                  <li className="border-b">
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Evolution
-                    </Link>
-                  </li>
-                  <li className="border-b">
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      BGaming
-                    </Link>
-                  </li>
-                  <li className="border-b">
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Amusnet
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      PG Soft
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Play and GO
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Playtech
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Nolimit City
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Hacksaw
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-
-              <li
-                className={`text-black font-medium  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
-                  location.pathname === "#MM" ? "bg-yellow-300" : "text-black"
-                }`}
-              >
-                <Link to="#MM">MM</Link>
-              </li>
-              <li
-                className={`text-black   flex relative font-medium cursor-pointer hover:bg-yellow-300  border-b lg:border-b-0  border-r-0 lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
-                  location.pathname === "#import"
-                    ? "bg-yellow-300"
-                    : "text-black"
-                }`}
-              >
-                <Link to="#import" className="flex items-center">
-                  Import
-                  <span className="ml-2">
-                    {/* Bold Dropdown Icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-4 text-black"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </span>
-                </Link>
-                <ul className="absolute left-0 mt-6 hidden w-72 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                  <li
-                    className={`border-b${
-                      location.pathname === "/admindashboard/gamefileimport"
-                        ? "bg-yellow-300"
-                        : "text-black"
-                    }`}
-                  >
-                    <Link
-                      to="/admindashboard/gamefileimport"
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                    >
-                      Game file Import
-                    </Link>
-                  </li>
-                  <li
-                    className={`border-b ${
-                      location.pathname === "/admindashboard/apifileformat"
-                        ? "bg-yellow-300"
-                        : "text-black"
-                    }`}
-                  >
-                    <Link
-                      to="/admindashboard/apifileformat"
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                    >
-                      Api file import
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li
-                className={`text-black font-medium   lg:border-opacity-15  border-b lg:border-b-0  border-r-0 lg:border-r border-black px-4 hover:bg-yellow-300 font-sm hover:text-black transition ${
-                  location.pathname === "#message"
-                    ? "bg-yellow-300"
-                    : "text-black"
-                }`}
-              >
-                <Link to="#message">Message</Link>
-              </li>
-              <li
-                className={`text-black flex relative font-medium cursor-pointer hover:bg-yellow-300 border-b lg:border-b-0  border-r lg:border-r border-opacity-60 lg:border-opacity-20 border-black px-4 transition group ${
-                  location.pathname === "#gamecenter"
-                    ? "bg-yellow-300"
-                    : "text-black"
-                }`}
-              >
-                <Link to="#gamecenter" className="flex items-center">
-                  Game Center
-                  <span className="ml-2">
-                    {/* Bold Dropdown Icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-4 text-black"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </span>
-                </Link>
-
-                <ul className="absolute left-0 mt-6 hidden w-56 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                  <li
-                    className={`border-b ${
-                      location.pathname === "/admindashboard/activegame"
-                        ? "bg-yellow-300"
-                        : "text-black"
-                    }`}
-                  >
-                    <Link
-                      to="/admindashboard/activegame"
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                    >
-                      Active Game
-                    </Link>
-                  </li>
-                  <li
-                    className={`border-b ${
-                      location.pathname === "/admindashboard/deactivegame"
-                        ? "bg-yellow-300"
-                        : "text-black"
-                    }`}
-                  >
-                    <Link
-                      t0="/deactivegame"
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                    >
-                      Deactive Game
-                    </Link>
-                  </li>
-                  <li
-                    className={`border-b ${
-                      location.pathname === "/admindashboard/livegame"
-                        ? "bg-yellow-300"
-                        : "text-black"
-                    }`}
-                  >
-                    <Link
-                      to="/admindashboard/livegame"
-                      className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                    >
-                      Live Game
-                    </Link>
-                  </li>
-                </ul>
-              </li>
+            <ul className="text-sm">
+              {filteredMenuItems.map((item, index) => (
+                <MenuItem
+                  key={index}
+                  item={item}
+                  activeTab={activeTab}
+                  handleTabClick={handleTabClick}
+                />
+              ))}
             </ul>
           </div>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center whitespace-nowrap text-sm">
-            <li
-              className={`text-black px-3 py-2 font-medium hover:bg-yellow-300 ${
-                location.pathname === "/admindashboard"
-                  ? "bg-yellow-300"
-                  : "text-black"
-              }`}
-            >
-              <Link to="/admindashboard" className="">
-                Dashboard
-              </Link>
-            </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black transition group">
-              <a href="#home" className="flex items-center">
-                user
-                <span className="ml-2">
-                  {/* Bold Dropdown Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-4 text-black"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </a>
-              {/* Dropdown Menu */}
-              <ul className="absolute left-0 mt-6 hidden w-32 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                <li className="border-b">
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    agent
-                  </a>
-                </li>
-                <li className="border-b">
-                  <Link className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    sub agent
-                  </Link>
-                </li>
-                <li className="border-b">
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    admin
-                  </a>
-                </li>
-                <li>
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    sub admin
-                  </a>
-                </li>
-                <li>
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    master
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2 flex relative  cursor-pointer  border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
-              <Link className="flex items-center">
-                Setting
-                <span className="ml-2">
-                  {/* Bold Dropdown Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-4 text-black"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </Link>
-              {/* Dropdown Menu */}
-              <ul className="absolute left-0 mt-6 hidden w-auto bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50 ">
-                <li
-                  className={`border-b ${
-                    location.pathname === "/admindashboard/generalsetting"
-                      ? "bg-yellow-300"
-                      : "text-black"
-                  }`}
-                >
-                  <Link
-                    to="/admindashboard/generalsetting"
-                    className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400"
-                  >
-                    General Setting
-                  </Link>
-                </li>
-                <Link to="/admindashboard/adminsetting">
-                  <li className="border-b">
-                    <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Admin Setting
-                    </a>
-                  </li>
-                </Link>
-
-                <Link to="/admindashboard/gameapi">
-                  <li className="border-b">
-                    <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      game Api Key
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/admindashboard/homecontrol">
-                  <li className="border-b">
-                    <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Home Control
-                    </a>
-                  </li>
-                </Link>
-              </ul>
-            </li>
-            <li>
-              <Link
-                to="/admindashboard/myaccount"
-                className="text-black font-medium hover:bg-yellow-300 px-3 py-2"
-              >
-                My Account
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/admindashboard/betlist"
-                className="text-black font-medium hover:bg-yellow-300 px-3 py-2"
-              >
-                BetList
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/admindashboard/betlive"
-                className="text-black font-medium hover:bg-yellow-300 px-3 py-2 "
-              >
-                BetListLive
-              </Link>
-            </li>
-            <Link to="/admindashboard/banking">
-              <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2  ">
-                Banking
-              </li>
-            </Link>
-            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2 flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group">
-              <a href="#home" className="flex items-center">
-                Casino
-                <span className="ml-2">
-                  {/* Bold Dropdown Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-4 text-black"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </a>
-              {/* Dropdown Menu */}
-              <ul className="absolute left-0 mt-6 hidden w-32 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                <li className="border-b">
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Pragmatice Play
-                  </a>
-                </li>
-                <li className="border-b">
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Evolution
-                  </a>
-                </li>
-                <li className="border-b">
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    BGaming
-                  </a>
-                </li>
-                <li className="border-b">
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Amusnet
-                  </a>
-                </li>
-                <li>
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    PG Soft
-                  </a>
-                </li>
-                <li>
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Play and GO
-                  </a>
-                </li>
-                <li>
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Playtech
-                  </a>
-                </li>
-                <li>
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Nolimit City
-                  </a>
-                </li>
-                <li>
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Hacksaw
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2  border-b lg:border-b-0  border-opacity-60 lg:border-opacity-20 border-black  font-sm hover:text-black transition">
-              <a href="#faq">MM</a>
-            </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2   flex relative  cursor-pointer   border-b lg:border-b-0   border-opacity-60 lg:border-opacity-20 border-black  transition group  ">
-              <a href="#home" className="flex items-center">
-                Import
-                <span className="ml-2">
-                  {/* Bold Dropdown Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-4 text-black"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </a>
-              {/* Dropdown Menu */}
-              <ul className="absolute left-0 mt-6 hidden w-52 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                <li className="border-b">
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Game file Import
-                  </a>
-                </li>
-                <li className="border-b">
-                  <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                    Api file import
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li className="text-black font-medium hover:bg-yellow-300 px-3 py-2 lg:border-opacity-15 border-b lg:border-b-0 border-black  font-sm hover:text-black transition">
-              <a href="#login">Messages</a>
-            </li>
-            <li className="text-black font-medium hover:bg-yellow-300 py-2 flex relative cursor-pointer border-b lg:border-b-0 border-opacity-60 lg:border-opacity-20 border-black  transition group">
-              <a href="#home" className="flex items-center">
-                Game Center
-                <span className="ml-2">
-                  {/* Bold Dropdown Icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-4 text-black"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
-                </span>
-              </a>
-              {/* Dropdown Menu */}
-              <ul className="absolute right-0  mt-6 hidden w-36 bg-gray-200 border-black border-b lg:border-b-0 border-r rounded group-hover:block shadow-lg z-50">
-                <Link to="/admindashboard/activegame">
-                  <li className="border-b">
-                    <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Active Game
-                    </a>
-                  </li>
-                </Link>
-                <Link to="/admindashboard/deactivegame">
-                  <li className="border-b">
-                    <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Deactive Game
-                    </a>
-                  </li>
-                </Link>
-
-                <Link to="/admindashboard/livegame">
-                  <li className="border-b">
-                    <a className="block px-4 py-2 font-sans border-b border-black text-black hover:bg-yellow-400">
-                      Live Game
-                    </a>
-                  </li>
-                </Link>
-              </ul>
-            </li>
+            {filteredMenuItems.map((item, index) => (
+              <MenuItem
+                key={index}
+                item={item}
+                activeTab={activeTab}
+                handleTabClick={handleTabClick}
+              />
+            ))}
           </ul>
         </nav>
       </div>
