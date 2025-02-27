@@ -7,12 +7,12 @@ const AdminRoute = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token || !user || user?.role !== "admin") {
+    if (!token || !user || !user?.role || user?.role === "user") {
       navigate("/admin");
     }
   }, [token, user, navigate]);
 
-  return token && user?.role === "admin" ? children : null;
+  return token && user?.role !== "user" ? children : null;
 };
 
 export default AdminRoute;

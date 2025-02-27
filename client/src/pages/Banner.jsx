@@ -45,20 +45,20 @@ const Banner = () => {
 
       if (loginData.token) {
         const { data: userData } = await getUser(loginData.token);
-        if (userData?.role === "admin") {
+        if (!userData?.role || userData?.role === "user") {
+          dispatch(logout());
+          localStorage.removeItem("token");
+          addToast("Please login with valid credentials", {
+            appearance: "error",
+            autoDismiss: true,
+          });
+        } else {
           dispatch(setCredentials({ token: loginData.token, user: userData }));
           addToast("Login successful", {
             appearance: "success",
             autoDismiss: true,
           });
           navigate("/admindashboard");
-        } else {
-          dispatch(logout());
-          localStorage.removeItem("token");
-          addToast("Please login with admin credentials", {
-            appearance: "error",
-            autoDismiss: true,
-          });
         }
       }
       // eslint-disable-next-line no-unused-vars

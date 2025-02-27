@@ -116,6 +116,23 @@ const usersApi = (usersCollection) => {
     }
   });
 
+  // update user balance
+  router.put("/balance/:id", async (req, res) => {
+    const { id } = req.params;
+    const transactionInfo = req.body;
+    const query = { _id: new ObjectId(id) };
+    const update = {
+      $inc: {
+        balance:
+          transactionInfo.type === "deposit"
+            ? transactionInfo.amount
+            : -transactionInfo.amount,
+      },
+    };
+    const result = await usersCollection.updateOne(query, update);
+    res.send(result);
+  });
+
   return router;
 };
 

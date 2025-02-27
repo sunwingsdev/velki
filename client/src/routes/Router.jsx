@@ -40,6 +40,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AdminRoute from "./AdminRoute";
 import DemoGame from "@/pages/home/DemoGame/DemoGame";
 import DashboardLayout from "@/layout/DashboardLayout";
+import UsersData from "@/pages/UsersData/UsersData";
 
 const router = createBrowserRouter([
   {
@@ -145,6 +146,7 @@ const router = createBrowserRouter([
       { path: "activegame", element: <ActiveGame /> },
       { path: "deactivegame", element: <DeactiveGame /> },
       { path: "livegame", element: <LiveGame /> },
+      { path: "usersdata/:role", element: <UsersData /> },
     ],
   },
   { path: "/admin", element: <Banner /> },

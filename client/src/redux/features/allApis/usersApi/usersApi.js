@@ -38,6 +38,15 @@ const usersApi = baseApi.injectEndpoints({
       query: () => "/users",
       providesTags: ["users"],
     }),
+
+    updateBalance: builder.mutation({
+      query: ({ userId, type, amount }) => ({
+        url: `/users/balance/${userId}`,
+        method: "PUT",
+        body: { type, amount },
+      }),
+      invalidatesTags: ["users"],
+    }),
   }),
 });
 
@@ -46,4 +55,5 @@ export const {
   useLoginUserMutation,
   useLazyGetAuthenticatedUserQuery,
   useGetUsersQuery,
+  useUpdateBalanceMutation,
 } = usersApi;
