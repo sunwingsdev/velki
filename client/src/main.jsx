@@ -6,6 +6,10 @@ import router from "./routes/Router.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <ToastProvider>
+        <RouterProvider router={router} />
+      </ToastProvider>
+    </Provider>
   </StrictMode>
 );

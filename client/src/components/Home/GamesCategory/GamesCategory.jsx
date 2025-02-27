@@ -11,7 +11,7 @@ const GamesCategory = ({ selectedGames }) => {
     { icon: BsFire, title: "Latest", value: "latest", route: "" },
     { icon: TbSortAZ, title: "A-Z", value: "a-z", route: "" },
   ];
-  
+
   return (
     <div className="flex px-1 sm:px-3">
       <div className="w-[20%] bg-white rounded-lg p-2 h-fit">
@@ -46,8 +46,12 @@ const GamesCategory = ({ selectedGames }) => {
         </h2>
         <div className="grid grid-cols-3 gap-2">
           {selectedGames.map((game) => (
-            <Link to='/login' key={game.image}>
-              <img className="rounded-xl w-full" src={game.image} alt="" />
+            <Link to={`/games/demo/${game.id}`} key={game.image}>
+              <img
+                className="rounded-xl w-full h-[100px] md:h-[150px]"
+                src={game.image}
+                alt=""
+              />
             </Link>
           ))}
         </div>

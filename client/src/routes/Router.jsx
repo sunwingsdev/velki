@@ -1,8 +1,25 @@
+import AccountStatementTabs from "@/components/AccountStatementTabs/AccountStatementTabs";
+import AccountSummary from "@/components/AccountSummary/AccountSummary";
+import AccountTabs from "@/components/AccountTabs/AccountTabs";
+import ActiveGame from "@/components/ActiveGame/ActiveGame";
+import AdminSetting from "@/components/Admin Setting/AdminSetting";
+import AdminDashboard from "@/components/AdminDashboard/AdminDashboard";
+import Banking from "@/components/Banking/Banking";
+import BetList from "@/components/BetList/BetList";
+import BetListLive from "@/components/BetListLive/BetListLive";
+import DeactiveGame from "@/components/DeactiveGame/DeactiveGame";
+import Game from "@/components/GameApi/Game";
+import HomeControl from "@/components/HomeControl/HomeControl";
+import LiveGame from "@/components/LiveGame/LiveGame";
+import MyAccount from "@/components/MyAccount/MyAccount";
+import Profile from "@/components/Profile/Profile";
+import Setting from "@/components/Setting/Setting";
 import MainLayout from "@/layout/MainLayout";
 import SportsLeaguesLayout from "@/layout/SportsLeaguesLayout";
 import AccountStatement from "@/pages/account-statement/AccountStatement";
 import ActivityLog from "@/pages/activity-log/ActivityLog";
 import BalanceOverview from "@/pages/balance-overview/BalanceOverview";
+import Banner from "@/pages/Banner";
 import BetsHistory from "@/pages/bets-history/BetsHistory";
 import CurrentBets from "@/pages/current-bets/CurrentBets";
 import Casino from "@/pages/home/Casino/Casino";
@@ -20,6 +37,10 @@ import MyProfile from "@/pages/my-profile/MyProfile";
 import ProfitAndLoss from "@/pages/profit-and-loss/ProfitAndLoss";
 import Settings from "@/pages/setting/Settings";
 import { createBrowserRouter } from "react-router-dom";
+import AdminRoute from "./AdminRoute";
+import DemoGame from "@/pages/home/DemoGame/DemoGame";
+import DashboardLayout from "@/layout/DashboardLayout";
+import UsersData from "@/pages/UsersData/UsersData";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "/games/demo/:id",
+        element: <DemoGame />,
       },
       {
         path: "/balance-overview",
@@ -101,8 +126,34 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // toriqul vai ekhan theke shuru korben evabe
-  // {path: "",element: <Home />},
+  {
+    path: "/admindashboard",
+    element: (
+      <AdminRoute>
+        <DashboardLayout />
+      </AdminRoute>
+    ),
+    children: [
+      { path: "", element: <AdminDashboard /> },
+      { path: "generalsetting", element: <Setting /> },
+      { path: "adminsetting", element: <AdminSetting /> },
+      { path: "gameapi", element: <Game /> },
+      { path: "homecontrol", element: <HomeControl /> },
+      { path: "myaccount", element: <MyAccount /> },
+      { path: "betlist", element: <BetList /> },
+      { path: "betlive", element: <BetListLive /> },
+      { path: "banking", element: <Banking /> },
+      { path: "activegame", element: <ActiveGame /> },
+      { path: "deactivegame", element: <DeactiveGame /> },
+      { path: "livegame", element: <LiveGame /> },
+      { path: "usersdata/:role", element: <UsersData /> },
+    ],
+  },
+  { path: "/admin", element: <Banner /> },
+  { path: "/accountsummary", element: <AccountSummary /> },
+  { path: "/accounttabs", element: <AccountTabs /> },
+  { path: "/accountstatementtabs", element: <AccountStatementTabs /> },
+  { path: "/profile", element: <Profile /> },
 ]);
 
 export default router;

@@ -45,7 +45,7 @@ const Navbar = () => {
           {token && user && (
             <div className="flex flex-row items-center gap-2">
               <div className="flex flex-col items-start">
-                <p>@{user?.user.username}</p>
+                <p>@{user?.username}</p>
                 <div className="flex flex-row items-center gap-1 text-sm">
                   <p>USD 0.00</p>
                   <p className="text-red-500">
@@ -59,7 +59,11 @@ const Navbar = () => {
 
           {!token && !user && (
             <div className="flex items-center justify-center gap-3">
-              <Link to="/signup">
+              <Link
+                target="_blank"
+                rel="noreferrer noopenner"
+                to="https://agentlist.oracletechnology.net"
+              >
                 <PrimaryButton icon={FiPlusCircle} background={""}>
                   SignUp
                 </PrimaryButton>

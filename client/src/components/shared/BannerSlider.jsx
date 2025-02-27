@@ -104,8 +104,14 @@ const BannerSlider = () => {
           <Marquee className="text-xs md:text-sm">
             <ul className="flex items-center justify-between gap-20 font-bold">
               <li className="ms-8">
-                Velki360.com আমাদের নতুন প্লাটর্ফম সাগতম খুব দ্রুত আমার প্লাটফম
-                সরাসরি খেলা লাইভ হবে। ধন্যবাদ{" "}
+                প্রিয় গ্রাহক আপনি যে ওয়েব সাইট ভিজিট করেছেন একটি বাজি লাইভ এর
+                মতো সেম টু সেম বেটিং ওয়েব সাইট এই সাইট টি সম্পূর্ন ডেভেলপমেন্ট
+                করেছেন ওরাকল টেকনোলেজী টিম আপনি যদি এই সাইট টি মতো সেম টু সেম
+                বেটিং ওয়েব সাইট ডেভেলপমেন্ট করে নিতে চান তাহলে আমাদের অফিসিয়াল
+                ওয়েব সাইট ভিজিট করে বিস্তারিত সব কিছু দেখে হুটস এপস অথবা
+                টেলিগ্রাম এ যোগাযোগ করুন । Our Official Website Link :
+                www.oraclesoft.org Our Sales Team Whats App Number :
+                +447414240705 Our Teligram Link : @oracletechnologyworld ধন্যবাদ
               </li>
             </ul>
           </Marquee>

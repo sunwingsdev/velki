@@ -21,6 +21,7 @@ import SpinLoader from "@/components/loaders/SpinLoader";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "@/redux/slices/authSlice";
 import { useToasts } from "react-toast-notifications";
+import image from "@/assets/login.png";
 
 const Login = () => {
   const [loginUser, { isLoading }] = useLoginUserMutation();
@@ -42,7 +43,6 @@ const Login = () => {
 
   // Watch form values
   const watchInputCode = watch("inputCode", ""); // Watch validation code input
-  const watchRememberMe = watch("rememberMe", false); // Watch 'Remember Me' checkbox
 
   // Function to generate a random 4-digit verification code
   const generateVerificationCode = () => {
@@ -85,9 +85,7 @@ const Login = () => {
   };
 
   // Check if login button should be enabled
-  const isLoginDisabled = !(
-    watchInputCode === verificationCode && watchRememberMe
-  );
+  const isLoginDisabled = !(watchInputCode === verificationCode);
 
   return (
     <div className="bg-white h-screen">
@@ -98,11 +96,7 @@ const Login = () => {
         />
         <p>Login</p>
       </div>
-      <img
-        className="h-2/5 w-full"
-        src="https://www.wickspin24.live/images/velki-bg-login.webp"
-        alt=""
-      />
+      <img className="h-2/5 w-full" src={image} alt="" />
       <div className="w-full sm:p-6 text-[#6F8898]">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2 className="uppercase text-3xl font-medium text-center text-black">
@@ -201,7 +195,7 @@ const Login = () => {
                 className="border-gray-300 rounded focus:ring-0"
               />
               <label htmlFor="rememberMe" className="text-lg">
-                Remember me
+                Terms and Conditions
               </label>
             </div>
           </div>
