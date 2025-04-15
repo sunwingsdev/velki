@@ -50,7 +50,7 @@ function HeadingNavbar() {
     },
     {
       label: "Setting",
-      path: null, // No path for parent menu with sub-items
+      path: null, 
       subItems: [
         {
           label: "General Setting",

@@ -3,13 +3,34 @@ import velkiLogo from "../../assets/velki.webp";
 import HeadingNavbar from "../HeadingNavbar/HeadingNavbar";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "@/redux/slices/authSlice";
+import { logout, setSingleUser } from "@/redux/slices/authSlice";
+import { useLazyGetUserByIdQuery } from "@/redux/features/allApis/usersApi/usersApi";
+import { useEffect } from "react";
 
 const CommonNavMenu = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user, singleUser } = useSelector((state) => state.auth);
+  const [getSingleUser] = useLazyGetUserByIdQuery(user?._id, {
+    skip: !user,
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { addToast } = useToasts();
+
+  // Fetch user balance on component mount
+  useEffect(() => {
+    if (!user) return;
+    getSingleUser(user?._id).then(({ data }) => {
+      dispatch(setSingleUser(data)); 
+    });
+  }, [user, dispatch, getSingleUser]);
+
+  const reloadBalance = () => {
+    if (!user) return;
+    getSingleUser(user?._id).then(({ data }) => {
+      dispatch(setSingleUser(data)); 
+    });
+  };
+
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem("token");
@@ -38,9 +59,14 @@ const CommonNavMenu = () => {
               <span className="text-yellow-500 text-xs lg:text-xl">
                 - Main Balance:
               </span>{" "}
-              <span className="text-gray-100 text-xs">USD 3,37,173.73</span>{" "}
+              <span className="text-gray-100 text-xs">
+                {singleUser?.balance} USD{" "}
+              </span>{" "}
             </p>
-            <button className="pl-1 mt-2 size-7 bg-gray-900 hover:bg-gray-300">
+            <button
+              onClick={reloadBalance}
+              className="pl-1 mt-2 size-7 bg-gray-900 hover:bg-gray-300"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="size-4 text-gray-100"

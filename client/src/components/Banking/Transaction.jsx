@@ -1,12 +1,27 @@
-import { useUpdateBalanceMutation } from "@/redux/features/allApis/usersApi/usersApi";
+import {
+  useLazyGetUserByIdQuery,
+  useUpdateBalanceMutation,
+} from "@/redux/features/allApis/usersApi/usersApi";
+import { setSingleUser } from "@/redux/slices/authSlice";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 
 const Transaction = ({ userId, availableBalance = 0 }) => {
+  const { user, singleUser } = useSelector((state) => state.auth);
   const [updateBalance] = useUpdateBalanceMutation();
+  const [getSingleUser] = useLazyGetUserByIdQuery();
   const [action, setAction] = useState("");
   const [amount, setAmount] = useState("");
   const { addToast } = useToasts();
+  const dispatch = useDispatch();
+
+  const reloadBalance = () => {
+    if (!user) return;
+    getSingleUser(user?._id).then(({ data }) => {
+      dispatch(setSingleUser(data)); // Update Redux store with the latest balance
+    });
+  };
 
   const handleTransaction = async () => {
     if (!action) {
@@ -30,8 +45,15 @@ const Transaction = ({ userId, availableBalance = 0 }) => {
       });
       return;
     }
-
+    if (action === "deposit" && singleUser?.balance < Number(amount)) {
+      addToast("Insufficient balance", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      return;
+    }
     const payload = {
+      parentId: user?._id,
       userId,
       amount: Number(amount),
       type: action,
@@ -51,6 +73,7 @@ const Transaction = ({ userId, availableBalance = 0 }) => {
           autoDismiss: true,
         }
       );
+      reloadBalance();
       setAmount("");
       setAction("");
     }
