@@ -41,6 +41,7 @@ import AdminRoute from "./AdminRoute";
 import DemoGame from "@/pages/home/DemoGame/DemoGame";
 import DashboardLayout from "@/layout/DashboardLayout";
 import UsersData from "@/pages/UsersData/UsersData";
+import AddGame from "@/pages/dashboard/AddGame";
 
 const router = createBrowserRouter([
   {
@@ -139,6 +140,10 @@ const router = createBrowserRouter([
       { path: "adminsetting", element: <AdminSetting /> },
       { path: "gameapi", element: <Game /> },
       { path: "homecontrol", element: <HomeControl /> },
+      {
+        path: "addgame",
+      element: <AddGame />,
+      },
       { path: "myaccount", element: <MyAccount /> },
       { path: "betlist", element: <BetList /> },
       { path: "betlive", element: <BetListLive /> },

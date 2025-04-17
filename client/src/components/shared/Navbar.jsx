@@ -7,11 +7,16 @@ import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 const Navbar = () => {
   const { token, user } = useSelector((state) => state.auth);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { data: homeControls } = useGetHomeControlsQuery();
 
+  const logoControl = homeControls?.find(
+    (control) => control.category === "logo" && control.isSelected
+  );
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -36,7 +41,9 @@ const Navbar = () => {
             <Link to="/">
               <img
                 className="w-[84px] h-[26px]"
-                src="https://www.wickspin24.live/images/velki-logo.webp"
+                src={`${import.meta.env.VITE_BASE_API_URL}${
+                  logoControl?.image
+                }`}
                 alt=""
               />
             </Link>

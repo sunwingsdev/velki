@@ -50,7 +50,7 @@ function HeadingNavbar() {
     },
     {
       label: "Setting",
-      path: null, // No path for parent menu with sub-items
+      path: null, 
       subItems: [
         {
           label: "General Setting",
@@ -65,6 +65,11 @@ function HeadingNavbar() {
         {
           label: "Game Api Key",
           path: "/admindashboard/gameapi",
+          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+        },
+        {
+          label: "Add Game Api Key",
+          path: "/admindashboard/addgame",
           roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
         },
         {

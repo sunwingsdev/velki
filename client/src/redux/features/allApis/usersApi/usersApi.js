@@ -40,12 +40,26 @@ const usersApi = baseApi.injectEndpoints({
     }),
 
     updateBalance: builder.mutation({
-      query: ({ userId, type, amount }) => ({
+      query: ({ parentId, userId, type, amount }) => ({
         url: `/users/balance/${userId}`,
         method: "PUT",
-        body: { type, amount },
+        body: { type, amount, parentId },
       }),
       invalidatesTags: ["users"],
+    }),
+
+    updateRemark: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/users/remark/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["users"],
+    }),
+
+    getUserById: builder.query({
+      query: (id) => `users/${id}`,
+      providesTags: ["users"],
     }),
   }),
 });
@@ -56,4 +70,6 @@ export const {
   useLazyGetAuthenticatedUserQuery,
   useGetUsersQuery,
   useUpdateBalanceMutation,
+  useLazyGetUserByIdQuery,
+  useUpdateRemarkMutation,
 } = usersApi;

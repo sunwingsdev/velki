@@ -8,18 +8,16 @@ import { HiOutlineMicrophone } from "react-icons/hi2";
 import Marquee from "react-fast-marquee";
 import { Button } from "@/components/ui/button";
 import { GrPrevious, GrNext } from "react-icons/gr";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 const BannerSlider = () => {
-  const bannerImages = [
-    { id: 1, image: "https://www.wickspin24.live/bannerImages/kv-evo.webp" },
-    { id: 2, image: "https://www.wickspin24.live/bannerImages/kv-spribe.webp" },
-    { id: 3, image: "https://www.wickspin24.live/bannerImages/kv-casino.webp" },
-    { id: 4, image: "https://www.wickspin24.live/bannerImages/kv-netent.webp" },
-    {
-      id: 5,
-      image: "https://www.wickspin24.live/bannerImages/kv-JDB-e-game.webp",
-    },
-  ];
+  const { data: homeControls } = useGetHomeControlsQuery();
+  const sliderHomeControls = homeControls?.filter(
+    (control) => control.category === "slider" && control.isSelected
+  );
+  const notice = homeControls?.find(
+    (control) => control.category === "notice" && control.isSelected
+  );
 
   const [api, setApi] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -43,38 +41,39 @@ const BannerSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (api) {
-        const nextIndex = (selectedIndex + 1) % bannerImages.length;
+        const nextIndex = (selectedIndex + 1) % sliderHomeControls?.length;
         api.scrollTo(nextIndex);
       }
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [api, selectedIndex, bannerImages.length]);
+  }, [api, selectedIndex, sliderHomeControls?.length]);
 
   const scrollTo = (index) => {
     api?.scrollTo(index);
   };
 
   const handleNext = () => {
-    const nextIndex = (selectedIndex + 1) % bannerImages.length;
+    const nextIndex = (selectedIndex + 1) % sliderHomeControls?.length;
     scrollTo(nextIndex);
   };
 
   const handlePrevious = () => {
     const prevIndex =
-      (selectedIndex - 1 + bannerImages.length) % bannerImages.length;
+      (selectedIndex - 1 + sliderHomeControls?.length) %
+      sliderHomeControls?.length;
     scrollTo(prevIndex);
   };
 
   return (
     <Carousel className="w-full" setApi={setApi}>
       <CarouselContent>
-        {bannerImages.map((image, index) => (
-          <CarouselItem key={image.id}>
+        {sliderHomeControls?.map((image, index) => (
+          <CarouselItem key={image._id}>
             <div className="">
               <img
                 className="w-full"
-                src={image.image}
+                src={`${import.meta.env.VITE_BASE_API_URL}${image.image}`}
                 alt={`Slide ${index + 1}`}
               />
             </div>
@@ -103,16 +102,7 @@ const BannerSlider = () => {
           <HiOutlineMicrophone className="text-xl md:text-2xl" />
           <Marquee className="text-xs md:text-sm">
             <ul className="flex items-center justify-between gap-20 font-bold">
-              <li className="ms-8">
-                প্রিয় গ্রাহক আপনি যে ওয়েব সাইট ভিজিট করেছেন একটি বাজি লাইভ এর
-                মতো সেম টু সেম বেটিং ওয়েব সাইট এই সাইট টি সম্পূর্ন ডেভেলপমেন্ট
-                করেছেন ওরাকল টেকনোলেজী টিম আপনি যদি এই সাইট টি মতো সেম টু সেম
-                বেটিং ওয়েব সাইট ডেভেলপমেন্ট করে নিতে চান তাহলে আমাদের অফিসিয়াল
-                ওয়েব সাইট ভিজিট করে বিস্তারিত সব কিছু দেখে হুটস এপস অথবা
-                টেলিগ্রাম এ যোগাযোগ করুন । Our Official Website Link :
-                www.oraclesoft.org Our Sales Team Whats App Number :
-                +447414240705 Our Teligram Link : @oracletechnologyworld ধন্যবাদ
-              </li>
+              <li className="ms-8">{notice?.title}</li>
             </ul>
           </Marquee>
         </div>
