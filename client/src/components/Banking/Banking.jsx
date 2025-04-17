@@ -1,6 +1,7 @@
 import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
 import Transaction from "./Transaction";
 import { useSelector } from "react-redux";
+import Remark from "./Remark";
 
 const Banking = () => {
   const { user } = useSelector((state) => state.auth);
@@ -9,9 +10,14 @@ const Banking = () => {
   const roleHierarchy = {
     admin: ["admin", "sub-admin", "master", "agent", "sub-agent", "user"],
     "sub-admin": ["master", "agent", "sub-agent", "user"],
+    master: ["sub-agent", "agent", "user"],
     agent: ["sub-agent", "user"],
     "sub-agent": ["user"],
   };
+
+  const filteredUsers = users?.filter(
+    (singleUser) => singleUser?.createdBy === user?._id
+  );
 
   return (
     <div className="bg-adminBackground min-h-screen">
@@ -71,8 +77,8 @@ const Banking = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {users?.length > 0 ? (
-              users
+            {filteredUsers?.length > 0 ? (
+              filteredUsers
                 .filter((row) => roleHierarchy[user.role]?.includes(row.role))
                 .map((row, index) => (
                   <tr key={index}>
@@ -92,6 +98,7 @@ const Banking = () => {
                     </td>
                     <td className="border-b px-4 py-2 text-sm text-gray-700">
                       <Transaction
+                        parentId={user?._id}
                         userId={row?._id}
                         availableBalance={row?.balance}
                       />
@@ -102,12 +109,8 @@ const Banking = () => {
                     <td className="border-b px-4 py-2 text-sm text-gray-700">
                       {row?.refPL}
                     </td>
-                    <td className="border-b px-4 py-2 text-sm text-gray-700">
-                      <input
-                        className="w-40 h-6 border border-black p-2 outline-none"
-                        type="text"
-                        placeholder="Remark"
-                      />
+                    <td className="px-4 py-2 text-sm text-gray-700 flex items-center justify-center gap-2">
+                      <Remark user={row} />
                     </td>
                     <td className="border-b px-4 py-2 text-sm text-gray-700">
                       <button className="w-10 h-8 bg-blue-500 text-white rounded-sm">

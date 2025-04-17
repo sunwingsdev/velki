@@ -6,8 +6,43 @@ import {
 } from "@/redux/features/allApis/usersApi/usersApi";
 import { useToasts } from "react-toast-notifications";
 import moment from "moment";
+import { useSelector } from "react-redux";
+
+const rolesOptions = [
+  {
+    label: "User",
+    value: "user",
+    roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+  },
+  {
+    label: "Sub Agent",
+    value: "sub-agent",
+    roles: ["agent", "master", "sub-admin", "admin"],
+  },
+  {
+    label: "Agent",
+    value: "agent",
+    roles: ["master", "sub-admin", "admin"],
+  },
+  {
+    label: "Master",
+    value: "master",
+    roles: ["sub-admin", "admin"],
+  },
+  {
+    label: "Sub Admin",
+    value: "sub-admin",
+    roles: ["admin"],
+  },
+  {
+    label: "Admin",
+    value: "admin",
+    roles: ["admin"],
+  },
+];
 
 const AdminDashboard = () => {
+  const { user } = useSelector((state) => state.auth);
   const { data: users } = useGetUsersQuery();
   const [addUser, { isLoading }] = useAddUserMutation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,9 +57,15 @@ const AdminDashboard = () => {
 
   const filteredUsers = users?.filter((user) => user.role !== "user");
 
+  // Filter subItems based on user role
+  const filteredRolesOptions = rolesOptions?.filter(
+    (role) => Array.isArray(role.roles) && role.roles.includes(user?.role)
+  );
+
   const onSubmit = async (data) => {
     // eslint-disable-next-line no-unused-vars
     const { confirmPassword, ...userInfo } = data;
+    userInfo.createdBy = user?._id;
     const result = await addUser(userInfo);
     if (result?.data?.insertedId) {
       addToast("User created successfully", {
@@ -387,12 +428,11 @@ const AdminDashboard = () => {
                 className="w-full border border-gray-300 rounded px-3 py-1 text-sm outline-none focus:ring-0 focus:border-yellow-400"
               >
                 <option value="">Select a role</option>
-                <option value="user">User</option>
-                <option value="agent">Agent</option>
-                <option value="sub-agent">Sub Agent</option>
-                <option value="admin">Admin</option>
-                <option value="sub-admin">Sub Admin</option>
-                <option value="master">Master</option>
+                {filteredRolesOptions?.map((role) => (
+                  <option key={role.value} value={role.value}>
+                    {role.label}
+                  </option>
+                ))}
               </select>
               {errors.role && (
                 <p className="text-red-500 text-sm">{errors.role.message}</p>

@@ -116,12 +116,36 @@ const usersApi = (usersCollection) => {
     }
   });
 
+  // get user by id
+  router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    const result = await usersCollection.findOne({ _id: new ObjectId(id) });
+    if (!result) return res.status(404).json({ error: "User not found" });
+    res.status(200).json(result);
+  });
+
+  // update user remark
+  router.put("/remark/:id", async (req, res) => {
+    const { id } = req.params;
+    const remarkInfo = req.body;
+    const query = { _id: new ObjectId(id) };
+    const updatedDoc = {
+      $set: {
+        remark: remarkInfo?.remark,
+      },
+    };
+    const result = await usersCollection.updateOne(query, updatedDoc, {
+      upsert: true,
+    });
+    res.send(result);
+  });
+
   // update user balance
   router.put("/balance/:id", async (req, res) => {
     const { id } = req.params;
     const transactionInfo = req.body;
     const query = { _id: new ObjectId(id) };
-    const update = {
+    const userUpdate = {
       $inc: {
         balance:
           transactionInfo.type === "deposit"
@@ -129,7 +153,19 @@ const usersApi = (usersCollection) => {
             : -transactionInfo.amount,
       },
     };
-    const result = await usersCollection.updateOne(query, update);
+    await usersCollection.updateOne(query, userUpdate);
+    const parentUpdate = {
+      $inc: {
+        balance:
+          transactionInfo.type === "deposit"
+            ? -transactionInfo.amount
+            : transactionInfo.amount,
+      },
+    };
+    const result = await usersCollection.updateOne(
+      { _id: new ObjectId(transactionInfo?.parentId) },
+      parentUpdate
+    );
     res.send(result);
   });
 

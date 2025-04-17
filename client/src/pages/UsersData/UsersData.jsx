@@ -1,13 +1,17 @@
 import { useGetUsersQuery } from "@/redux/features/allApis/usersApi/usersApi";
 import moment from "moment";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const UsersData = () => {
+  const { user } = useSelector((state) => state.auth);
   const { data: users } = useGetUsersQuery();
   const { role } = useParams();
 
-  const filteredUsers = users?.filter((user) =>
-    user?.role ? user?.role === role : "user" === role
+  const filteredUsers = users?.filter(
+    (singleUser) =>
+      (singleUser?.role ? singleUser?.role === role : "user" === role) &&
+      singleUser?.createdBy === user?._id
   );
 
   return (

@@ -8,6 +8,8 @@ const { upload, deleteFile } = require("./utils");
 
 // import API modules
 const usersApi = require("./apis/usersApi/usersApi");
+const gameApi = require("./apis/gameApi/gameApi");
+const homeControlApi = require("./apis/homeControlApi/homeControlApi");
 
 const port = process.env.PORT || 5000;
 
@@ -16,24 +18,17 @@ const corsConfig = {
   origin: [
     "http://localhost:5173",
     "http://localhost:5174",
-    "https://velki360.com",
-    "http://velki360.com",
-    "www.velki360.com",
-    "velki360.com",
-    "https://velki.oracleapi.net",
-    "http://velki.oracleapi.net",
-    "http://www.velki.oracleapi.net",
-    "www.velki.oracleapi.net",
-    "velki.oracleapi.net",
+    "https://bajiboss.com",
+    "http://bajiboss.com",
+    "http://www.bajiboss.com",
+    "www.bajiboss.com",
+    "bajiboss.com",
     "*",
   ],
   credentials: true,
   optionSuccessStatus: 200,
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
 };
-
-// Serve static files from the "uploads" directory
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // middlewares
 app.use(cors(corsConfig));
@@ -49,6 +44,9 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
+
+// Serve static files from the "uploads" directory
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes for image upload and delete
 app.post("/upload", upload.single("image"), (req, res) => {
@@ -84,9 +82,13 @@ async function run() {
 
     // Collections
     const usersCollection = client.db("baji").collection("users");
+    const gamesCollection = client.db("baji").collection("games");
+    const homeControlsCollection = client.db("baji").collection("homeControls");
 
     // API routes
     app.use("/users", usersApi(usersCollection));
+    app.use("/games", gameApi(gamesCollection));
+    app.use("/home-controls", homeControlApi(homeControlsCollection));
 
     await client.db("admin").command({ ping: 1 });
     console.log("Connected to MongoDB!!!✅");
