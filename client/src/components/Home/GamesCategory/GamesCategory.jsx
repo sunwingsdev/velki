@@ -15,7 +15,7 @@ const GamesCategory = ({ selectedGames }) => {
   return (
     <div className="flex px-1 sm:px-3">
       <div className="w-[20%] bg-white rounded-lg p-2 h-fit">
-        {subcategories.map(({ icon: Icon, title, value, route }) => (
+        {subcategories?.map(({ icon: Icon, title, value, route }) => (
           <>
             {route ? (
               <Link to={route} key={title}>
@@ -45,11 +45,11 @@ const GamesCategory = ({ selectedGames }) => {
           Games
         </h2>
         <div className="grid grid-cols-3 gap-2">
-          {selectedGames.map((game) => (
-            <Link to={`/games/demo/${game.id}`} key={game.image}>
+          {selectedGames?.map((game) => (
+            <Link to={`/games/demo/${game._id}`} key={game.image}>
               <img
                 className="rounded-xl w-full h-[100px] md:h-[150px]"
-                src={game.image}
+                src={`${import.meta.env.VITE_BASE_API_URL}${game.image}`}
                 alt=""
               />
             </Link>

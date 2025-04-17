@@ -1,14 +1,15 @@
 import { useToasts } from "react-toast-notifications";
-import velkiLogo from "../../assets/velki.webp";
 import HeadingNavbar from "../HeadingNavbar/HeadingNavbar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, setSingleUser } from "@/redux/slices/authSlice";
 import { useLazyGetUserByIdQuery } from "@/redux/features/allApis/usersApi/usersApi";
 import { useEffect } from "react";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 const CommonNavMenu = () => {
   const { user, singleUser } = useSelector((state) => state.auth);
+  const { data: homeControls } = useGetHomeControlsQuery();
   const [getSingleUser] = useLazyGetUserByIdQuery(user?._id, {
     skip: !user,
   });
@@ -16,18 +17,22 @@ const CommonNavMenu = () => {
   const navigate = useNavigate();
   const { addToast } = useToasts();
 
+  const logoControl = homeControls?.find(
+    (control) => control.category === "logo" && control.isSelected
+  );
+
   // Fetch user balance on component mount
   useEffect(() => {
     if (!user) return;
     getSingleUser(user?._id).then(({ data }) => {
-      dispatch(setSingleUser(data)); 
+      dispatch(setSingleUser(data));
     });
   }, [user, dispatch, getSingleUser]);
 
   const reloadBalance = () => {
     if (!user) return;
     getSingleUser(user?._id).then(({ data }) => {
-      dispatch(setSingleUser(data)); 
+      dispatch(setSingleUser(data));
     });
   };
 
@@ -45,13 +50,13 @@ const CommonNavMenu = () => {
     <div>
       <div>
         <div className="flex flex-row md:justify-between  lg:justify-between  bg-gray-800">
-          <div className="pt-4 pb-4">
+          <Link to="/" className="pt-4 pb-4">
             <img
-              src={velkiLogo}
+              src={`${import.meta.env.VITE_BASE_API_URL}${logoControl?.image}`}
               alt=""
               className="w-8 lg:w-full lg:max-w-full h-6 lg:h-12"
             />
-          </div>
+          </Link>
           <div className="md:pl-4 lg:pl-0 ml-1 md:ml-0 lg:ml-0 pt-0 lg:pt-6 flex flex-wrap lg:flex-row  justify-center items-center pr-2 space-x-2">
             <p className="text-white text-xs lg:text-xl">
               {user?.username}{" "}
