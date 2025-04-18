@@ -42,10 +42,13 @@ import DemoGame from "@/pages/home/DemoGame/DemoGame";
 import DashboardLayout from "@/layout/DashboardLayout";
 import UsersData from "@/pages/UsersData/UsersData";
 import AddGame from "@/pages/dashboard/AddGame";
+<<<<<<< HEAD
 import MotherAdminRoute from "./MotherAdminRoute";
 import ColorControl from "@/pages/dashboard/ColorControl";
 import MotherAdminLogin from "@/pages/MotherAdminLogin";
 import { NotFound } from "@/pages/NotFound";
+=======
+>>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
 
 const router = createBrowserRouter([
   {
@@ -143,6 +146,7 @@ const router = createBrowserRouter([
       { path: "generalsetting", element: <Setting /> },
       { path: "adminsetting", element: <AdminSetting /> },
       { path: "gameapi", element: <Game /> },
+<<<<<<< HEAD
       {
         path: "homecontrol",
         element: (
@@ -167,6 +171,12 @@ const router = createBrowserRouter([
             <AddGame />{" "}
           </MotherAdminRoute>
         ),
+=======
+      { path: "homecontrol", element: <HomeControl /> },
+      {
+        path: "addgame",
+      element: <AddGame />,
+>>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
       },
       { path: "myaccount", element: <MyAccount /> },
       { path: "betlist", element: <BetList /> },

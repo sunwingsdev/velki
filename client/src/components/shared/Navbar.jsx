@@ -8,20 +8,29 @@ import Sidebar from "../Sidebar";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
+<<<<<<< HEAD
 import { useGetColorControlsQuery } from "@/redux/features/allApis/colorControlApi/colorControlApi";
+=======
+>>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
 
 const Navbar = () => {
   const { token, user } = useSelector((state) => state.auth);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { data: homeControls } = useGetHomeControlsQuery();
+<<<<<<< HEAD
   const { data: colorControls } = useGetColorControlsQuery();
+=======
+>>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
 
   const logoControl = homeControls?.find(
     (control) => control.category === "logo" && control.isSelected
   );
+<<<<<<< HEAD
   const navbarColorControl = colorControls?.find(
     (colorControl) => colorControl.section === "home-navbar"
   );
+=======
+>>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };

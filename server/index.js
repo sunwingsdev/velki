@@ -8,10 +8,14 @@ const { upload, deleteFile } = require("./utils");
 
 // import API modules
 const usersApi = require("./apis/usersApi/usersApi");
+<<<<<<< HEAD
 const colorControlApi = require("./apis/colorControlApi/colorControlApi");
 const gameApi = require("./apis/gameApi/gameApi");
 const depositApi = require("./apis/depsoitsApi/depsoitsApi");
 const withdrawApi = require("./apis/withdrawApi/withdrawApi");
+=======
+const gameApi = require("./apis/gameApi/gameApi");
+>>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
 const homeControlApi = require("./apis/homeControlApi/homeControlApi");
 
 const port = process.env.PORT || 5000;
@@ -85,20 +89,28 @@ async function run() {
 
     // Collections
     const usersCollection = client.db("baji").collection("users");
+<<<<<<< HEAD
     const colorControlsCollection = client
       .db("baji")
       .collection("colorControls");
     const gamesCollection = client.db("baji").collection("games");
     const depositsCollection = client.db("baji").collection("deposits");
     const withdrawsCollection = client.db("baji").collection("withdraws");
+=======
+    const gamesCollection = client.db("baji").collection("games");
+>>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
     const homeControlsCollection = client.db("baji").collection("homeControls");
 
     // API routes
     app.use("/users", usersApi(usersCollection));
+<<<<<<< HEAD
     app.use("/color-controls", colorControlApi(colorControlsCollection));
     app.use("/games", gameApi(gamesCollection));
     app.use("/deposits", depositApi(depositsCollection, usersCollection));
     app.use("/withdraws", withdrawApi(withdrawsCollection, usersCollection));
+=======
+    app.use("/games", gameApi(gamesCollection));
+>>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
     app.use("/home-controls", homeControlApi(homeControlsCollection));
 
     await client.db("admin").command({ ping: 1 });
