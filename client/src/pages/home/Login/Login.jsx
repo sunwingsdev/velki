@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import {
   FaChevronLeft,
-  FaTimes,
   FaEye,
   FaEyeSlash,
   FaUser,

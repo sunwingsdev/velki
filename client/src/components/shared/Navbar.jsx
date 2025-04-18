@@ -7,11 +7,21 @@ import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
+import { useGetColorControlsQuery } from "@/redux/features/allApis/colorControlApi/colorControlApi";
 
 const Navbar = () => {
   const { token, user } = useSelector((state) => state.auth);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { data: homeControls } = useGetHomeControlsQuery();
+  const { data: colorControls } = useGetColorControlsQuery();
 
+  const logoControl = homeControls?.find(
+    (control) => control.category === "logo" && control.isSelected
+  );
+  const navbarColorControl = colorControls?.find(
+    (colorControl) => colorControl.section === "home-navbar"
+  );
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -25,7 +35,16 @@ const Navbar = () => {
             toggleSidebar={toggleSidebar}
           />
         )}
-        <div className="bg-[#ffc800] flex items-center justify-between px-3 py-2 ">
+        <div
+          style={{
+            backgroundColor: navbarColorControl?.backgroundColor,
+            color: navbarColorControl?.textColor,
+            fontSize: navbarColorControl?.fontSize
+              ? navbarColorControl?.fontSize
+              : "14px",
+          }}
+          className="flex items-center justify-between px-3 py-2 "
+        >
           <div className="flex flex-row items-center gap-2">
             {token && user && (
               <IoMenu
@@ -36,7 +55,9 @@ const Navbar = () => {
             <Link to="/">
               <img
                 className="w-[84px] h-[26px]"
-                src="https://www.wickspin24.live/images/velki-logo.webp"
+                src={`${import.meta.env.VITE_BASE_API_URL}${
+                  logoControl?.image
+                }`}
                 alt=""
               />
             </Link>

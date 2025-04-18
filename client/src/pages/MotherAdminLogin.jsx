@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import blogo from "../assets/bg.png";
-import llogo from "../assets/logImage.jpg";
 import { IoReload } from "react-icons/io5";
 import {
   useLazyGetAuthenticatedUserQuery,
@@ -10,10 +9,10 @@ import {
 } from "@/redux/features/allApis/usersApi/usersApi";
 import { useDispatch } from "react-redux";
 import { logout, setCredentials } from "@/redux/slices/authSlice";
-import { useGetHomeControlsQuery } from "../redux/features/allApis/homeControlApi/homeControlApi";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 import { useToasts } from "react-toast-notifications";
 
-const Banner = () => {
+const MotherAdminLogin = () => {
   const { data: homeControls } = useGetHomeControlsQuery();
   const {
     register,
@@ -28,8 +27,12 @@ const Banner = () => {
   const navigate = useNavigate();
   const { addToast } = useToasts();
 
-  const control = homeControls?.find(
+  const logoControl = homeControls?.find(
     (control) => control.category === "logo" && control.isSelected
+  );
+
+  const imageControl = homeControls?.find(
+    (control) => control.category === "motheradmin-image" && control.isSelected
   );
 
   function generateCode() {
@@ -50,7 +53,7 @@ const Banner = () => {
 
       if (loginData.token) {
         const { data: userData } = await getUser(loginData.token);
-        if (!userData?.role || userData?.role !== "admin") {
+        if (!userData?.role || userData?.role !== "mother-admin") {
           dispatch(logout());
           localStorage.removeItem("token");
           addToast("Please login with valid credentials", {
@@ -88,21 +91,23 @@ const Banner = () => {
         <div className="flex overflow-y-auto flex-col border border-white md:flex-row lg:flex-row bg-white shadow-xl ml-10 md:ml-60 lg:ml-96 rounded-lg overflow-hidden w-3/4 md:1/3 lg:w-2/5 h-[500px] lg:h-[450px] lg:max-w-4xl mx-4">
           <figure className="lg:w-1/2 w-full h-1/3 md:h-auto lg:h-auto">
             <img
-              src={llogo}
+              src={`${import.meta.env.VITE_BASE_API_URL}${imageControl?.image}`}
               alt="Album"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fit"
             />
           </figure>
           <div className="bg-black h-2/3 md:h-auto lg:h-auto pt-4 md:pt-32 lg:pt-24 lg:w-1/2 p-6">
             <div className="flex items-center justify-center">
               <img
-                src={`${import.meta.env.VITE_BASE_API_URL}${control?.image}`}
+                src={`${import.meta.env.VITE_BASE_API_URL}${
+                  logoControl?.image
+                }`}
                 alt="Logo"
                 className="w-40 h-14"
               />
             </div>
-            <h3 className="text-center text-[20px] font-bold mb-4">
-              Agent Login
+            <h3 className="text-center text-white text-[20px] font-bold mb-4">
+              Mother Admin Login
             </h3>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
               {/* Username Input */}
@@ -183,4 +188,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default MotherAdminLogin;

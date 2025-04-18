@@ -169,6 +169,47 @@ const usersApi = (usersCollection) => {
     res.send(result);
   });
 
+  // update profile
+  router.put("/profile/:id", async (req, res) => {
+    const { id } = req.params;
+    const profileInfo = req.body;
+    const query = { _id: new ObjectId(id) };
+    const selectedUser = await usersCollection.findOne(query);
+    if (!selectedUser) return res.status(404).json({ error: "User not found" });
+    if (profileInfo.password) {
+      profileInfo.password = await bcrypt.hash(profileInfo.password, 10);
+    } else {
+      delete profileInfo.password;
+    }
+    profileInfo.updatedAt = new Date();
+    const updatedDoc = {
+      $set: {
+        ...selectedUser,
+        ...profileInfo,
+      },
+    };
+    const result = await usersCollection.updateOne(query, updatedDoc, {
+      upsert: true,
+    });
+    res.send(result);
+  });
+
+  // add mother admin balance
+  router.put("/mother-admin-balance/:id", async (req, res) => {
+    const { id } = req.params;
+    const balanceInfo = req.body;
+    const query = { _id: new ObjectId(id) };
+    const updatedDoc = {
+      $inc: {
+        balance: balanceInfo.amount,
+      },
+    };
+    const result = await usersCollection.updateOne(query, updatedDoc, {
+      upsert: true,
+    });
+    res.send(result);
+  });
+
   return router;
 };
 

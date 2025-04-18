@@ -1,11 +1,22 @@
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 import { useSelector } from "react-redux";
+import { useGetDepositsQuery } from "@/redux/features/allApis/depositsApi/depositsApi";
+import { useGetWithdrawsQuery } from "@/redux/features/allApis/withdrawApi/withdrawApi";
 
 function HeadingNavbar() {
   const { user } = useSelector((state) => state.auth);
+  const { data: deposits } = useGetDepositsQuery();
+  const { data: withdraws } = useGetWithdrawsQuery();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("");
+
+  const pendingDeposits = deposits?.filter(
+    (deposit) => deposit.status === "pending"
+  );
+  const pendingWithdraws = withdraws?.filter(
+    (withdraw) => withdraw.status === "pending"
+  );
 
   const menuItems = [
     {
@@ -19,58 +30,80 @@ function HeadingNavbar() {
         {
           label: "User",
           path: "usersdata/user",
-          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+          roles: [
+            "sub-agent",
+            "agent",
+            "master",
+            "sub-admin",
+            "admin",
+            "mother-admin",
+          ],
         },
         {
           label: "Sub Agent",
           path: "usersdata/sub-agent",
-          roles: ["agent", "master", "sub-admin", "admin"],
+          roles: ["agent", "master", "sub-admin", "admin", "mother-admin"],
         },
         {
           label: "Agent",
           path: "usersdata/agent",
-          roles: ["master", "admin", "sub-admin"],
+          roles: ["master", "admin", "sub-admin", "mother-admin"],
         },
         {
           label: "Master",
           path: "usersdata/master",
-          roles: ["admin", "sub-admin"],
+          roles: ["admin", "sub-admin", "mother-admin"],
         },
         {
           label: "Sub Admin",
           path: "usersdata/subadmin",
-          roles: ["admin"],
+          roles: ["admin", "mother-admin"],
         },
         {
           label: "Admin",
           path: "usersdata/admin",
-          roles: ["admin"],
+          roles: ["mother-admin"],
         },
       ],
     },
     {
       label: "Setting",
-      path: null, 
+      path: null,
       subItems: [
         {
           label: "General Setting",
           path: "/admindashboard/generalsetting",
-          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+          roles: ["mother-admin"],
         },
         {
           label: "Admin Setting",
           path: "/admindashboard/adminsetting",
-          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+          roles: ["mother-admin"],
         },
         {
           label: "Game Api Key",
           path: "/admindashboard/gameapi",
-          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+          roles: ["mother-admin"],
         },
         {
           label: "Home Control",
           path: "/admindashboard/homecontrol",
-          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Color Control",
+          path: "/admindashboard/colorcontrol",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Add Game Api Key",
+          path: "/admindashboard/addgame",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Add Deposit Method",
+          path: "/admindashboard/depositmethod",
+          roles: ["mother-admin"],
         },
       ],
     },
@@ -94,27 +127,71 @@ function HeadingNavbar() {
       label: "Casino",
       path: null, // No path for parent menu with sub-items
       subItems: [
-        { label: "Pragmatic Play", path: "#pragmatic-play",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"], },
-        { label: "Evolution", path: "#evolution",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
-        { label: "BGaming", path: "#bgaming",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
-        { label: "Amusnet", path: "#amusnet",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
-        { label: "PG Soft", path: "#pg-soft",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
-        { label: "Play and GO", path: "#play-and-go",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
-        { label: "Playtech", path: "#playtech" ,roles: ["sub-agent", "agent", "master", "sub-admin", "admin"]},
-        { label: "Nolimit City", path: "#nolimit-city",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
-        { label: "Hacksaw", path: "#hacksaw",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        {
+          label: "Pragmatic Play",
+          path: "#pragmatic-play",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Evolution",
+          path: "#evolution",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "BGaming",
+          path: "#bgaming",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Amusnet",
+          path: "#amusnet",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "PG Soft",
+          path: "#pg-soft",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Play and GO",
+          path: "#play-and-go",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Playtech",
+          path: "#playtech",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Nolimit City",
+          path: "#nolimit-city",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Hacksaw",
+          path: "#hacksaw",
+          roles: ["mother-admin"],
+        },
       ],
     },
     {
-      label: "MM",
-      path: "#MM",
+      label: "Risk Management",
+      path: "#",
     },
     {
       label: "Import",
       path: null, // No path for parent menu with sub-items
       subItems: [
-        { label: "Game file Import", path: "/admindashboard/gamefileimport",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
-        { label: "Api file import", path: "/admindashboard/apifileformat",roles: ["sub-agent", "agent", "master", "sub-admin", "admin"] },
+        {
+          label: "Game file Import",
+          path: "#",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Api file import",
+          path: "#",
+          roles: ["mother-admin"],
+        },
       ],
     },
     {
@@ -125,9 +202,39 @@ function HeadingNavbar() {
       label: "Game Center",
       path: null, // No path for parent menu with sub-items
       subItems: [
-        { label: "Active Game", path: "/admindashboard/activegame" },
-        { label: "Deactive Game", path: "/admindashboard/deactivegame" },
-        { label: "Live Game", path: "/admindashboard/livegame" },
+        {
+          label: "Active Game",
+          path: "/admindashboard/activegame",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Deactive Game",
+          path: "/admindashboard/deactivegame",
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Live Game",
+          path: "/admindashboard/livegame",
+          roles: ["mother-admin"],
+        },
+      ],
+    },
+    {
+      label: "Self department",
+      path: null, // No path for parent menu with sub-items
+      subItems: [
+        {
+          label: "Deposits",
+          path: "/admindashboard/deposits",
+          pending: pendingDeposits?.length,
+          roles: ["mother-admin"],
+        },
+        {
+          label: "Withdraws",
+          path: "/admindashboard/withdraws",
+          pending: pendingWithdraws?.length,
+          roles: ["mother-admin"],
+        },
       ],
     },
   ];
@@ -138,15 +245,15 @@ function HeadingNavbar() {
   const allowedMenuForOthers = [
     "Dashboard",
     "User",
-    "Setting",
     "My Account",
     "BetList",
     "BetListLive",
     "Banking",
+    "Game Center",
   ];
 
   const filteredMenuItems = menuItems.filter((item) => {
-    if (user?.role === "admin") return true;
+    if (user?.role === "mother-admin") return true;
     return allowedMenuForOthers.includes(item.label);
   });
 

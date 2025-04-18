@@ -41,6 +41,11 @@ import AdminRoute from "./AdminRoute";
 import DemoGame from "@/pages/home/DemoGame/DemoGame";
 import DashboardLayout from "@/layout/DashboardLayout";
 import UsersData from "@/pages/UsersData/UsersData";
+import AddGame from "@/pages/dashboard/AddGame";
+import MotherAdminRoute from "./MotherAdminRoute";
+import ColorControl from "@/pages/dashboard/ColorControl";
+import MotherAdminLogin from "@/pages/MotherAdminLogin";
+import { NotFound } from "@/pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -138,7 +143,31 @@ const router = createBrowserRouter([
       { path: "generalsetting", element: <Setting /> },
       { path: "adminsetting", element: <AdminSetting /> },
       { path: "gameapi", element: <Game /> },
-      { path: "homecontrol", element: <HomeControl /> },
+      {
+        path: "homecontrol",
+        element: (
+          <MotherAdminRoute>
+            <HomeControl />
+          </MotherAdminRoute>
+        ),
+      },
+      {
+        path: "colorcontrol",
+        element: (
+          <MotherAdminRoute>
+            <ColorControl />
+          </MotherAdminRoute>
+        ),
+      },
+      {
+        path: "addgame",
+        element: (
+          <MotherAdminRoute>
+            {" "}
+            <AddGame />{" "}
+          </MotherAdminRoute>
+        ),
+      },
       { path: "myaccount", element: <MyAccount /> },
       { path: "betlist", element: <BetList /> },
       { path: "betlive", element: <BetListLive /> },
@@ -149,11 +178,13 @@ const router = createBrowserRouter([
       { path: "usersdata/:role", element: <UsersData /> },
     ],
   },
+  { path: "/motheradmin", element: <MotherAdminLogin /> },
   { path: "/admin", element: <Banner /> },
   { path: "/accountsummary", element: <AccountSummary /> },
   { path: "/accounttabs", element: <AccountTabs /> },
   { path: "/accountstatementtabs", element: <AccountStatementTabs /> },
   { path: "/profile", element: <Profile /> },
+  { path: "*", element: <NotFound /> },
 ]);
 
 export default router;

@@ -7,247 +7,64 @@ import liveIcon from "@/assets/icons/live.svg";
 import slotIcon from "@/assets/icons/slot.svg";
 import tableIcon from "@/assets/icons/table.svg";
 import endgameIcon from "@/assets/icons/endgame.svg";
-import aviator from "@/assets/games/aviator.png";
+import { useGetGamesQuery } from "@/redux/features/allApis/gameApi/gameApi";
+import { useGetColorControlsQuery } from "@/redux/features/allApis/colorControlApi/colorControlApi";
 
+const categories = [
+  {
+    title: "Sports",
+    image: sportsIcon,
+    value: "sports",
+    description: "Manage your sports preferences here.",
+  },
+  {
+    title: "Live",
+    image: liveIcon,
+    value: "live",
+    description: "Live streaming and events can be managed here.",
+  },
+  {
+    title: "Table",
+    image: tableIcon,
+    value: "table",
+    description: "Manage table games and settings here.",
+  },
+  {
+    title: "Slot",
+    image: slotIcon,
+    value: "slot",
+    description: "Slots games management and preferences.",
+  },
+  {
+    title: "Fishing",
+    image: fishingIcon,
+    value: "fishing",
+    description: "Manage fishing game settings.",
+  },
+  {
+    title: "Egame",
+    image: endgameIcon,
+    value: "egame",
+    description: "Egames management and preferences.",
+  },
+];
 export function SelectCategory() {
-  const categories = [
-    {
-      title: "Sports",
-      image: sportsIcon,
-      value: "sports",
-      description: "Manage your sports preferences here.",
-    },
-    {
-      title: "Live",
-      image: liveIcon,
-      value: "live",
-      description: "Live streaming and events can be managed here.",
-    },
-    {
-      title: "Table",
-      image: tableIcon,
-      value: "table",
-      description: "Manage table games and settings here.",
-    },
-    {
-      title: "Slot",
-      image: slotIcon,
-      value: "slot",
-      description: "Slots games management and preferences.",
-    },
-    {
-      title: "Fishing",
-      image: fishingIcon,
-      value: "fishing",
-      description: "Manage fishing game settings.",
-    },
-    {
-      title: "Egame",
-      image: endgameIcon,
-      value: "egame",
-      description: "Egames management and preferences.",
-    },
-  ];
-
-  const games = [
-    {
-      image: aviator,
-      category: "live",
-      id: 1,
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-205.png",
-      category: "sports",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-175.png",
-      category: "live",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-183.png",
-      category: "table",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-176.png",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/DRAGOONSOFT/DRAGOONSOFT-SLOT-075.webp",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/DRAGOONSOFT/DRAGOONSOFT-SLOT-017.png",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/DRAGOONSOFT/DRAGOONSOFT-SLOT-014.png",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/DRAGOONSOFT/DRAGOONSOFT-SLOT-076.webp",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/DRAGOONSOFT/DRAGOONSOFT-SLOT-010.png",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/DRAGOONSOFT/DRAGOONSOFT-SLOT-075.webp",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-176.png",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-006.png",
-      category: "fishing",
-    },
-
-    {
-      image: "https://www.wickspin24.live/gameIcon/JDB/JDB-FISH-010.webp",
-      category: "fishing",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-006.png",
-      category: "fishing",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/JDB/JDB-FISH-013.webp",
-      category: "fishing",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/JDB/JDB-FISH-011.webp",
-      category: "fishing",
-    },
-
-    {
-      image: "https://www.wickspin24.live/gameIcon/JDB/JDB-FISH-010.webp",
-      category: "fishing",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/JDB/JDB-FISH-011.webp",
-      category: "fishing",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/JDB/JDB-FISH-010.webp",
-      category: "fishing",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-011.png",
-      category: "egame",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-040.png",
-      category: "sports",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-176.png",
-      category: "live",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-007.png",
-      category: "table",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/KINGMAKER/KM-TABLE-041.webp",
-      category: "table",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/KINGMAKER/KM-TABLE-066.webp",
-      category: "table",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/KINGMAKER/KM-TABLE-060.webp",
-      category: "table",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/KINGMAKER/KM-TABLE-028.webp",
-      category: "table",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/KINGMAKER/KM-TABLE-015.webp",
-      category: "table",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/KINGMAKER/KM-TABLE-021.webp",
-      category: "table",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/KINGMAKER/KM-TABLE-032.webp",
-      category: "table",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/KINGMAKER/KM-TABLE-043.webp",
-      category: "table",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-018.png",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-025.png",
-      category: "fishing",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-133.png",
-      category: "live",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-168.jpg",
-      category: "live",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-169.jpg",
-      category: "live",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-018.png",
-      category: "live",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-010.png",
-      category: "live",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/PP/PP-LIVE-075.webp",
-      category: "live",
-    },
-    {
-      image: "https://www.wickspin24.live/gameIcon/PT/PT-LIVE-011.png",
-      category: "live",
-    },
-  ];
-
+  const { data: games } = useGetGamesQuery();
+  const { data: colorControls } = useGetColorControlsQuery();
+  const activatedGames = games?.filter((game) => game.isActive);
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [currentPage, setCurrentPage] = useState(0);
   const categoryContainerRef = useRef(null);
 
-  const filteredGames = games.filter(
+  const categorySelectControl = colorControls?.find(
+    (colorControl) => colorControl.section === "home-category-select"
+  );
+
+  const navbarColorControl = colorControls?.find(
+    (colorControl) => colorControl.section === "home-navbar"
+  );
+
+  const filteredGames = activatedGames?.filter(
     (game) => game.category === selectedCategory.value
   );
 
@@ -279,15 +96,30 @@ export function SelectCategory() {
     <div>
       <div className="relative">
         <div
+          style={{
+            backgroundColor: categorySelectControl?.backgroundColor,
+            color: categorySelectControl?.textColor,
+            fontSize: categorySelectControl?.fontSize
+              ? categorySelectControl?.fontSize
+              : "14px",
+          }}
           ref={categoryContainerRef}
-          className="flex justify-start px-2 pt-2 pb-8 gap-2 w-full overflow-x-auto h-auto bg-[#1b1f23] scroll-smooth"
+          className="flex justify-start px-2 pt-2 pb-8 gap-2 w-full overflow-x-auto no-scrollbar h-auto bg-[#333333] scroll-smooth"
         >
           {categories.map((category) => (
             <button
+              style={{
+                backgroundColor:
+                  selectedCategory.value === category.value ? "#1b1f23" : "",
+                color:
+                  selectedCategory.value === category.value
+                    ? navbarColorControl?.backgroundColor
+                    : "",
+              }}
               key={category.value}
-              className={`min-w-20 categoryButton min-h-20 p-4 text-lg flex flex-col items-center justify-center gap-1 text-[#828486] hover:text-[#f4c004] hover:bg-[#474a4e] rounded-lg ${
+              className={`min-w-20 categoryButton min-h-20 p-4 text-lg flex flex-col items-center justify-center gap-1 text-[#828486] hover:text-[#f4c004] hover:bg-[#1b1f23] rounded-lg ${
                 selectedCategory.value === category.value
-                  ? "bg-[#474a4e] text-[#f4c004]"
+                  ? "bg-[#1b1f23] text-[#f4c004]"
                   : ""
               }`}
               onClick={() => setSelectedCategory(category)}
@@ -307,7 +139,7 @@ export function SelectCategory() {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center p-2 bg-[#1b1f23] absolute w-full bottom-2">
+        <div className="flex justify-center p-2 absolute w-full bottom-2">
           {Array.from({
             length:
               Math.ceil(
@@ -316,9 +148,15 @@ export function SelectCategory() {
               ) || 0,
           }).map((_, index) => (
             <button
+              style={{
+                backgroundColor:
+                  currentPage === index
+                    ? navbarColorControl?.backgroundColor
+                    : "#474a4e",
+              }}
               key={index}
               className={`h-2 mx-1 rounded-full ${
-                currentPage === index ? "bg-[#f4c004] w-7" : "bg-[#828486] w-2"
+                currentPage === index ? "bg-[#f4c004] w-7" : "bg-black w-2"
               }`}
               onClick={() => scrollToPage(index)}
             ></button>

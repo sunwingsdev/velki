@@ -1,18 +1,20 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
-const AdminRoute = ({ children }) => {
+const PrivateRoute = ({ children }) => {
   const { token, user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token || !user || !user?.role || user?.role === "user") {
-      navigate("/motheradmin");
+    if (!token || !user) {
+      toast.error("Unauthorized access");
+      navigate("/");
     }
   }, [token, user, navigate]);
 
-  return token && user?.role !== "user" ? children : null;
+  return token ? children : null;
 };
 
-export default AdminRoute;
+export default PrivateRoute;
