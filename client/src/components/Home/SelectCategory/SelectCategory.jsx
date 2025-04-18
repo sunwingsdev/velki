@@ -8,10 +8,7 @@ import slotIcon from "@/assets/icons/slot.svg";
 import tableIcon from "@/assets/icons/table.svg";
 import endgameIcon from "@/assets/icons/endgame.svg";
 import { useGetGamesQuery } from "@/redux/features/allApis/gameApi/gameApi";
-<<<<<<< HEAD
 import { useGetColorControlsQuery } from "@/redux/features/allApis/colorControlApi/colorControlApi";
-=======
->>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
 
 const categories = [
   {
@@ -53,56 +50,12 @@ const categories = [
 ];
 export function SelectCategory() {
   const { data: games } = useGetGamesQuery();
-<<<<<<< HEAD
   const { data: colorControls } = useGetColorControlsQuery();
   const activatedGames = games?.filter((game) => game.isActive);
-=======
-  const activatedGames = games?.filter((game) => game.isActive);
-  const categories = [
-    {
-      title: "Sports",
-      image: sportsIcon,
-      value: "sports",
-      description: "Manage your sports preferences here.",
-    },
-    {
-      title: "Live",
-      image: liveIcon,
-      value: "live",
-      description: "Live streaming and events can be managed here.",
-    },
-    {
-      title: "Table",
-      image: tableIcon,
-      value: "table",
-      description: "Manage table games and settings here.",
-    },
-    {
-      title: "Slot",
-      image: slotIcon,
-      value: "slot",
-      description: "Slots games management and preferences.",
-    },
-    {
-      title: "Fishing",
-      image: fishingIcon,
-      value: "fishing",
-      description: "Manage fishing game settings.",
-    },
-    {
-      title: "Egame",
-      image: endgameIcon,
-      value: "egame",
-      description: "Egames management and preferences.",
-    },
-  ];
-
->>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [currentPage, setCurrentPage] = useState(0);
   const categoryContainerRef = useRef(null);
 
-<<<<<<< HEAD
   const categorySelectControl = colorControls?.find(
     (colorControl) => colorControl.section === "home-category-select"
   );
@@ -111,8 +64,6 @@ export function SelectCategory() {
     (colorControl) => colorControl.section === "home-navbar"
   );
 
-=======
->>>>>>> de8524db8b301f42261442a39e8fa0617d5eebb0
   const filteredGames = activatedGames?.filter(
     (game) => game.category === selectedCategory.value
   );
