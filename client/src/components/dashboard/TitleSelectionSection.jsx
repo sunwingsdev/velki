@@ -4,8 +4,8 @@ import {
   useGetHomeControlsQuery,
   useUpdateSelectionMutation,
 } from "../../redux/features/allApis/homeControlApi/homeControlApi";
-import toast from "react-hot-toast";
 import DeleteModal from "../modals/DeleteModal";
+import { useToasts } from "react-toast-notifications";
 
 const TitleSelectionSection = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +13,7 @@ const TitleSelectionSection = () => {
   const { data: homeControls, refetch } = useGetHomeControlsQuery();
   const [updateSelection] = useUpdateSelectionMutation();
   const [deleteHomeControl] = useDeleteHomeControlMutation();
+  const { addToast } = useToasts();
 
   const noticeHomeControls = homeControls?.filter(
     (control) => control.category === "title"
@@ -22,7 +23,10 @@ const TitleSelectionSection = () => {
     try {
       const result = await updateSelection(id);
       if (result.data) {
-        toast.success(result.data.message);
+        addToast(result.data.message, {
+          appearance: "success",
+          autoDismiss: true,
+        });
       }
       refetch();
     } catch (error) {
@@ -40,13 +44,19 @@ const TitleSelectionSection = () => {
       try {
         const result = await deleteHomeControl(item?._id);
         if (result.data.deletedCount > 0) {
-          toast.success("Title deleted successfully");
+          addToast("Title deleted successfully", {
+            appearance: "success",
+            autoDismiss: true,
+          });
           refetch();
           setIsOpen(false);
         }
         // eslint-disable-next-line no-unused-vars
       } catch (error) {
-        toast.error("Failed to delete title");
+        addToast("Failed to delete title", {
+          appearance: "error",
+          autoDismiss: true,
+        });
       }
     } catch (error) {
       console.log(error);

@@ -1,16 +1,22 @@
+import { uploadImage } from "@/hooks/files";
+import { useAddHomeControlMutation } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 import { useState } from "react";
-import { IoAdd } from "react-icons/io5";
-import { useAddHomeControlMutation } from "../../redux/features/allApis/homeControlApi/homeControlApi";
-import { uploadImage } from "../../hooks/files";
-import SpinLoader from "../loaders/SpinLoader";
 import { useToasts } from "react-toast-notifications";
+import SpinLoader from "../loaders/SpinLoader";
+import { IoAdd } from "react-icons/io5";
 
-const TitleUploadForm = ({ closeModal }) => {
+const DynamicSingleUploadForm = ({
+  closeModal,
+  page,
+  section,
+  category,
+  successMsg,
+  errorMsg,
+}) => {
   const [addHomeControl] = useAddHomeControlMutation();
   const [loading, setLoading] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [imageFile, setImageFile] = useState(null);
-  const [title, setTitle] = useState("");
   const { addToast } = useToasts();
 
   const handleFileChange = (e) => {
@@ -33,16 +39,15 @@ const TitleUploadForm = ({ closeModal }) => {
         setLoading(true);
         const { filePath } = await uploadImage(imageFile);
         if (filePath) {
-          const titleInfo = {
-            title,
-            page: "home",
-            section: "meta",
-            category: "title",
+          const logoInfo = {
+            page: page,
+            section: section,
+            category: category,
             image: filePath,
           };
-          const result = await addHomeControl(titleInfo);
+          const result = await addHomeControl(logoInfo);
           if (result.data.insertedId) {
-            addToast("Title added successfully", {
+            addToast(successMsg, {
               appearance: "success",
               autoDismiss: true,
             });
@@ -55,7 +60,7 @@ const TitleUploadForm = ({ closeModal }) => {
         // eslint-disable-next-line no-unused-vars
       } catch (error) {
         setLoading(false);
-        addToast("Failed to add title", {
+        addToast(errorMsg, {
           appearance: "error",
           autoDismiss: true,
         });
@@ -71,28 +76,11 @@ const TitleUploadForm = ({ closeModal }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="space-y-2 ">
-        {/* Input Field with Label */}
-        <div>
-          <label
-            htmlFor="title"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Notice Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter title"
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ff3f3f]"
-          />
-        </div>
         <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
           {!imagePreview ? (
             <label className="w-full h-full flex flex-col items-center text-center cursor-pointer relative">
               <div className="text-gray-400 text-4xl mb-4">📤</div>
-              <p className="text-gray-500">Select a image to upload (32*32)</p>
+              <p className="text-gray-500">Select a image to upload</p>
               <p className="text-gray-400 text-sm">or drag and drop it here</p>
               <input
                 type="file"
@@ -138,4 +126,4 @@ const TitleUploadForm = ({ closeModal }) => {
   );
 };
 
-export default TitleUploadForm;
+export default DynamicSingleUploadForm;

@@ -2,8 +2,10 @@ import PageHeader from "@/components/shared/PageHeader";
 import { useState } from "react";
 import { FaCalendarWeek } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 const AccountStatement = () => {
+  const { singleUser } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleModalOpen = () => setIsModalOpen(true);
@@ -53,13 +55,13 @@ const AccountStatement = () => {
               <tr>
                 <td className="py-2 font-bold">Balance</td>
                 <td className="py-2 text-right font-bold text-[#6f88a5]">
-                  0.00
+                  {singleUser?.balance.toFixed(2) || "0.00"}
                 </td>
               </tr>
               <tr>
                 <td className="py-2 font-bold">Remark</td>
                 <td className="py-2 text-right text-[#6f88a5] font-bold">
-                  Opening balance
+                  {singleUser?.remark || "--"}
                 </td>
               </tr>
             </tbody>

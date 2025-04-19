@@ -42,6 +42,10 @@ const homeControlApi = (homeControlCollection) => {
         "notice",
         "title",
         "motheradmin-image",
+        "banner-all",
+        "banner-cricket",
+        "banner-soccer",
+        "banner-tennis",
       ];
       const toggleCategories = ["slider", "favorite", "featured-game"];
 

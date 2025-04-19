@@ -55,6 +55,7 @@ export function SelectCategory() {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [currentPage, setCurrentPage] = useState(0);
   const categoryContainerRef = useRef(null);
+  const [isHoveredValue, setIsHoveredValue] = useState("");
 
   const categorySelectControl = colorControls?.find(
     (colorControl) => colorControl.section === "home-category-select"
@@ -110,27 +111,35 @@ export function SelectCategory() {
             <button
               style={{
                 backgroundColor:
-                  selectedCategory.value === category.value ? "#1b1f23" : "",
+                  category.value === isHoveredValue
+                    ? categorySelectControl?.hoverBackgroundColor
+                    : category.value === selectedCategory.value
+                    ? categorySelectControl?.hoverBackgroundColor
+                    : "transparent",
                 color:
-                  selectedCategory.value === category.value
-                    ? navbarColorControl?.backgroundColor
-                    : "",
+                  category.value === isHoveredValue
+                    ? categorySelectControl?.hoverTextColor
+                    : category.value === selectedCategory.value
+                    ? categorySelectControl?.hoverTextColor
+                    : categorySelectControl?.textColor,
               }}
+              onMouseEnter={() => setIsHoveredValue(category.value)}
+              onMouseLeave={() => setIsHoveredValue("")}
               key={category.value}
-              className={`min-w-20 categoryButton min-h-20 p-4 text-lg flex flex-col items-center justify-center gap-1 text-[#828486] hover:text-[#f4c004] hover:bg-[#1b1f23] rounded-lg ${
-                selectedCategory.value === category.value
-                  ? "bg-[#1b1f23] text-[#f4c004]"
-                  : ""
-              }`}
+              className={`min-w-20 categoryButton min-h-20 p-4 text-lg flex flex-col items-center justify-center gap-1 text-[#828486] hover:text-[#f4c004] hover:bg-[#1b1f23] rounded-lg `}
               onClick={() => setSelectedCategory(category)}
             >
               <p className="font-medium"> {category.title}</p>
               <img
-                className={`w-12 ${
-                  selectedCategory.value === category.value
-                    ? "filter-yellow"
-                    : ""
-                }`}
+                style={{
+                  filter:
+                    category.value === isHoveredValue
+                      ? "brightness(0) invert(0)"
+                      : category.value === selectedCategory.value
+                      ? "brightness(0) invert(0)"
+                      : "none",
+                }}
+                className="w-12"
                 src={category.image}
                 alt=""
               />

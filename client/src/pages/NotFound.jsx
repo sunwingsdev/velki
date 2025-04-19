@@ -11,7 +11,7 @@ export function NotFound() {
           <div className="text-center">
             <h1 className="text-4xl font-bold text-gray-800">Lost in Space</h1>
             <p className="mt-2 text-lg text-gray-600">
-              You've reached the edge of the universe.
+              You&apos;ve reached the edge of the universe.
             </p>
             <div className="mt-6 animate-bounce">
               <svg

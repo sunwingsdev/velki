@@ -1,22 +1,10 @@
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 import { useSelector } from "react-redux";
-import { useGetDepositsQuery } from "@/redux/features/allApis/depositsApi/depositsApi";
-import { useGetWithdrawsQuery } from "@/redux/features/allApis/withdrawApi/withdrawApi";
-
 function HeadingNavbar() {
   const { user } = useSelector((state) => state.auth);
-  const { data: deposits } = useGetDepositsQuery();
-  const { data: withdraws } = useGetWithdrawsQuery();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("");
-
-  const pendingDeposits = deposits?.filter(
-    (deposit) => deposit.status === "pending"
-  );
-  const pendingWithdraws = withdraws?.filter(
-    (withdraw) => withdraw.status === "pending"
-  );
 
   const menuItems = [
     {
@@ -224,24 +212,24 @@ function HeadingNavbar() {
         },
       ],
     },
-    {
-      label: "Self department",
-      path: null, // No path for parent menu with sub-items
-      subItems: [
-        {
-          label: "Deposits",
-          path: "/admindashboard/deposits",
-          pending: pendingDeposits?.length,
-          roles: ["mother-admin"],
-        },
-        {
-          label: "Withdraws",
-          path: "/admindashboard/withdraws",
-          pending: pendingWithdraws?.length,
-          roles: ["mother-admin"],
-        },
-      ],
-    },
+    // {
+    //   label: "Self department",
+    //   path: null, // No path for parent menu with sub-items
+    //   subItems: [
+    //     {
+    //       label: "Deposits",
+    //       path: "/admindashboard/deposits",
+    //       pending: pendingDeposits?.length,
+    //       roles: ["mother-admin"],
+    //     },
+    //     {
+    //       label: "Withdraws",
+    //       path: "/admindashboard/withdraws",
+    //       pending: pendingWithdraws?.length,
+    //       roles: ["mother-admin"],
+    //     },
+    //   ],
+    // },
   ];
   const handleTabClick = (tab) => {
     setActiveTab(tab);

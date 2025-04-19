@@ -1,7 +1,9 @@
 import PageHeader from "@/components/shared/PageHeader";
 import { MdOutlineArrowRight } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const BalanceOverview = () => {
+  const {  singleUser } = useSelector((state) => state.auth);
   return (
     <div className="mt-16">
       <PageHeader title="Balance Overview" />
@@ -12,7 +14,9 @@ const BalanceOverview = () => {
             <p className="text-sm font-bold bg-yellow-500 py-0.5 px-1 rounded-lg">
               USD
             </p>
-            <p className="text-2xl font-bold text-white leading-3">10.00</p>
+            <p className="text-2xl font-bold text-white leading-3">
+              {singleUser?.balance?.toFixed(2) || "0.00"}
+            </p>
           </div>
         </div>
 
@@ -54,7 +58,7 @@ const BalanceOverview = () => {
             <p className="text-sm text-gray-700">
               Remark{" "}
               <span className="font-semibold text-gray-700 ml-5">
-                Fund Transfer
+                {singleUser?.remark || "No Remark"}
               </span>
             </p>
           </div>
