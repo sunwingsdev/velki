@@ -13,6 +13,14 @@ const ColorControl = () => {
           title={"Home page navbar color control"}
           section={"home-navbar"}
         />
+        <DynamicCompColor
+          title={"Home page banner title color control"}
+          section={"home-banner-title"}
+        />
+        <DynamicCompColor
+          title={"Home page banner count color control"}
+          section={"home-banner-count"}
+        />
         {/* <DynamicCompColor
           title={"Home page category select color control"}
           section={"home-category-select"}

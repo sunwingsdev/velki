@@ -1,6 +1,8 @@
 const express = require("express");
 const { ObjectId } = require("mongodb");
 
+/*************  ✨ Windsurf Command ⭐  *************/
+/*******  db44cd3e-5fcc-46be-bce5-46b5d166eebd  *******/
 const homeControlApi = (homeControlCollection) => {
   const router = express.Router();
 

@@ -1,7 +1,11 @@
 import CasinoGamesCategory from "@/components/Home/CasinoGamesCategory/CasinoGamesCategory";
+import { useGetGamesQuery } from "@/redux/features/allApis/gameApi/gameApi";
 import { useState, useRef, useEffect } from "react";
 
 const Casino = () => {
+  const { data: games } = useGetGamesQuery();
+  const activatedGames = games?.filter((game) => game.isActive);
+
   const categories = [
     {
       title: "Popular",
@@ -41,64 +45,6 @@ const Casino = () => {
     },
   ];
 
-  const games = [
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-205.png",
-      category: "sports",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-175.png",
-      category: "live",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-183.png",
-      category: "table",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-176.png",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-006.png",
-      category: "fishing",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-011.png",
-      category: "egame",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-040.png",
-      category: "sports",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-176.png",
-      category: "live",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-007.png",
-      category: "table",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-018.png",
-      category: "slot",
-    },
-    {
-      image:
-        "https://www.wickspin24.live/gameIcon/EVOLUTION/EVOLUTION-LIVE-025.png",
-      category: "fishing",
-    },
-  ];
-
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [currentPage, setCurrentPage] = useState(0);
   const categoryContainerRef = useRef(null);
@@ -106,8 +52,10 @@ const Casino = () => {
   // Adjusted filtering logic
   const filteredGames =
     selectedCategory.value === "popular"
-      ? games // Show all games if "Popular" is selected
-      : games.filter((game) => game.category === selectedCategory.value);
+      ? activatedGames // Show all games if "Popular" is selected
+      : activatedGames?.filter(
+          (game) => game.category === selectedCategory.value
+        );
 
   const handleScroll = () => {
     const scrollLeft = categoryContainerRef.current.scrollLeft;
@@ -133,12 +81,15 @@ const Casino = () => {
     setCurrentPage(page);
   };
 
+  console.log("Selected Category:", selectedCategory);
+  console.log("Filtered Games:", filteredGames);
+
   return (
     <div>
       <div className="relative mt-14">
         <div
           ref={categoryContainerRef}
-          className="flex justify-start px-2 pt-2 pb-8 gap-2 w-full overflow-x-auto h-auto"
+          className="flex justify-start px-2 pt-2 pb-8 gap-2 w-full overflow-x-auto no-scrollbar h-auto"
           style={{
             backgroundImage:
               "url('https://www.wickspin24.live/images/nav_bg.png')",

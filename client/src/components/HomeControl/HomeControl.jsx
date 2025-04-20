@@ -25,6 +25,24 @@ const HomeControl = () => {
         <TitleUploadSection />
         <TitleSelectionSection />
         <DynamicSingleUpload
+          title={"Upload Login Image"}
+          page="login"
+          section="banner"
+          category="login-image"
+          successMsg={"Image added successfully"}
+          errorMsg={"Failed to upload image"}
+        />
+        <DynamicSingleSelection category={"login-image"} />
+        <DynamicSingleUpload
+          title={"Upload Mother Admin Image"}
+          page="mother-admin"
+          section="banner"
+          category="motheradmin-image"
+          successMsg={"Image added successfully"}
+          errorMsg={"Failed to upload image"}
+        />
+        <DynamicSingleSelection category={"motheradmin-image"} />
+        <DynamicSingleUpload
           title={"Upload Banner All"}
           page="home"
           section="banner"

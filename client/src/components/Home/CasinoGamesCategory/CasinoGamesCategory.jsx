@@ -45,12 +45,12 @@ const CasinoGamesCategory = ({ selectedGames }) => {
           Games
         </h2>
         <div className="grid grid-cols-3 gap-2">
-          {selectedGames.map((game) => (
-            <Link to='/login' key={game.image}>
+          {selectedGames?.map((game) => (
+            <Link to={`/games/demo/${game._id}`} key={game.image}>
               <img
                 className="rounded-tr-xl rounded-bl-xl w-full"
-                src={game.image}
-                alt=""
+                src={`${import.meta.env.VITE_BASE_API_URL}${game.image}`}
+                alt={game.title}
               />
             </Link>
           ))}

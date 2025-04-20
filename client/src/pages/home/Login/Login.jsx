@@ -20,16 +20,21 @@ import SpinLoader from "@/components/loaders/SpinLoader";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "@/redux/slices/authSlice";
 import { useToasts } from "react-toast-notifications";
-import image from "@/assets/login.png";
+import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 const Login = () => {
   const [loginUser, { isLoading }] = useLoginUserMutation();
   const [getUser] = useLazyGetAuthenticatedUserQuery();
   const dispatch = useDispatch();
+  const { data: homeControls } = useGetHomeControlsQuery();
   const [showPassword, setShowPassword] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
   const navigate = useNavigate();
   const { addToast } = useToasts();
+
+  const imageControl = homeControls?.find(
+    (control) => control.category === "login-image" && control.isSelected
+  );
 
   // React Hook Form setup
   const {
@@ -95,7 +100,11 @@ const Login = () => {
         />
         <p>Login</p>
       </div>
-      <img className="h-2/5 w-full" src={image} alt="" />
+      <img
+        className="h-2/5 w-full"
+        src={`${import.meta.env.VITE_BASE_API_URL}${imageControl?.image}`}
+        alt=""
+      />
       <div className="w-full sm:p-6 text-[#6F8898]">
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2 className="uppercase text-3xl font-medium text-center text-black">

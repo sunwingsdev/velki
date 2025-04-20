@@ -12,7 +12,6 @@ const SportsCategory = () => {
   const { data: colorControls } = useGetColorControlsQuery();
   const [isHoveredValue, setIsHoveredValue] = useState("");
 
-
   const subcategorySelectControl = colorControls?.find(
     (colorControl) => colorControl.section === "home-subcategory-select"
   );
@@ -30,6 +29,13 @@ const SportsCategory = () => {
     (control) => control.category === "banner-tennis" && control.isSelected
   );
 
+  const bannerTitleControl = colorControls?.find(
+    (control) => control.section === "home-banner-title"
+  );
+  const bannerCountControl = colorControls?.find(
+    (control) => control.section === "home-banner-count"
+  );
+
   const subcategories = [
     { icon: BsStopwatchFill, title: "In-Play", value: "in-play", route: "" },
     { icon: FaCalendarDay, title: "Today", value: "today", route: "" },
@@ -45,6 +51,33 @@ const SportsCategory = () => {
     leagues: { all: 14, cricket: 8, soccer: 5, tennis: 3 },
     parlay: { all: 9, cricket: 7, soccer: 3, tennis: 2 },
   };
+
+  const banners = [
+    {
+      image: allControl?.image,
+      title: "All",
+      value: "all",
+      count: counts["in-play"].all,
+    },
+    {
+      image: cricketControl?.image,
+      title: "Cricket",
+      value: "cricket",
+      count: counts["in-play"].cricket,
+    },
+    {
+      image: soccerControl?.image,
+      title: "Soccer",
+      value: "soccer",
+      count: counts["in-play"].soccer,
+    },
+    {
+      image: tennisControl?.image,
+      title: "Tennis",
+      value: "tennis",
+      count: counts["in-play"].tennis,
+    },
+  ];
 
   return (
     <div className="flex gap-1 sm:gap-2 px-1 sm:px-3">
@@ -76,7 +109,7 @@ const SportsCategory = () => {
                         ? subcategorySelectControl?.hoverBackgroundColor
                         : "transparent",
                     color:
-                      value === selectedCategory || isHoveredValue
+                      value === selectedCategory || value === isHoveredValue
                         ? subcategorySelectControl?.hoverTextColor
                         : subcategorySelectControl?.textColor,
                   }}
@@ -101,13 +134,13 @@ const SportsCategory = () => {
                 className={`flex flex-col gap-2 p-2 sm:p-3 justify-center items-center rounded-lg cursor-pointer transition-all duration-200 `}
                 style={{
                   backgroundColor:
-                  value === isHoveredValue
-                    ? subcategorySelectControl?.hoverBackgroundColor
-                    : value === selectedCategory
-                    ? subcategorySelectControl?.hoverBackgroundColor
-                    : "transparent",
+                    value === isHoveredValue
+                      ? subcategorySelectControl?.hoverBackgroundColor
+                      : value === selectedCategory
+                      ? subcategorySelectControl?.hoverBackgroundColor
+                      : "transparent",
                   color:
-                    value === selectedCategory || isHoveredValue
+                    value === selectedCategory || value === isHoveredValue
                       ? subcategorySelectControl?.hoverTextColor
                       : subcategorySelectControl?.textColor,
                 }}
@@ -133,65 +166,38 @@ const SportsCategory = () => {
 
       {/* Sports Banners */}
       <div className="w-[80%] flex flex-col gap-3">
-        {/* All Sports Banner */}
-        <div className="relative rounded-lg overflow-hidden">
-          <img
-            className="rounded-lg h-[120px] w-full object-cover"
-            src={`${import.meta.env.VITE_BASE_API_URL}${allControl?.image}`}
-            alt="All"
-          />
-          <div className="absolute top-5 left-7">
-            <h2 className="text-xl font-bold text-[#5A5E62]">All</h2>
-            <h2 className="text-5xl font-bold text-[#0A0A0A]">
-              {counts[selectedCategory].all}
-            </h2>
+        {banners?.map((banner) => (
+          <div
+            key={banner.value}
+            className="relative rounded-lg overflow-hidden"
+          >
+            <img
+              className="rounded-lg h-[120px] w-full object-cover"
+              src={`${import.meta.env.VITE_BASE_API_URL}${banner.image}`}
+              alt={banner.title}
+            />
+            <div className="absolute top-5 left-7">
+              <h2
+                style={{
+                  color: bannerTitleControl?.textColor,
+                  fontSize: bannerTitleControl?.fontSize,
+                }}
+                className="text-xl font-bold text-[#5A5E62]"
+              >
+                {banner.title}
+              </h2>
+              <h2
+                style={{
+                  color: bannerCountControl?.textColor,
+                  fontSize: bannerCountControl?.fontSize,
+                }}
+                className="text-5xl font-bold text-[#0A0A0A]"
+              >
+                {banner.count}
+              </h2>
+            </div>
           </div>
-        </div>
-
-        {/* Cricket Banner */}
-        <div className="relative rounded-lg overflow-hidden">
-          <img
-            className="rounded-lg h-[120px] w-full object-cover"
-            src={`${import.meta.env.VITE_BASE_API_URL}${cricketControl?.image}`}
-            alt="Cricket"
-          />
-          <div className="absolute top-5 left-7">
-            <h2 className="text-xl font-bold text-[#5A5E62]">Cricket</h2>
-            <h2 className="text-5xl font-bold text-[#0A0A0A]">
-              {counts[selectedCategory].cricket}
-            </h2>
-          </div>
-        </div>
-
-        {/* Soccer Banner */}
-        <div className="relative rounded-lg overflow-hidden">
-          <img
-            className="rounded-lg h-[120px] w-full object-cover"
-            src={`${import.meta.env.VITE_BASE_API_URL}${soccerControl?.image}`}
-            alt="Soccer"
-          />
-          <div className="absolute top-5 left-7">
-            <h2 className="text-xl font-bold text-[#5A5E62]">Soccer</h2>
-            <h2 className="text-5xl font-bold text-[#0A0A0A]">
-              {counts[selectedCategory].soccer}
-            </h2>
-          </div>
-        </div>
-
-        {/* Tennis Banner */}
-        <div className="relative rounded-lg overflow-hidden">
-          <img
-            className="rounded-lg h-[120px] w-full object-cover"
-            src={`${import.meta.env.VITE_BASE_API_URL}${tennisControl?.image}`}
-            alt="Tennis"
-          />
-          <div className="absolute top-5 left-7">
-            <h2 className="text-xl font-bold text-[#5A5E62]">Tennis</h2>
-            <h2 className="text-5xl font-bold text-[#0A0A0A]">
-              {counts[selectedCategory].tennis}
-            </h2>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
