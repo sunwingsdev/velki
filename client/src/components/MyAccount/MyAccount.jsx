@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import AccountTabs from "../AccountTabs/AccountTabs";
 
 const MyAccount = () => {
+  const { singleUser } = useSelector((state) => state.auth);
   return (
     <div className="bg-adminBackground min-h-screen flex flex-col md:flex-row lg:flex-row place-items-baseline space-y-4 md:space-y-0 lg:space-y-0 space-x-0 md:space-x-4 px-4">
       <AccountTabs></AccountTabs>
@@ -14,9 +16,11 @@ const MyAccount = () => {
               Your Balance
             </p>
             <h3>
-              <span className="font-sans">USD</span>
+              <span className="font-sans me-2">USD</span>
               <span className="text-blue-600 text-xl font-bold sm:text-3xl ">
-                (1,776.57)
+                $ (
+                {singleUser?.balance ? singleUser?.balance?.toFixed(2) : "0.00"}
+                )
               </span>
             </h3>
           </div>

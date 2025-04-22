@@ -9,7 +9,7 @@ import {
 import { FaShield } from "react-icons/fa6";
 import { IoIosUnlock } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,12 +17,13 @@ import {
   useLoginUserMutation,
 } from "@/redux/features/allApis/usersApi/usersApi";
 import SpinLoader from "@/components/loaders/SpinLoader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "@/redux/slices/authSlice";
 import { useToasts } from "react-toast-notifications";
 import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
 
 const Login = () => {
+  const { user } = useSelector((state) => state.auth);
   const [loginUser, { isLoading }] = useLoginUserMutation();
   const [getUser] = useLazyGetAuthenticatedUserQuery();
   const dispatch = useDispatch();
@@ -31,6 +32,15 @@ const Login = () => {
   const [verificationCode, setVerificationCode] = useState("");
   const navigate = useNavigate();
   const { addToast } = useToasts();
+
+  const toastShownRef = useRef(false);
+
+  useEffect(() => {
+    if (user && !toastShownRef.current) {
+      toastShownRef.current = true;
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const imageControl = homeControls?.find(
     (control) => control.category === "login-image" && control.isSelected
@@ -46,7 +56,7 @@ const Login = () => {
   } = useForm();
 
   // Watch form values
-  const watchInputCode = watch("inputCode", ""); // Watch validation code input
+  const watchInputCode = watch("inputCode", "");
 
   // Function to generate a random 4-digit verification code
   const generateVerificationCode = () => {
@@ -67,6 +77,16 @@ const Login = () => {
 
       if (loginData.token) {
         const { data: userData } = await getUser(loginData.token);
+        if (
+          userData?.status === "banned" ||
+          userData?.status === "deactivated"
+        ) {
+          addToast("Your account is deactivated or banned", {
+            appearance: "error",
+            autoDismiss: true,
+          });
+          return;
+        }
         dispatch(setCredentials({ token: loginData.token, user: userData }));
         addToast("Login successful", {
           appearance: "success",

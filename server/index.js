@@ -10,9 +10,8 @@ const { upload, deleteFile } = require("./utils");
 const usersApi = require("./apis/usersApi/usersApi");
 const colorControlApi = require("./apis/colorControlApi/colorControlApi");
 const gameApi = require("./apis/gameApi/gameApi");
-const depositApi = require("./apis/depsoitsApi/depsoitsApi");
-const withdrawApi = require("./apis/withdrawApi/withdrawApi");
 const homeControlApi = require("./apis/homeControlApi/homeControlApi");
+const bankingApi = require("./apis/bankingApi/bankingApi");
 
 const port = process.env.PORT || 5000;
 
@@ -21,11 +20,11 @@ const corsConfig = {
   origin: [
     "http://localhost:5173",
     "http://localhost:5174",
-    "https://bajiboss.com",
-    "http://bajiboss.com",
-    "http://www.bajiboss.com",
-    "www.bajiboss.com",
-    "bajiboss.com",
+    `https://${process.env.SITE_URL}`,
+    `http://${process.env.SITE_URL}`,
+    `http://www.${process.env.SITE_URL}`,
+    `www.${process.env.SITE_URL}`,
+    `${process.env.SITE_URL}`,
     "*",
   ],
   credentials: true,
@@ -89,17 +88,15 @@ async function run() {
       .db("baji")
       .collection("colorControls");
     const gamesCollection = client.db("baji").collection("games");
-    const depositsCollection = client.db("baji").collection("deposits");
-    const withdrawsCollection = client.db("baji").collection("withdraws");
     const homeControlsCollection = client.db("baji").collection("homeControls");
+    const bankingCollection = client.db("baji").collection("banking");
 
     // API routes
-    app.use("/users", usersApi(usersCollection));
+    app.use("/users", usersApi(usersCollection, bankingCollection));
     app.use("/color-controls", colorControlApi(colorControlsCollection));
     app.use("/games", gameApi(gamesCollection));
-    app.use("/deposits", depositApi(depositsCollection, usersCollection));
-    app.use("/withdraws", withdrawApi(withdrawsCollection, usersCollection));
     app.use("/home-controls", homeControlApi(homeControlsCollection));
+    app.use("/banking", bankingApi(bankingCollection));
 
     await client.db("admin").command({ ping: 1 });
     console.log("Connected to MongoDB!!!✅");

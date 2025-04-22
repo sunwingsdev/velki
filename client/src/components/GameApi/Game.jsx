@@ -18,7 +18,7 @@ const fieldNames = [
 
 const Game = () => {
   return (
-    <div className="min-h-screen bg-adminBackground">
+    <div className=" bg-adminBackground">
       <h1 className="text-center pt-1 text-2xl font-bold bg-yellow-500 h-10">
         Game Api Key Set
       </h1>

@@ -43,7 +43,7 @@ const usersApi = baseApi.injectEndpoints({
       query: ({ parentId, userId, type, amount }) => ({
         url: `/users/balance/${userId}`,
         method: "PUT",
-        body: { type, amount, parentId },
+        body: { type, amount, parentId, userId },
       }),
       invalidatesTags: ["users"],
     }),
@@ -79,6 +79,15 @@ const usersApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["users"],
     }),
+
+    updateActiveStatus: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/users/active-status/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+      invalidatesTags: ["users"],
+    }),
   }),
 });
 
@@ -92,4 +101,5 @@ export const {
   useUpdateRemarkMutation,
   useUpdateProileMutation,
   useAddMotherAdminBalanceMutation,
+  useUpdateActiveStatusMutation,
 } = usersApi;

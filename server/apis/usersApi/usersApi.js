@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { ObjectId } = require("mongodb");
 
-const usersApi = (usersCollection) => {
+const usersApi = (usersCollection, bankingCollection) => {
   const router = express.Router();
   const jwtSecret = process.env.JWT_SECRET;
 
@@ -47,6 +47,7 @@ const usersApi = (usersCollection) => {
       const hashedPassword = await bcrypt.hash(userInfo?.password, 10);
       const newUser = { ...userInfo, password: hashedPassword };
       newUser.createdAt = new Date();
+      newUser.status = "activated";
       const result = await usersCollection.insertOne(newUser);
       res.status(201).send(result);
     } catch (error) {
@@ -143,6 +144,7 @@ const usersApi = (usersCollection) => {
   // update user balance
   router.put("/balance/:id", async (req, res) => {
     const { id } = req.params;
+    console.log(req.body);
     const transactionInfo = req.body;
     const query = { _id: new ObjectId(id) };
     const userUpdate = {
@@ -162,6 +164,8 @@ const usersApi = (usersCollection) => {
             : transactionInfo.amount,
       },
     };
+    transactionInfo.createdAt = new Date();
+    await bankingCollection.insertOne(transactionInfo);
     const result = await usersCollection.updateOne(
       { _id: new ObjectId(transactionInfo?.parentId) },
       parentUpdate
@@ -202,6 +206,22 @@ const usersApi = (usersCollection) => {
     const updatedDoc = {
       $inc: {
         balance: balanceInfo.amount,
+      },
+    };
+    const result = await usersCollection.updateOne(query, updatedDoc, {
+      upsert: true,
+    });
+    res.send(result);
+  });
+
+  // update user active status
+  router.put("/active-status/:id", async (req, res) => {
+    const { id } = req.params;
+    const statusInfo = req.body;
+    const query = { _id: new ObjectId(id) };
+    const updatedDoc = {
+      $set: {
+        status: statusInfo.status,
       },
     };
     const result = await usersCollection.updateOne(query, updatedDoc, {

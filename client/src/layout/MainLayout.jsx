@@ -1,11 +1,15 @@
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 import { useGetHomeControlsQuery } from "@/redux/features/allApis/homeControlApi/homeControlApi";
+import { checkUserStatus } from "@/redux/slices/authSlice";
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
   const { data: homeControls } = useGetHomeControlsQuery();
+  const dispatch = useDispatch();
 
   const title = homeControls?.find(
     (control) => control.category === "title" && control.isSelected
@@ -13,6 +17,10 @@ const MainLayout = () => {
   const logoControl = homeControls?.find(
     (control) => control.category === "logo" && control.isSelected
   );
+
+  useEffect(() => {
+    dispatch(checkUserStatus());
+  }, [dispatch]);
   return (
     <div
       style={{

@@ -8,7 +8,6 @@ import Banking from "@/components/Banking/Banking";
 import BetList from "@/components/BetList/BetList";
 import BetListLive from "@/components/BetListLive/BetListLive";
 import DeactiveGame from "@/components/DeactiveGame/DeactiveGame";
-import Game from "@/components/GameApi/Game";
 import HomeControl from "@/components/HomeControl/HomeControl";
 import LiveGame from "@/components/LiveGame/LiveGame";
 import MyAccount from "@/components/MyAccount/MyAccount";
@@ -46,6 +45,7 @@ import MotherAdminRoute from "./MotherAdminRoute";
 import ColorControl from "@/pages/dashboard/ColorControl";
 import MotherAdminLogin from "@/pages/MotherAdminLogin";
 import { NotFound } from "@/pages/NotFound";
+import GameApi from "@/components/GameApi/GameApi";
 
 const router = createBrowserRouter([
   {
@@ -142,7 +142,7 @@ const router = createBrowserRouter([
       { path: "", element: <AdminDashboard /> },
       { path: "generalsetting", element: <Setting /> },
       { path: "adminsetting", element: <AdminSetting /> },
-      { path: "gameapi", element: <Game /> },
+      { path: "gameapi", element: <GameApi /> },
       {
         path: "homecontrol",
         element: (

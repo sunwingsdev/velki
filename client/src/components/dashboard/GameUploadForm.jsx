@@ -10,7 +10,8 @@ const GameUploadForm = ({ closeModal }) => {
   const [loading, setLoading] = useState(false);
   const [gameTitle, setGameTitle] = useState("");
   const [gameLink, setGameLink] = useState("");
-  const [gameCategory, setGameCategory] = useState(""); // New state for category
+  const [gameCategory, setGameCategory] = useState("");
+  const [gameApi, setGameApi] = useState(""); // New state for api
   const [gamePreview, setGamePreview] = useState(null);
   const [gameFile, setGameFile] = useState(null);
   const { addToast } = useToasts();
@@ -21,6 +22,24 @@ const GameUploadForm = ({ closeModal }) => {
     { value: "slot", label: "Slot" },
     { value: "fishing", label: "Fishing" },
     { value: "egame", label: "E-Game" },
+  ];
+
+  const apis = [
+    { value: "sports-live-tv", label: "Sports Live TV" },
+    { value: "kambi", label: "Kambi" },
+    { value: "playtech", label: "Playtech" },
+    { value: "betfair", label: "BetFair" },
+    { value: "pinnacle", label: "Pinnacle" },
+    { value: "etent", label: "Etent" },
+    { value: "sports-radar", label: "Sports Radar" },
+    { value: "softswiss", label: "SoftSwiss" },
+    { value: "saba-sports", label: "SABA Sports" },
+    { value: "odds-jam", label: "Odds Jam" },
+    { value: "evolution", label: "Evolution" },
+    { value: "obs", label: "OBS" },
+    { value: "bet-construct", label: "Bet Construct" },
+    { value: "pragmatic-play", label: "Pragmatic Play" },
+    { value: "in-sports", label: "In Sports" },
   ];
 
   const handleFileChange = (e) => {
@@ -38,8 +57,8 @@ const GameUploadForm = ({ closeModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!gameTitle || !gameFile || !gameCategory) {
-      addToast("Game title, category and image are required", {
+    if (!gameTitle || !gameFile || !gameCategory || !gameApi) {
+      addToast("Game title, category, api and image are required", {
         appearance: "error",
         autoDismiss: true,
       });
@@ -53,7 +72,8 @@ const GameUploadForm = ({ closeModal }) => {
         const gameInfo = {
           title: gameTitle,
           link: gameLink,
-          category: gameCategory, // Include category in the game info
+          category: gameCategory,
+          api: gameApi,
           image: filePath,
         };
         const result = await addGame(gameInfo);
@@ -65,6 +85,7 @@ const GameUploadForm = ({ closeModal }) => {
           setGameTitle("");
           setGameLink("");
           setGameCategory("");
+          setGameApi("");
           setGamePreview(null);
           setGameFile(null);
           closeModal();
@@ -136,6 +157,24 @@ const GameUploadForm = ({ closeModal }) => {
             ))}
           </select>
         </div>
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">
+            Game API
+          </label>
+          <select
+            value={gameApi}
+            onChange={(e) => setGameApi(e.target.value)}
+            className="border border-gray-300 p-2 w-full rounded-md focus:ring focus:ring-gray-200"
+            required
+          >
+            <option value="">Select an API</option>
+            {apis.map((api) => (
+              <option key={api.value} value={api.value}>
+                {api.label}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="border-2 border-dashed border-gray-300 rounded-md p-6 flex flex-col items-center justify-center">
           {!gamePreview ? (
             <label className="w-full h-full flex flex-col items-center text-center cursor-pointer relative">
@@ -172,7 +211,9 @@ const GameUploadForm = ({ closeModal }) => {
         </div>
         <div className="flex justify-center">
           <button
-            disabled={loading || !gameFile || !gameTitle || !gameCategory}
+            disabled={
+              loading || !gameFile || !gameTitle || !gameCategory || !gameApi
+            }
             type="submit"
             className="bg-gray-800 px-4 py-2 text-white font-medium rounded-md hover:bg-red-600 flex items-center gap-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >

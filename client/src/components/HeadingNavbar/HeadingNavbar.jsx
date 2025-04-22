@@ -73,11 +73,7 @@ function HeadingNavbar() {
           path: "/admindashboard/gameapi",
           roles: ["mother-admin"],
         },
-        {
-          label: "Add Game Api Key",
-          path: "/admindashboard/addgame",
-          roles: ["sub-agent", "agent", "master", "sub-admin", "admin"],
-        },
+
         {
           label: "Home Control",
           path: "/admindashboard/homecontrol",
@@ -93,11 +89,11 @@ function HeadingNavbar() {
           path: "/admindashboard/addgame",
           roles: ["mother-admin"],
         },
-        {
-          label: "Add Deposit Method",
-          path: "/admindashboard/depositmethod",
-          roles: ["mother-admin"],
-        },
+        // {
+        //   label: "Add Deposit Method",
+        //   path: "/admindashboard/depositmethod",
+        //   roles: ["mother-admin"],
+        // },
       ],
     },
     {
@@ -242,7 +238,6 @@ function HeadingNavbar() {
     "BetList",
     "BetListLive",
     "Banking",
-    "Game Center",
   ];
 
   const filteredMenuItems = menuItems.filter((item) => {

@@ -53,6 +53,16 @@ const MotherAdminLogin = () => {
 
       if (loginData.token) {
         const { data: userData } = await getUser(loginData.token);
+        if (
+          userData?.status === "banned" ||
+          userData?.status === "deactivated"
+        ) {
+          addToast("Your account is deactivated or banned", {
+            appearance: "error",
+            autoDismiss: true,
+          });
+          return;
+        }
         if (!userData?.role || userData?.role !== "mother-admin") {
           dispatch(logout());
           localStorage.removeItem("token");

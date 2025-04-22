@@ -42,10 +42,6 @@ const Banking = () => {
     "sub-agent": ["user"],
   };
 
-  // const filteredUsers =
-  //   user?.role === "mother-admin"
-  //     ? users?.filter((selectedUser) => selectedUser?._id !== user?._id)
-  //     : users?.filter((selectedUser) => selectedUser?.createdBy === user?._id);
 
   const roleUsers = users?.filter((user) => user.role === "user");
   const roleSubAgents = users?.filter((user) => user.role === "sub-agent");
@@ -68,31 +64,31 @@ const Banking = () => {
     user?.role === "mother-admin"
       ? {
           label: "Total User Balance",
-          value: `PBU (${usersBalance?.toFixed(2) || 0})`,
+          value: `USD (${usersBalance?.toFixed(2) || 0})`,
         }
       : {
           label: "Your Balance",
-          value: `PBU (${singleUser?.balance?.toFixed(2) || 0})`,
+          value: `USD (${singleUser?.balance?.toFixed(2) || 0})`,
         },
     user?.role === "mother-admin" && {
       label: "Total Sub Agent Balance",
-      value: `PBU (${subAgentsBalance?.toFixed(2) || 0})`,
+      value: `USD (${subAgentsBalance?.toFixed(2) || 0})`,
     },
     user?.role === "mother-admin" && {
       label: "Total Agent Balance",
-      value: `PBU (${agentsBalance?.toFixed(2) || 0})`,
+      value: `USD (${agentsBalance?.toFixed(2) || 0})`,
     },
     user?.role === "mother-admin" && {
       label: "Total Master Balance",
-      value: `PBU (${mastersBalance?.toFixed(2) || 0})`,
+      value: `USD (${mastersBalance?.toFixed(2) || 0})`,
     },
     user?.role === "mother-admin" && {
       label: "Total Sub Admin Balance",
-      value: `PBU (${subAdminsBalance?.toFixed(2) || 0})`,
+      value: `USD (${subAdminsBalance?.toFixed(2) || 0})`,
     },
     user?.role === "mother-admin" && {
       label: "Total Admin Balance",
-      value: `PBU (${adminsBalance?.toFixed(2) || 0})`,
+      value: `USD (${adminsBalance?.toFixed(2) || 0})`,
     },
   ].filter(Boolean);
 
