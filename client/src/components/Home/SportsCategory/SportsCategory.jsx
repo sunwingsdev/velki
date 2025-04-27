@@ -57,25 +57,25 @@ const SportsCategory = () => {
       image: allControl?.image,
       title: "All",
       value: "all",
-      count: counts["in-play"].all,
+      count: counts[selectedCategory].all,
     },
     {
       image: cricketControl?.image,
       title: "Cricket",
       value: "cricket",
-      count: counts["in-play"].cricket,
+      count: counts[selectedCategory].cricket,
     },
     {
       image: soccerControl?.image,
       title: "Soccer",
       value: "soccer",
-      count: counts["in-play"].soccer,
+      count: counts[selectedCategory].soccer,
     },
     {
       image: tennisControl?.image,
       title: "Tennis",
       value: "tennis",
-      count: counts["in-play"].tennis,
+      count: counts[selectedCategory].tennis,
     },
   ];
 

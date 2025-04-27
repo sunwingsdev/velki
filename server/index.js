@@ -96,7 +96,7 @@ async function run() {
     app.use("/color-controls", colorControlApi(colorControlsCollection));
     app.use("/games", gameApi(gamesCollection));
     app.use("/home-controls", homeControlApi(homeControlsCollection));
-    app.use("/banking", bankingApi(bankingCollection));
+    app.use("/bankings", bankingApi(bankingCollection));
 
     await client.db("admin").command({ ping: 1 });
     console.log("Connected to MongoDB!!!✅");

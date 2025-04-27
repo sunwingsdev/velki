@@ -12,7 +12,10 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (state, { payload }) => {
       // Check if user is active before setting credentials
-      if (payload.user?.status === 'banned' || payload.user?.status === 'deactivated') {
+      if (
+        payload.user?.status === "banned" ||
+        payload.user?.status === "deactivated"
+      ) {
         state.token = null;
         state.user = null;
         state.isAuthenticated = false;
@@ -20,7 +23,7 @@ const authSlice = createSlice({
         localStorage.removeItem("user");
         return;
       }
-      
+
       state.token = payload.token;
       state.user = payload.user;
       state.isAuthenticated = true;
@@ -36,10 +39,13 @@ const authSlice = createSlice({
     },
     setSingleUser: (state, { payload }) => {
       state.singleUser = payload;
-      
+
       // If the updated user is the current user and they're banned/deactivated, log them out
-      if (state.user && state.user._id === payload._id && 
-          (payload.status === 'banned' || payload.status === 'deactivated')) {
+      if (
+        state.user &&
+        state.user._id === payload._id &&
+        (payload.status === "banned" || payload.status === "deactivated")
+      ) {
         state.token = null;
         state.user = null;
         state.isAuthenticated = false;
@@ -49,16 +55,23 @@ const authSlice = createSlice({
     },
     // Add a new reducer to check user status on app load or periodically
     checkUserStatus: (state) => {
-      if (state.user && (state.user.status === 'banned' || state.user.status === 'deactivated')) {
+      if (
+        state.user &&
+        (state.user.status === "banned" ||
+          state.user.status === "deactivated" ||
+          state.user.status === null ||
+          state.user.status === undefined)
+      ) {
         state.token = null;
         state.user = null;
         state.isAuthenticated = false;
         localStorage.removeItem("token");
         localStorage.removeItem("user");
       }
-    }
+    },
   },
 });
 
-export const { setCredentials, logout, setSingleUser, checkUserStatus } = authSlice.actions;
+export const { setCredentials, logout, setSingleUser, checkUserStatus } =
+  authSlice.actions;
 export default authSlice.reducer;

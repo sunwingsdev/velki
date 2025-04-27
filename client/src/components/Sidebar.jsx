@@ -70,6 +70,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
             <Link
               to="/setting"
               className="flex items-center justify-between text-gray-800 w-full"
+              onClick={toggleSidebar}
             >
               <div className="flex items-center gap-2">
                 <FaGear className="text-xl" />

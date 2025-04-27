@@ -79,7 +79,9 @@ const Login = () => {
         const { data: userData } = await getUser(loginData.token);
         if (
           userData?.status === "banned" ||
-          userData?.status === "deactivated"
+          userData?.status === "deactivated" ||
+          userData?.status === null ||
+          userData?.status === undefined
         ) {
           addToast("Your account is deactivated or banned", {
             appearance: "error",
